@@ -1,0 +1,125 @@
+.shop {
+  background: #fdfbfb;
+  padding: 2rem 1.5rem;
+}
+
+.header {
+  text-align: center;
+  margin: 0 auto 2rem;
+  max-width: 70rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: #4b7b67;
+  letter-spacing: 0.04rem;
+}
+
+.subtitle {
+  margin-top: 0.4rem;
+  color: #666666;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem auto 2rem;
+  max-width: 70rem;
+}
+.chips a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.4rem;
+  border: 0.125rem solid #92b5a7;
+  border-radius: 2rem;
+  color: #222222;
+  background: transparent;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.chips a:hover {
+  background: #92b5a7;
+  color: #fdfbfb;
+  border-color: #4b7b67;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  gap: 2rem;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.sidebar {
+  border: 0.125rem solid #e3a5a5;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: #fdfbfb;
+}
+.sidebar h3 {
+  font-size: 1rem;
+  color: #4b7b67;
+  margin-bottom: 0.8rem;
+}
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar ul li {
+  margin-bottom: 0.5rem;
+}
+.sidebar ul a {
+  color: #666666;
+  text-decoration: none;
+}
+.sidebar ul a:hover {
+  color: #222222;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  color: #4b7b67;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1.2rem;
+}
+
+.card {
+  border: 0.125rem solid #e3a5a5;
+  border-radius: 0.5rem;
+  background: #fdfbfb;
+  padding: 0.8rem;
+}
+.card .thumb {
+  width: 100%;
+  height: 12rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0.4rem;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.card .name {
+  font-weight: 600;
+  color: #222222;
+}
+.card .price {
+  color: #666666;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 62rem) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    order: 2;
+  }
+}/*# sourceMappingURL=Shop.module.css.map */

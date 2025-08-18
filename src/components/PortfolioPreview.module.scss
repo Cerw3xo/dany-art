@@ -1,0 +1,85 @@
+@use "../styles/variables" as *;
+
+.section {
+  background: $color-bg;
+  padding: 3rem 2rem;
+}
+
+.inner {
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.title {
+  color: $color-secondary;
+  font-size: 1.8rem;
+  letter-spacing: 0.06rem;
+  margin-bottom: 1.5rem;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.track {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.card {
+  flex: 0 0 20rem;
+  border: 0.1875rem solid $color-primary-light;
+  border-radius: 0.5rem;
+  background: $color-bg;
+  scroll-snap-align: start;
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.4rem;
+  }
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: $color-bg;
+  color: $color-secondary;
+  border: 0.125rem solid $color-secondary;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  &:hover {
+    background: $color-secondary-light;
+    color: $color-bg;
+  }
+}
+
+.prev {
+  left: -1rem;
+}
+.next {
+  right: -1rem;
+}
+
+@media (max-width: 48rem) {
+  .card {
+    flex-basis: 16rem;
+  }
+  .nav {
+    display: none;
+  }
+}

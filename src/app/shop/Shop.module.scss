@@ -1,0 +1,127 @@
+@use "../../styles/variables" as *;
+
+.shop {
+  background: $color-bg;
+  padding: 2rem 1.5rem;
+}
+
+.header {
+  text-align: center;
+  margin: 0 auto 2rem;
+  max-width: 70rem;
+}
+.title {
+  font-size: 2rem;
+  color: $color-secondary;
+  letter-spacing: 0.04rem;
+}
+.subtitle {
+  margin-top: 0.4rem;
+  color: $color-text-light;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem auto 2rem;
+  max-width: 70rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.4rem;
+    border: 0.125rem solid $color-secondary-light;
+    border-radius: 2rem;
+    color: $color-text;
+    background: transparent;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    &:hover {
+      background: $color-secondary-light;
+      color: $color-bg;
+      border-color: $color-secondary;
+    }
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  gap: 2rem;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.sidebar {
+  border: 0.125rem solid $color-primary-light;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: $color-bg;
+
+  h3 {
+    font-size: 1rem;
+    color: $color-secondary;
+    margin-bottom: 0.8rem;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin-bottom: 0.5rem;
+    }
+    a {
+      color: $color-text-light;
+      text-decoration: none;
+      &:hover {
+        color: $color-text;
+      }
+    }
+  }
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  color: $color-secondary;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1.2rem;
+}
+
+.card {
+  border: 0.125rem solid $color-primary-light;
+  border-radius: 0.5rem;
+  background: $color-bg;
+  padding: 0.8rem;
+
+  .thumb {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 0.4rem;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .name {
+    font-weight: 600;
+    color: $color-text;
+  }
+  .price {
+    color: $color-text-light;
+    margin-top: 0.25rem;
+  }
+}
+
+@media (max-width: 62rem) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    order: 2;
+  }
+}

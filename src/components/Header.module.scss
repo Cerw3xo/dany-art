@@ -1,0 +1,74 @@
+@use "../styles/variables" as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $color-bg;
+  padding: 1.2rem 2rem 0.5rem 2rem;
+  border-bottom: 3px solid $color-primary-light;
+}
+
+.left {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+  transition: opacity 0.2s;
+  opacity: 0.85;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.cartLink {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cartIcon {
+  width: 32px;
+  height: 32px;
+  stroke: $color-secondary;
+}
+
+.nav {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.8rem;
+  border: 2px solid $color-primary-light;
+  border-radius: 2rem;
+  background: transparent;
+  color: $color-text;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+
+  &:hover,
+  &.active {
+    background: $color-primary-light;
+    color: $color-primary;
+    border-color: $color-primary;
+  }
+}

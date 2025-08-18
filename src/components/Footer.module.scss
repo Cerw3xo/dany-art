@@ -1,0 +1,98 @@
+/* src/components/Footer.module.scss */
+@use "../styles/variables" as *;
+
+.footer {
+  margin-top: 4rem;
+  background: $color-secondary-light;
+  color: $color-text;
+}
+
+.top {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.brand {
+  .logo {
+    font-size: 3.2rem;
+    line-height: 1;
+    color: $color-text;
+    span {
+      color: $color-primary;
+    }
+  }
+  .tagline {
+    margin-top: 1rem;
+    letter-spacing: 0.06rem;
+    opacity: 0.85;
+  }
+}
+
+.col {
+  h4 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.06rem;
+    color: $color-text;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 0.6rem;
+  }
+  a {
+    color: $color-text;
+    text-decoration: none;
+    border-bottom: 0.08rem solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    &:hover {
+      color: $color-secondary;
+      border-color: $color-secondary;
+    }
+  }
+}
+
+/* dekoratívna vlna (pridaj public/footer-wave.svg alebo nahrad URL) */
+.wave {
+  height: 6rem;
+  background: url("/footer-wave.svg") center bottom / cover no-repeat,
+    $color-bg;
+}
+
+/* spodný pás */
+.bottom {
+  background: $color-bg;
+  text-align: center;
+  padding: 2rem 1rem;
+  color: $color-text-light;
+  p + p {
+    margin-top: 0.5rem;
+  }
+  a {
+    color: $color-text;
+    text-decoration: none;
+  }
+}
+
+/* responzívne */
+@media (max-width: 62rem) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 40rem) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+  .brand .logo {
+    font-size: 2.6rem;
+  }
+}

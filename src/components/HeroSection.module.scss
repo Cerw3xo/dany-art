@@ -1,0 +1,111 @@
+@use "../styles/variables" as *;
+
+.hero {
+  position: relative;
+  background: $color-primary-light;
+  padding: 3rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.contentWrapper {
+  display: flex;
+  max-width: 1100px;
+  width: 100%;
+  gap: 3rem;
+  z-index: 1;
+}
+
+.imageWrapper {
+  background: $color-primary;
+  padding: 1rem;
+  border: 3px solid $color-primary-light;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: $color-text;
+  min-width: 350px;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-family: "Dancing Script", cursive;
+  color: $color-primary;
+  margin-bottom: 0.5rem;
+  .logoMain {
+    font-weight: 300;
+  }
+  .logoArt {
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 3rem;
+    color: $color-accent;
+    margin-left: 0.3rem;
+  }
+}
+
+.subtitle {
+  color: $color-primary;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.headline {
+  font-size: 2rem;
+  font-weight: bold;
+  color: $color-secondary;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: $color-text-light;
+  margin-bottom: 2rem;
+  p {
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.cta {
+  background: $color-secondary-light;
+  color: $color-text;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: $color-secondary;
+    color: $color-bg;
+  }
+}
+
+.bgShape {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60%;
+  height: 100%;
+  background: url("/abstract-shape.svg") no-repeat right center/cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+}

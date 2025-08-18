@@ -1,0 +1,64 @@
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  background: #fdfbfb;
+}
+
+.left {
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.photo {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.right {
+  flex: 1 1 55%;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.heading {
+  background: #4b7b67;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.subheading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.list {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+.list li {
+  margin-bottom: 0.3rem;
+}
+
+.highlight {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #b65454;
+}
+.highlight span {
+  display: block;
+  margin-top: 0.2rem;
+  font-weight: normal;
+  color: #222222;
+}/*# sourceMappingURL=About.module.css.map */
