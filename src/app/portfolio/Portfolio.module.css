@@ -1,0 +1,84 @@
+.portfolio {
+  background: #fdfbfb;
+  padding: 2rem 0 4rem;
+}
+
+.container {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-size: 2.4rem;
+  color: #4b7b67;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #666666;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.5rem;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.item:hover {
+  transform: translateY(-0.25rem);
+}
+.item:hover .overlay {
+  opacity: 1;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(75, 123, 103, 0.7);
+  padding: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.caption {
+  color: #fdfbfb;
+  font-weight: 500;
+  display: block;
+  text-align: center;
+}
+
+@media (max-width: 48rem) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: 1rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+}/*# sourceMappingURL=Portfolio.module.css.map */

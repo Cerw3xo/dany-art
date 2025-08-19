@@ -1,0 +1,130 @@
+// src/app/contact/Contact.module.scss
+@use "../../styles/variables" as *;
+
+.contact,
+.thankYou {
+  background: $color-bg;
+  padding: 3rem 0 5rem;
+  min-height: 60vh;
+}
+
+.thankYou {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title,
+.thankYouTitle {
+  font-size: 2rem;
+  color: $color-secondary;
+  margin-bottom: 0.5rem;
+  background: rgba($color-secondary-light, 0.3);
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+}
+
+.thankYouTitle {
+  color: $color-primary;
+  background: rgba($color-primary-light, 0.3);
+}
+
+.subtitle {
+  color: $color-text-light;
+  max-width: 40rem;
+  margin: 1rem auto 0;
+}
+
+.form {
+  background: $color-bg;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+
+.field {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: $color-text;
+  font-size: 0.9rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 0.125rem solid $color-border;
+  border-radius: 0.25rem;
+  background: $color-bg;
+  color: $color-text;
+  font-family: inherit;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: $color-secondary-light;
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.submit {
+  background: $color-primary;
+  color: $color-bg;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: block;
+  margin-left: auto;
+
+  &:hover {
+    background: darken($color-primary, 5%);
+  }
+
+  &:disabled {
+    background: lighten($color-primary, 15%);
+    cursor: not-allowed;
+  }
+}
+
+.message {
+  padding: 3rem 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.text {
+  color: $color-secondary;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.redirect {
+  color: $color-text-light;
+  font-size: 0.9rem;
+  font-style: italic;
+}

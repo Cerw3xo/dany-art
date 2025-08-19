@@ -1,5 +1,6 @@
 import { products } from "@/data/products";
 import Link from "next/link";
+import { formatPrice } from "@/lib/format";
 
 export default async function ProductPage({
   params,
@@ -13,7 +14,7 @@ export default async function ProductPage({
   return (
     <section>
       <h1>{product.name}</h1>
-      <p>Cena: {product.price} Kč</p>
+      <p>Cena: {formatPrice(product.price)}</p>
       <div>
         {product.images.map((src, i) => (
           <img
