@@ -1,24 +1,32 @@
 import styles from "./About.module.scss";
+import Image from "next/image";
 
 export default function About() {
   return (
     <section className={styles.about}>
       <div className={styles.left}>
-        <img
-          src="/images/about-photo.jpg"
-          alt="Daniela Konečná maluje obraz"
-          className={styles.photo}
-        />
+        <div className={styles.logo}>
+          <div>
+            <span className={styles.logoMain}>Danyss</span>
+            <span className={styles.logoArt}>Art</span>
+          </div>
+
+          <p className={styles.name}>Daniela Konečná</p>
+        </div>
+        <div className={styles.imgContainer}>
+          <img
+            src="/dany.webp"
+            alt="Daniela Konečná maluje obraz"
+            className={styles.photo}
+          />
+        </div>
       </div>
       <div className={styles.right}>
         <h2 className={styles.heading}>Kdo jsem?</h2>
         <p>
           Jmenuji se <strong>Daniela Konečná</strong> – grafická
           designérka a umělkyně, která propojuje kreativitu, funkční
-          design a osobitost.
-        </p>
-        <p>
-          Už více než 4 roky se věnuji tvorbě{" "}
+          design a osobitost. Už více než 4 roky se věnuji tvorbě{" "}
           <strong>grafiky na míru</strong>, pracuji v reklamní
           agentuře a zároveň buduju vlastní značku{" "}
           <strong>DanyssArt</strong>.

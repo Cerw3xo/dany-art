@@ -1,30 +1,57 @@
 "use client";
+
+import { useRef, useEffect } from "react";
 import styles from "./PortfolioPreview.module.scss";
-import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const items = [
-  { src: "/portfolio/1.jpg", alt: "Mikina s potiskem" },
-  { src: "/portfolio/2.jpg", alt: "Etikety na víno" },
-  { src: "/portfolio/3.jpg", alt: "Malovaná taška" },
+  { src: "/portfolio/etikety/vino.jpg", alt: "Etiketa na vino" },
+  {
+    src: "/portfolio/knihy/kniha-vazba.JPG",
+    alt: "Etiketa na vino",
+  },
+  { src: "/portfolio/textil/dany.jpg", alt: "Trika s potiskem" },
+  {
+    src: "/portfolio/textil/taska-demoni1.jpg",
+    alt: "Etikety na víno",
+  },
+  {
+    src: "/portfolio/grafika/grafika-rozmarin.jpg",
+    alt: "Etikety na víno",
+  },
+  { src: "/portfolio/malba/obraz-dany.jpg", alt: "Malovaná taška" },
 ];
 
 export default function PortfolioPreview() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const scroll = (dir: "left" | "right") => {
-    const el = trackRef.current;
-    if (!el) return;
-    const amount = el.clientWidth * 0.9;
-    el.scrollBy({
-      left: dir === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
-  };
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
+  const swiperRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (
+      swiperRef.current &&
+      swiperRef.current.params &&
+      swiperRef.current.params.navigation
+    ) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  });
 
   return (
     <section
       className={styles.section}
       aria-labelledby="portfolio-title"
     >
+      <div className={styles.heading}>
+        <h3>Chceš něco originálniho co má duši?</h3>
+        <button>mrkni do e-shopu</button>
+      </div>
       <div className={styles.inner}>
         <h2 id="portfolio-title" className={styles.title}>
           Portfolio
@@ -32,30 +59,43 @@ export default function PortfolioPreview() {
 
         <div className={styles.wrapper}>
           <button
+            ref={prevRef}
             type="button"
             className={`${styles.nav} ${styles.prev}`}
             aria-label="Predchádzajúce"
-            onClick={() => scroll("left")}
-          >
-            ‹
-          </button>
+          ></button>
 
-          <div className={styles.track} ref={trackRef}>
+          <Swiper
+            className="swiper"
+            loop={true}
+            spaceBetween={16}
+            slidesPerView={3}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            }}
+            modules={[Autoplay, Navigation]}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+          >
             {items.map((item, i) => (
-              <figure className={styles.card} key={i}>
-                <img src={item.src} alt={item.alt} />
-              </figure>
+              <SwiperSlide key={i} className="swiper-slide">
+                <img src={item.src} alt={item.alt} loading="lazy" />
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
 
           <button
+            ref={nextRef}
             type="button"
             className={`${styles.nav} ${styles.next}`}
             aria-label="Ďalšie"
-            onClick={() => scroll("right")}
-          >
-            ›
-          </button>
+          ></button>
         </div>
       </div>
     </section>

@@ -1,78 +1,103 @@
 @charset "UTF-8";
 /* src/components/Footer.module.scss */
 .footer {
+  width: 100vw;
   margin-top: 4rem;
-  background: #92b5a7;
-  color: #222222;
+  padding-top: 3rem;
+  color: #425958;
+  border-top: 4px solid #f3bfbc;
+  overflow-y: hidden;
 }
-
-.top {
-  max-width: 70rem;
+.footer .top {
   margin: 0 auto;
+  background: #d9e8dd;
   padding: 3rem 2rem;
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr;
   gap: 2rem;
 }
-
-.brand .logo {
+.footer .top .brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.footer .top .brand .logo {
   font-size: 3.2rem;
+  font-weight: 200;
+  letter-spacing: 0.1rem;
   line-height: 1;
-  color: #222222;
+  color: #425958;
 }
-.brand .logo span {
-  color: #b65454;
+.footer .top .brand .logo span {
+  font-size: 5.3rem;
+  margin-left: 0.2rem;
+  font-weight: 200;
+  font-family: var(--font-dancing);
 }
-.brand .tagline {
+.footer .top .brand .tagline {
+  font-size: 0.9rem;
   margin-top: 1rem;
   letter-spacing: 0.06rem;
   opacity: 0.85;
 }
-
-.col h4 {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.06rem;
-  color: #222222;
+.footer .top .col {
+  margin-top: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
-.col ul {
+.footer .top .col h4 {
+  margin-bottom: 0.7rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #425958;
+}
+.footer .top .col ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.col li {
-  margin-bottom: 0.6rem;
+.footer .top .col li {
+  margin-bottom: 0.3rem;
 }
-.col a {
-  color: #222222;
+.footer .top .col a {
+  color: #425958;
   text-decoration: none;
   border-bottom: 0.08rem solid transparent;
   transition: color 0.2s, border-color 0.2s;
 }
-.col a:hover {
-  color: #4b7b67;
-  border-color: #4b7b67;
-}
-
-/* dekoratívna vlna (pridaj public/footer-wave.svg alebo nahrad URL) */
-.wave {
-  height: 6rem;
-  background: url("/footer-wave.svg") center bottom/cover no-repeat, #fdfbfb;
+.footer .top .col a:hover {
+  color: #425958;
+  border-color: #425958;
 }
 
 /* spodný pás */
 .bottom {
-  background: #fdfbfb;
+  position: relative;
+  background: #f5f5f3;
   text-align: center;
   padding: 2rem 1rem;
-  color: #666666;
+  color: #526766;
+  margin-top: 5.5rem;
 }
-.bottom p + p {
-  margin-top: 0.5rem;
+.bottom .image {
+  position: absolute;
+  width: 55rem;
+  height: 15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5.7rem;
+  z-index: 999;
+}
+.bottom p {
+  font-size: 0.75rem;
+  position: relative;
+  top: 0.9rem;
 }
 .bottom a {
-  color: #222222;
+  color: #425958;
   text-decoration: none;
 }
 

@@ -1,5 +1,5 @@
 .shop {
-  background: #fdfbfb;
+  background: #f5f5f3;
   padding: 2rem 1.5rem;
 }
 
@@ -11,13 +11,13 @@
 
 .title {
   font-size: 2rem;
-  color: #4b7b67;
+  color: #425958;
   letter-spacing: 0.04rem;
 }
 
 .subtitle {
   margin-top: 0.4rem;
-  color: #666666;
+  color: #526766;
 }
 
 .chips {
@@ -32,16 +32,16 @@
   display: inline-flex;
   align-items: center;
   padding: 0.6rem 1.4rem;
-  border: 0.125rem solid #92b5a7;
+  border: 0.125rem solid #d9e8dd;
   border-radius: 2rem;
-  color: #222222;
+  color: #425958;
   background: transparent;
   transition: background 0.2s, color 0.2s, border 0.2s;
 }
 .chips a:hover {
-  background: #92b5a7;
-  color: #fdfbfb;
-  border-color: #4b7b67;
+  background: #d9e8dd;
+  color: #f5f5f3;
+  border-color: #425958;
 }
 
 .content {
@@ -53,14 +53,14 @@
 }
 
 .sidebar {
-  border: 0.125rem solid #e3a5a5;
+  border: 0.125rem solid #f5f5f3;
   border-radius: 0.5rem;
   padding: 1rem;
-  background: #fdfbfb;
+  background: #f5f5f3;
 }
 .sidebar h3 {
   font-size: 1rem;
-  color: #4b7b67;
+  color: #425958;
   margin-bottom: 0.8rem;
 }
 .sidebar ul {
@@ -72,16 +72,16 @@
   margin-bottom: 0.5rem;
 }
 .sidebar ul a {
-  color: #666666;
+  color: #526766;
   text-decoration: none;
 }
 .sidebar ul a:hover {
-  color: #222222;
+  color: #425958;
 }
 
 .sectionTitle {
   font-size: 1.4rem;
-  color: #4b7b67;
+  color: #425958;
   margin-bottom: 1rem;
 }
 
@@ -92,9 +92,9 @@
 }
 
 .card {
-  border: 0.125rem solid #e3a5a5;
+  border: 0.125rem solid #f5f5f3;
   border-radius: 0.5rem;
-  background: #fdfbfb;
+  background: #f5f5f3;
   padding: 0.8rem;
 }
 .card .thumb {
@@ -108,10 +108,10 @@
 }
 .card .name {
   font-weight: 600;
-  color: #222222;
+  color: #425958;
 }
 .card .price {
-  color: #666666;
+  color: #526766;
   margin-top: 0.25rem;
 }
 

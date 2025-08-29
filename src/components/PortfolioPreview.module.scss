@@ -1,50 +1,119 @@
 @use "../styles/variables" as *;
+@use "../styles/mixins" as m;
 
 .section {
+  @include m.section();
+  flex-direction: column;
+  min-height: 60vh;
   background: $color-bg;
   padding: 3rem 2rem;
-}
 
-.inner {
-  max-width: 70rem;
-  margin: 0 auto;
-}
+  background-image: url("/ui/pink_1.svg");
+  background-repeat: no-repeat;
+  background-size: 66%;
+  background-position: -70% -70%;
 
-.title {
-  color: $color-secondary;
-  font-size: 1.8rem;
-  letter-spacing: 0.06rem;
-  margin-bottom: 1.5rem;
-}
+  .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 7rem;
+    > h3 {
+      font-size: 3rem;
+      color: $color-primary;
+      margin-bottom: 1rem;
+    }
 
-.wrapper {
-  position: relative;
-}
+    > button {
+      position: relative;
+      @include m.cta-button();
+      font-size: 1.9rem;
+      color: $color-primary;
+      background-color: $color-accent;
+      padding: 0.7rem 1.7rem;
+      outline: 2px solid $color-accent;
+      outline-offset: 0.3rem;
+      transition: all 0.3s ease;
 
-.track {
-  display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 0.5rem;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
+      &:hover {
+        outline: none;
+      }
+    }
   }
-}
 
-.card {
-  flex: 0 0 20rem;
-  border: 0.1875rem solid $color-primary-light;
-  border-radius: 0.5rem;
-  background: $color-bg;
-  scroll-snap-align: start;
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 0.4rem;
+  .inner {
+    max-width: 70vw;
+    margin: 0 auto;
+
+    .title {
+      color: $color-primary;
+      font-size: 2.5rem;
+      font-weight: 400;
+      letter-spacing: 0.06rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .wrapper {
+      position: relative;
+
+      :global(.swiper) {
+        :global(.swiper-slide) {
+          img {
+            border: 5px solid $color-accent;
+            height: 30rem;
+            object-fit: cover;
+          }
+        }
+
+        :global(.swiper-slide-next) {
+          border: 7px solid $color-primary;
+          transform: scale(1.1);
+        }
+      }
+
+      .prev {
+        left: -2rem;
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before {
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 1rem solid transparent;
+          border-bottom: 1rem solid transparent;
+          border-right: 1.5rem solid $color-primary;
+        }
+      }
+      .next {
+        right: -2rem;
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before {
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 1rem solid transparent;
+          border-bottom: 1rem solid transparent;
+          border-left: 1.5rem solid $color-primary;
+        }
+      }
+    }
   }
 }
 
@@ -52,34 +121,6 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  background: $color-bg;
-  color: $color-secondary;
-  border: 0.125rem solid $color-secondary;
-  display: grid;
-  place-items: center;
+
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  &:hover {
-    background: $color-secondary-light;
-    color: $color-bg;
-  }
-}
-
-.prev {
-  left: -1rem;
-}
-.next {
-  right: -1rem;
-}
-
-@media (max-width: 48rem) {
-  .card {
-    flex-basis: 16rem;
-  }
-  .nav {
-    display: none;
-  }
 }

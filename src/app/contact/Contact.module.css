@@ -1,6 +1,6 @@
 .contact,
 .thankYou {
-  background: #fdfbfb;
+  background: #f5f5f3;
   padding: 3rem 0 5rem;
   min-height: 60vh;
 }
@@ -25,27 +25,27 @@
 .title,
 .thankYouTitle {
   font-size: 2rem;
-  color: #4b7b67;
+  color: #425958;
   margin-bottom: 0.5rem;
-  background: rgba(146, 181, 167, 0.3);
+  background: rgba(217, 232, 221, 0.3);
   display: inline-block;
   padding: 0.5rem 1.5rem;
   border-radius: 2rem;
 }
 
 .thankYouTitle {
-  color: #b65454;
-  background: rgba(227, 165, 165, 0.3);
+  color: #a85458;
+  background: rgba(245, 245, 243, 0.3);
 }
 
 .subtitle {
-  color: #666666;
+  color: #526766;
   max-width: 40rem;
   margin: 1rem auto 0;
 }
 
 .form {
-  background: #fdfbfb;
+  background: #f5f5f3;
   border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
@@ -58,7 +58,7 @@
 .label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #222222;
+  color: #425958;
   font-size: 0.9rem;
 }
 
@@ -68,15 +68,15 @@
   padding: 0.75rem 1rem;
   border: 0.125rem solid #e5e5e5;
   border-radius: 0.25rem;
-  background: #fdfbfb;
-  color: #222222;
+  background: #f5f5f3;
+  color: #425958;
   font-family: inherit;
   transition: border-color 0.2s;
 }
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-color: #92b5a7;
+  border-color: #d9e8dd;
 }
 
 .textarea {
@@ -85,8 +85,8 @@
 }
 
 .submit {
-  background: #b65454;
-  color: #fdfbfb;
+  background: #a85458;
+  color: #f5f5f3;
   border: none;
   border-radius: 2rem;
   padding: 0.75rem 2.5rem;
@@ -98,10 +98,10 @@
   margin-left: auto;
 }
 .submit:hover {
-  background: #a94848;
+  background: #974c4f;
 }
 .submit:disabled {
-  background: #cd8a8a;
+  background: #c38689;
   cursor: not-allowed;
 }
 
@@ -112,14 +112,14 @@
 }
 
 .text {
-  color: #4b7b67;
+  color: #425958;
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
 
 .redirect {
-  color: #666666;
+  color: #526766;
   font-size: 0.9rem;
   font-style: italic;
 }/*# sourceMappingURL=Contact.module.css.map */

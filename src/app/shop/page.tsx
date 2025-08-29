@@ -7,6 +7,7 @@ import {
   type Category,
 } from "@/data/categories";
 import styles from "./Shop.module.scss";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export default async function ShopPage({
   searchParams,
@@ -71,6 +72,7 @@ export default async function ShopPage({
                   <div className={styles.name}>{p.name}</div>
                   <div className={styles.price}>{p.price} Kč</div>
                 </Link>
+                <AddToCartButton product={p} />
               </article>
             ))}
           </div>

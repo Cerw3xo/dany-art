@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 300"
+     width="1200" height="300"
+     aria-hidden="true">
+
+  <!-- hrubšia vlna (ale stále tenšia než predtým) -->
+  <path d="M 0 200 
+           C 300 50, 600 350, 900 150 
+           C 1050 80, 1150 200, 1200 180"
+        fill="none"
+        stroke="#E97A7A"
+        stroke-width="10"
+        opacity="0.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- tenšia vlna -->
+  <path d="M 0 180 
+           C 300 30, 600 280, 900 120 
+           C 1050 60, 1150 180, 1200 160"
+        fill="none"
+        stroke="#E97A7A"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- bodky -->
+  <circle cx="880" cy="130" r="16" fill="#E97A7A" opacity="0.9"/>
+  <circle cx="940" cy="100" r="8" fill="#E97A7A" opacity="0.85"/>
+  <circle cx="1010" cy="150" r="5" fill="#E97A7A" opacity="0.8"/>
+</svg>

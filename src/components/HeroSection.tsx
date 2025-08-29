@@ -8,7 +8,7 @@ export default function HeroSection() {
         {/* Ľavá časť – fotka */}
         <div className={styles.imageWrapper}>
           <Image
-            src="/hero-photo.jpg" // Nahraď vlastnou cestou k obrázku
+            src="/dany.webp" // Nahraď vlastnou cestou k obrázku
             alt="Autorka s obrazom"
             width={350}
             height={420}
@@ -38,8 +38,6 @@ export default function HeroSection() {
           </button>
         </div>
       </div>
-      {/* Voliteľne: abstraktný shape v pozadí */}
-      <div className={styles.bgShape}></div>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 // src/components/Footer.tsx
 import Link from "next/link";
 import styles from "./Footer.module.scss";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -55,9 +56,15 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className={styles.wave} aria-hidden="true" />
-
       <div className={styles.bottom}>
+        <Image
+          className={styles.image}
+          src="/danyArt.png"
+          alt="abstraktne pozadi"
+          width={730}
+          height={200}
+        />
+        <div></div>
         <p>
           © {new Date().getFullYear()} Daniela Konečná – danyss_art –
           grafický design a ruční tvorba

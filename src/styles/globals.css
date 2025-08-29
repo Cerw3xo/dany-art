@@ -13,8 +13,9 @@ body {
 }
 
 body {
-  background: #fdfbfb;
-  color: #222222;
+  background: #f5f5f3;
+  font-family: var(--font-raleway);
+  color: #425958;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -68,6 +69,6 @@ footer {
 }
 
 body {
-  background: #fdfbfb;
-  color: #222222;
+  background: #f5f5f3;
+  color: #425958;
 }/*# sourceMappingURL=globals.css.map */

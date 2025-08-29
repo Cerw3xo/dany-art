@@ -1,74 +1,101 @@
 @use "../styles/variables" as *;
+@use "../styles/mixins" as m;
 
 .header {
+  position: fixed;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: $color-bg;
-  padding: 1.2rem 2rem 0.5rem 2rem;
-  border-bottom: 3px solid $color-primary-light;
-}
+  padding: 1.1rem 6% 0.7rem;
+  border-bottom: 4px solid $color-accent;
+  margin-bottom: 1rem;
+  z-index: 999;
+  isolation: isolate;
 
-.left {
-  display: flex;
-  gap: 1.2rem;
-}
-
-.icon {
-  width: 28px;
-  height: 28px;
-  display: block;
-  transition: opacity 0.2s;
-  opacity: 0.85;
-  &:hover {
-    opacity: 1;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0.6rem;
+    bottom: -0.8rem;
+    background-color: $color-bg;
   }
-}
 
-.center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
+  .left {
+    display: flex;
+    gap: 1.2rem;
 
-.cartLink {
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+    .icon {
+      width: 1.3rem;
+      height: 1.3rem;
+      display: block;
+      transition: opacity 0.2s;
+      opacity: 0.85;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 
-.cartIcon {
-  width: 32px;
-  height: 32px;
-  stroke: $color-secondary;
-}
+  .nav {
+    display: flex;
+    gap: 1.2rem;
 
-.nav {
-  display: flex;
-  gap: 1.2rem;
-}
+    .center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
 
-.navLink {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1.8rem;
-  border: 2px solid $color-primary-light;
-  border-radius: 2rem;
-  background: transparent;
-  color: $color-text;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: background 0.2s, color 0.2s, border 0.2s;
+      .cartLink {
+        margin: 0;
+        .cartIcon {
+          width: 2rem;
+          height: 1.2rem;
+          stroke: $color-secondary;
+        }
 
-  &:hover,
-  &.active {
-    background: $color-primary-light;
-    color: $color-primary;
-    border-color: $color-primary;
+        .badge {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: $color-primary;
+          color: rgb(255, 255, 255);
+          border-radius: 100%;
+          padding: 0.3rem;
+          width: 1rem;
+          height: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .cartLink {
+      display: flex;
+      align-items: center;
+      margin-right: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .navLink {
+      position: relative;
+      @include m.cta-button();
+      z-index: 1;
+    }
+    .active {
+      background: $color-accent;
+      color: $color-primary;
+      font-weight: 600;
+      border: 2px solid $color-primary;
+    }
   }
 }

@@ -1,0 +1,39 @@
+@use "./variables" as *;
+
+@mixin container($max-width: 70rem) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@mixin section {
+  width: 100vw;
+  padding: 6rem 6% 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-primary-light;
+}
+
+@mixin cta-button() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding: 0.1rem 1.1rem;
+  border: 2px solid $color-accent;
+  border-radius: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  background-color: $color-bg;
+  color: $color-text;
+
+  &:hover {
+    background-color: $color-accent;
+    color: $color-bg;
+    border-color: $color-primary;
+  }
+}
