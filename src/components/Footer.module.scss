@@ -77,7 +77,6 @@
   }
 }
 
-/* spodný pás */
 .bottom {
   position: relative;
   background: $color-bg;
@@ -93,7 +92,6 @@
     left: 50%;
     transform: translateX(-50%);
     top: -5.7rem;
-    z-index: 999;
   }
   p {
     font-size: 0.75rem;
@@ -107,16 +105,3 @@
 }
 
 /* responzívne */
-@media (max-width: 62rem) {
-  .top {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (max-width: 40rem) {
-  .top {
-    grid-template-columns: 1fr;
-  }
-  .brand .logo {
-    font-size: 2.6rem;
-  }
-}

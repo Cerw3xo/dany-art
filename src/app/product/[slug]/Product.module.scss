@@ -1,0 +1,67 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as m;
+
+.product {
+  @include m.section();
+  flex-direction: column;
+
+  .info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    gap: 3rem;
+    margin-bottom: 3rem;
+
+    .right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+
+      .heading {
+        font-size: 2rem;
+        color: $color-primary;
+        margin-bottom: 2rem;
+      }
+
+      .description {
+        width: 70%;
+        color: $color-text;
+        margin-bottom: 2rem;
+      }
+      .price {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .addToCart {
+        @include m.cta-button();
+        color: white;
+        background-color: $color-accent;
+        border-radius: 0.1rem;
+        border: none;
+        padding: 0.2rem 1.2rem;
+        margin-bottom: 2rem;
+
+        &:hover {
+          outline: 1px solid $color-accent;
+          outline-offset: 0.1rem;
+        }
+      }
+
+      .back {
+        @include m.cta-button();
+      }
+    }
+
+    .gallery {
+      flex: 1;
+    }
+  }
+
+  .productInfo {
+    width: 80%;
+  }
+}

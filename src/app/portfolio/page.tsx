@@ -2,31 +2,74 @@
 import styles from "./Portfolio.module.scss";
 
 const portfolioItems = [
-  { id: "p1", src: "/portfolio/1.jpg", alt: "Mikina s potlačou" },
-  { id: "p2", src: "/portfolio/2.jpg", alt: "Taška so slnečnicami" },
-  { id: "p3", src: "/portfolio/3.jpg", alt: "Tričko s potlačou" },
   {
-    id: "p4",
-    src: "/portfolio/1.jpg",
-    alt: "Karty léčivé rostlinarium",
+    id: "etiketa-vino",
+    src: "/portfolio/etikety/vino.jpg",
+    alt: "Na Mezi",
   },
-  { id: "p5", src: "/portfolio/2.jpg", alt: "Taška s jahodami" },
-  { id: "p6", src: "/portfolio/3.jpg", alt: "Hrnek s motivem lípy" },
-  { id: "p7", src: "/portfolio/1.jpg", alt: "Mikina s potlačou" },
-  { id: "p8", src: "/portfolio/2.jpg", alt: "Kniha Srdcevěci" },
+  {
+    id: "etiketa-vino-lipa",
+    src: "/portfolio/etikety/vino-lipa.jpg",
+    alt: "Etiketa na víno Lípa",
+  },
+  {
+    id: "grafika-folklor",
+    src: "/portfolio/grafika/grafika-folklor.jpg",
+    alt: "Folklórni grafika",
+  },
+  {
+    id: "grafika-makky",
+    src: "/portfolio/grafika/grafika-makky.jpg",
+    alt: "Grafika měkký",
+  },
+  {
+    id: "kniha-vazba",
+    src: "/portfolio/knihy/kniha-vazba.jpg",
+    alt: "Kniha vázaná ručne",
+  },
+  {
+    id: "malba-kravy",
+    src: "/portfolio/malba/obraz-dany.jpg",
+    alt: "Maľba kravy",
+  },
+  {
+    id: "kapka-v-mori",
+    src: "/portfolio/knihy/svadlencin-pomocnik.JPG",
+    alt: "Kapka v moři",
+  },
+  {
+    id: "malba-kapor",
+    src: "/portfolio/malba/kapor.jpg",
+    alt: "Obraz kapra",
+  },
+  {
+    id: "vino-palava",
+    src: "/portfolio/etikety/vino-palava.jpg",
+    alt: "Etiketa Pálava",
+  },
+
+  {
+    id: "textil-dany",
+    src: "/portfolio/textil/dany.jpg",
+    alt: "Textil Dany",
+  },
+  {
+    id: "textil-tricko",
+    src: "/portfolio/textil/tricko.jpg",
+    alt: "Tričko s potiskem",
+  },
+  {
+    id: "etiketa-vinko",
+    src: "/portfolio/etikety/etiketa-vino.jpg",
+    alt: "Etiketa Barič",
+  },
 ];
 
 export default function PortfolioPage() {
   return (
     <section className={styles.portfolio}>
       <div className={styles.container}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>Portfolio</h1>
-          <p className={styles.subtitle}>
-            Ukázky mé tvorby, které jsem navrhla a vytvořila pro
-            klienty i sebe
-          </p>
-        </header>
+        <h1 className={styles.title}>Portfolio</h1>
 
         <div className={styles.grid}>
           {portfolioItems.map((item) => (

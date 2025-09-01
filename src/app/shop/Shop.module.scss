@@ -1,127 +1,164 @@
 @use "../../styles/variables" as *;
+@use "../../styles/mixins" as m;
 
 .shop {
+  @include m.section();
+  flex-direction: column;
   background: $color-bg;
-  padding: 2rem 1.5rem;
+
+  background-image: url("/ui/pink_1.svg"), url("/ui/pink_2.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-size: 50%, 60%;
+  background-position: -50% 15%, 170% 5%;
 }
 
 .header {
   text-align: center;
   margin: 0 auto 2rem;
   max-width: 70rem;
-}
-.title {
-  font-size: 2rem;
-  color: $color-secondary;
-  letter-spacing: 0.04rem;
-}
-.subtitle {
-  margin-top: 0.4rem;
-  color: $color-text-light;
+  color: $color-primary;
+  margin-bottom: 8rem;
+  margin-top: 5rem;
+
+  .title {
+    font-size: 3.7rem;
+    font-weight: 300;
+  }
+  .subtitle {
+    font-family: var(--font-dancing);
+    font-size: 2rem;
+  }
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
   justify-content: center;
   margin: 1.5rem auto 2rem;
   max-width: 70rem;
 
   a {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
     display: inline-flex;
     align-items: center;
-    padding: 0.6rem 1.4rem;
-    border: 0.125rem solid $color-secondary-light;
+    padding: 0.6rem 1.7rem;
+    border: 0.125rem solid $color-green-light;
     border-radius: 2rem;
     color: $color-text;
-    background: transparent;
+    background: $color-secondary-light;
     transition: background 0.2s, color 0.2s, border 0.2s;
     &:hover {
       background: $color-secondary-light;
-      color: $color-bg;
-      border-color: $color-secondary;
+      outline: 1px solid $color-green-light;
+      outline-offset: 0.1rem;
     }
   }
 }
 
 .content {
-  display: grid;
-  grid-template-columns: 16rem 1fr;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   gap: 2rem;
-  max-width: 70rem;
-  margin: 0 auto;
-}
+  margin-top: 7rem;
 
-.sidebar {
-  border: 0.125rem solid $color-primary-light;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  background: $color-bg;
-
-  h3 {
-    font-size: 1rem;
-    color: $color-secondary;
-    margin-bottom: 0.8rem;
+  .sectionTitle {
+    position: relative;
+    background-color: $color-green-light;
+    color: white;
+    outline: 2px solid $color-green-light;
+    outline-offset: 0.2rem;
+    border-radius: 2rem;
+    left: -8rem;
+    width: 45%;
+    padding: 0.3rem 1.2rem;
+    text-align: right;
+    font-weight: 400;
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
   }
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    li {
-      margin-bottom: 0.5rem;
-    }
-    a {
-      color: $color-text-light;
-      text-decoration: none;
-      &:hover {
-        color: $color-text;
+
+  .categories {
+    display: flex;
+    align-items: start;
+    gap: 2rem;
+
+    .sidebar {
+      width: 13rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+      border-radius: 0.1rem;
+      padding: 1rem;
+
+      h3 {
+        font-size: 1rem;
+        color: $color-secondary;
+        margin-bottom: 0.3rem;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          margin-bottom: 0.4rem;
+        }
+        a {
+          color: $color-text-light;
+          text-decoration: none;
+          font-size: 0.9rem;
+          &:hover {
+            color: $color-text;
+          }
+        }
       }
     }
-  }
-}
 
-.sectionTitle {
-  font-size: 1.4rem;
-  color: $color-secondary;
-  margin-bottom: 1rem;
-}
+    .grid {
+      flex: 1;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-  gap: 1.2rem;
-}
+      .card {
+        border-radius: 0.1rem;
+        background: $color-bg;
+        padding: 0.8rem;
+        transition: transform 0.3s ease-in;
 
-.card {
-  border: 0.125rem solid $color-primary-light;
-  border-radius: 0.5rem;
-  background: $color-bg;
-  padding: 0.8rem;
+        &:hover {
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+        }
 
-  .thumb {
-    width: 100%;
-    height: 12rem;
-    object-fit: cover;
-    border-radius: 0.4rem;
-    display: block;
-    margin-bottom: 0.6rem;
-  }
-  .name {
-    font-weight: 600;
-    color: $color-text;
-  }
-  .price {
-    color: $color-text-light;
-    margin-top: 0.25rem;
-  }
-}
+        .link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+        }
 
-@media (max-width: 62rem) {
-  .content {
-    grid-template-columns: 1fr;
-  }
-  .sidebar {
-    order: 2;
+        .thumb {
+          width: 100%;
+          height: 17rem;
+          object-fit: cover;
+          border-radius: 0.1rem;
+          display: block;
+          margin-bottom: 0.6rem;
+        }
+        .name {
+          font-size: 0.9rem;
+          font-weight: 600;
+
+          color: $color-text;
+        }
+        .price {
+          color: $color-text-light;
+          margin-top: 0.25rem;
+        }
+      }
+    }
   }
 }

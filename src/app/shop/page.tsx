@@ -7,7 +7,6 @@ import {
   type Category,
 } from "@/data/categories";
 import styles from "./Shop.module.scss";
-import AddToCartButton from "@/components/AddToCartButton";
 
 export default async function ShopPage({
   searchParams,
@@ -23,12 +22,12 @@ export default async function ShopPage({
 
   return (
     <section className={styles.shop}>
-      <header className={styles.header}>
+      <div className={styles.header}>
         <h1 className={styles.title}>Vítej na mém e‑shopu</h1>
         <p className={styles.subtitle}>
           vyber si svůj originální kousek
         </p>
-      </header>
+      </div>
 
       <nav className={styles.chips} aria-label="Kategorie">
         <Link href="/shop">Vše</Link>
@@ -40,30 +39,32 @@ export default async function ShopPage({
       </nav>
 
       <div className={styles.content}>
-        <aside className={styles.sidebar}>
-          <h3>Kategorie</h3>
-          <ul>
-            {categories.map((c) => (
-              <li key={c.slug}>
-                <Link href={`/shop?category=${c.slug}`}>
-                  {c.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </aside>
+        <h2 className={styles.sectionTitle}>
+          {selected === "all" || !isCategory(selected as string)
+            ? "Všechny produkty"
+            : categoryLabel(selected as Category)}
+        </h2>
 
-        <div>
-          <h2 className={styles.sectionTitle}>
-            {selected === "all" || !isCategory(selected as string)
-              ? "Všechny produkty"
-              : categoryLabel(selected as Category)}
-          </h2>
-
+        <div className={styles.categories}>
+          <aside className={styles.sidebar}>
+            <h3>Kategorie</h3>
+            <ul>
+              {categories.map((c) => (
+                <li key={c.slug}>
+                  <Link href={`/shop?category=${c.slug}`}>
+                    {c.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
           <div className={styles.grid}>
             {list.map((p) => (
               <article key={p.slug} className={styles.card}>
-                <Link href={`/product/${p.slug}`}>
+                <Link
+                  href={`/product/${p.slug}`}
+                  className={styles.link}
+                >
                   <img
                     className={styles.thumb}
                     src={p.thumbnail}
@@ -72,7 +73,6 @@ export default async function ShopPage({
                   <div className={styles.name}>{p.name}</div>
                   <div className={styles.price}>{p.price} Kč</div>
                 </Link>
-                <AddToCartButton product={p} />
               </article>
             ))}
           </div>

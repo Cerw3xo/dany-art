@@ -13,7 +13,7 @@ type Props = {
 
 export default function AddToCartButton({
   product,
-  label = "Přidat do košíku",
+  label = "Do košíku",
   className,
 }: Props) {
   const { add } = useCart();

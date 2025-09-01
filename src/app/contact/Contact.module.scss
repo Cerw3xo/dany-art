@@ -1,130 +1,162 @@
-// src/app/contact/Contact.module.scss
 @use "../../styles/variables" as *;
+@use "../../styles/mixins" as m;
 
 .contact,
 .thankYou {
+  @include m.section();
+  position: relative;
+  min-height: calc(100vh - 7rem);
   background: $color-bg;
-  padding: 3rem 0 5rem;
-  min-height: 60vh;
+  background-image: url("/ui/sage1.svg");
+  background-repeat: no-repeat;
+  background-position: -30rem 20rem;
+  background-size: 80rem;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: -65rem;
+    top: -14rem;
+    width: 98rem;
+    height: 92rem;
+    background: url("/ui/sage1.svg") no-repeat;
+    rotate: 213deg;
+  }
+}
+
+.container {
+  z-index: 99;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  .header {
+    text-align: left;
+    margin-bottom: 3rem;
+
+    .title {
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: white;
+      background-color: $color-green-light;
+      outline: 2px solid $color-green-light;
+      outline-offset: 0.2rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      padding: 0.1rem 1.7rem;
+      border-radius: 2rem;
+    }
+
+    .subtitle {
+      color: $color-text-light;
+      max-width: 40rem;
+      margin: 0.3rem 0 0.1rem 0.3rem;
+    }
+  }
+}
+
+.form {
+  width: 100%;
+  max-width: 80rem;
+  background: transparent;
+  border-radius: 0.1rem;
+
+  .field {
+    display: flex;
+    align-items: start;
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+
+    .label {
+      min-width: 5rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: $color-primary;
+      font-size: 0.9rem;
+    }
+
+    .input,
+    .textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid $color-secondary;
+      border-radius: 0.1rem;
+      background: white;
+      color: $color-text;
+      font-family: inherit;
+      transition: border-color 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: $color-secondary-light;
+      }
+    }
+
+    .textarea {
+      resize: none;
+      min-height: 8rem;
+    }
+  }
+  .submit {
+    @include m.cta-button();
+    background-color: $color-accent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    display: block;
+    margin-left: auto;
+    transition: all 0.1s ease-in;
+
+    &:hover {
+      outline: 1px solid $color-accent;
+      outline-offset: 0.1rem;
+      border-color: $color-accent;
+    }
+
+    &:disabled {
+      background: lighten($color-primary, 15%);
+      cursor: not-allowed;
+    }
+  }
 }
 
 .thankYou {
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.container {
-  max-width: 50rem;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
+  .container {
+    font-size: 2rem;
+    color: $color-secondary;
+    margin-bottom: 0.5rem;
+    background: rgba($color-secondary-light, 0.3);
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    .message {
+      padding: 3rem 2rem;
+      position: relative;
+      text-align: center;
 
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
+      .thankYouTitle {
+        color: $color-primary;
+        background: rgba($color-primary-light, 0.3);
+      }
 
-.title,
-.thankYouTitle {
-  font-size: 2rem;
-  color: $color-secondary;
-  margin-bottom: 0.5rem;
-  background: rgba($color-secondary-light, 0.3);
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  border-radius: 2rem;
-}
+      .text {
+        color: $color-secondary;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
 
-.thankYouTitle {
-  color: $color-primary;
-  background: rgba($color-primary-light, 0.3);
-}
-
-.subtitle {
-  color: $color-text-light;
-  max-width: 40rem;
-  margin: 1rem auto 0;
-}
-
-.form {
-  background: $color-bg;
-  border-radius: 0.5rem;
-  padding: 2rem;
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
-}
-
-.field {
-  margin-bottom: 1.5rem;
-}
-
-.label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: $color-text;
-  font-size: 0.9rem;
-}
-
-.input,
-.textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 0.125rem solid $color-border;
-  border-radius: 0.25rem;
-  background: $color-bg;
-  color: $color-text;
-  font-family: inherit;
-  transition: border-color 0.2s;
-
-  &:focus {
-    outline: none;
-    border-color: $color-secondary-light;
+      .redirect {
+        color: $color-text-light;
+        font-size: 0.9rem;
+        font-style: italic;
+      }
+    }
   }
-}
-
-.textarea {
-  resize: vertical;
-  min-height: 8rem;
-}
-
-.submit {
-  background: $color-primary;
-  color: $color-bg;
-  border: none;
-  border-radius: 2rem;
-  padding: 0.75rem 2.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-  display: block;
-  margin-left: auto;
-
-  &:hover {
-    background: darken($color-primary, 5%);
-  }
-
-  &:disabled {
-    background: lighten($color-primary, 15%);
-    cursor: not-allowed;
-  }
-}
-
-.message {
-  padding: 3rem 2rem;
-  position: relative;
-  text-align: center;
-}
-
-.text {
-  color: $color-secondary;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-
-.redirect {
-  color: $color-text-light;
-  font-size: 0.9rem;
-  font-style: italic;
 }

@@ -66,12 +66,11 @@ export default function PortfolioPreview() {
           ></button>
 
           <Swiper
-            className="swiper"
             loop={true}
-            spaceBetween={16}
+            spaceBetween={24}
             slidesPerView={3}
             autoplay={{
-              delay: 4000,
+              delay: 3500,
               disableOnInteraction: false,
             }}
             navigation={{
@@ -84,7 +83,7 @@ export default function PortfolioPreview() {
             }}
           >
             {items.map((item, i) => (
-              <SwiperSlide key={i} className="swiper-slide">
+              <SwiperSlide key={i}>
                 <img src={item.src} alt={item.alt} loading="lazy" />
               </SwiperSlide>
             ))}

@@ -1,0 +1,45 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as m;
+
+.galleryWrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+
+  .thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    .arrow {
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .thumb {
+      width: 8rem;
+      height: 7rem;
+      object-fit: cover;
+      border-radius: 0.1rem;
+      opacity: 0.7;
+      cursor: pointer;
+
+      &:hover,
+      &.active {
+        opacity: 1;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+
+  .mainImg img {
+    width: 100%;
+    max-height: 40rem;
+    object-fit: contain;
+    border-radius: 0.1rem;
+    display: block;
+  }
+}

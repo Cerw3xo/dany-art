@@ -1,125 +1,155 @@
 .shop {
-  background: #f5f5f3;
-  padding: 2rem 1.5rem;
+  width: 100vw;
+  margin: 0 auto;
+  padding: 6rem 6% 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f3;
+  flex-direction: column;
+  background: #f7f4ee;
+  background-image: url("/ui/pink_1.svg"), url("/ui/pink_2.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-size: 50%, 60%;
+  background-position: -50% 15%, 170% 5%;
 }
 
 .header {
   text-align: center;
   margin: 0 auto 2rem;
   max-width: 70rem;
+  color: #955453;
+  margin-bottom: 8rem;
+  margin-top: 5rem;
 }
-
-.title {
+.header .title {
+  font-size: 3.7rem;
+  font-weight: 300;
+}
+.header .subtitle {
+  font-family: var(--font-dancing);
   font-size: 2rem;
-  color: #425958;
-  letter-spacing: 0.04rem;
-}
-
-.subtitle {
-  margin-top: 0.4rem;
-  color: #526766;
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
   justify-content: center;
   margin: 1.5rem auto 2rem;
   max-width: 70rem;
 }
 .chips a {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
-  padding: 0.6rem 1.4rem;
-  border: 0.125rem solid #d9e8dd;
+  padding: 0.6rem 1.7rem;
+  border: 0.125rem solid #9ab49e;
   border-radius: 2rem;
   color: #425958;
-  background: transparent;
+  background: #d7e5d5;
   transition: background 0.2s, color 0.2s, border 0.2s;
 }
 .chips a:hover {
-  background: #d9e8dd;
-  color: #f5f5f3;
-  border-color: #425958;
+  background: #d7e5d5;
+  outline: 1px solid #9ab49e;
+  outline-offset: 0.1rem;
 }
 
 .content {
-  display: grid;
-  grid-template-columns: 16rem 1fr;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   gap: 2rem;
-  max-width: 70rem;
-  margin: 0 auto;
+  margin-top: 7rem;
 }
-
-.sidebar {
-  border: 0.125rem solid #f5f5f3;
-  border-radius: 0.5rem;
+.content .sectionTitle {
+  position: relative;
+  background-color: #9ab49e;
+  color: white;
+  outline: 2px solid #9ab49e;
+  outline-offset: 0.2rem;
+  border-radius: 2rem;
+  left: -8rem;
+  width: 45%;
+  padding: 0.3rem 1.2rem;
+  text-align: right;
+  font-weight: 400;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+.content .categories {
+  display: flex;
+  align-items: start;
+  gap: 2rem;
+}
+.content .categories .sidebar {
+  width: 13rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+  border-radius: 0.1rem;
   padding: 1rem;
-  background: #f5f5f3;
 }
-.sidebar h3 {
+.content .categories .sidebar h3 {
   font-size: 1rem;
   color: #425958;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.3rem;
 }
-.sidebar ul {
+.content .categories .sidebar ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.sidebar ul li {
-  margin-bottom: 0.5rem;
+.content .categories .sidebar ul li {
+  margin-bottom: 0.4rem;
 }
-.sidebar ul a {
+.content .categories .sidebar ul a {
   color: #526766;
   text-decoration: none;
+  font-size: 0.9rem;
 }
-.sidebar ul a:hover {
+.content .categories .sidebar ul a:hover {
   color: #425958;
 }
-
-.sectionTitle {
-  font-size: 1.4rem;
-  color: #425958;
-  margin-bottom: 1rem;
-}
-
-.grid {
+.content .categories .grid {
+  flex: 1;
+  min-width: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.2rem;
 }
-
-.card {
-  border: 0.125rem solid #f5f5f3;
-  border-radius: 0.5rem;
-  background: #f5f5f3;
+.content .categories .grid .card {
+  border-radius: 0.1rem;
+  background: #f7f4ee;
   padding: 0.8rem;
+  transition: transform 0.3s ease-in;
 }
-.card .thumb {
+.content .categories .grid .card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+}
+.content .categories .grid .card .link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.content .categories .grid .card .thumb {
   width: 100%;
-  height: 12rem;
+  height: 17rem;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 0.4rem;
+  border-radius: 0.1rem;
   display: block;
   margin-bottom: 0.6rem;
 }
-.card .name {
+.content .categories .grid .card .name {
+  font-size: 0.9rem;
   font-weight: 600;
   color: #425958;
 }
-.card .price {
+.content .categories .grid .card .price {
   color: #526766;
   margin-top: 0.25rem;
-}
-
-@media (max-width: 62rem) {
-  .content {
-    grid-template-columns: 1fr;
-  }
-  .sidebar {
-    order: 2;
-  }
 }/*# sourceMappingURL=Shop.module.css.map */

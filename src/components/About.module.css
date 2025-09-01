@@ -1,5 +1,6 @@
 .about {
   width: 100vw;
+  margin: 0 auto;
   padding: 6rem 6% 2rem;
   display: flex;
   align-items: center;
@@ -24,7 +25,7 @@
 }
 .about .left .logo {
   width: 100%;
-  color: #a85458;
+  color: #955453;
   font-weight: 200;
   display: flex;
   justify-content: center;
@@ -75,8 +76,8 @@
   position: relative;
   left: -1rem;
   width: 145%;
-  background: #a0baa8;
-  outline: 2px solid #a0baa8;
+  background: #9ab49e;
+  outline: 2px solid #9ab49e;
   outline-offset: 0.2rem;
   color: #fff;
   padding: 0.3rem 1.2rem;
@@ -101,7 +102,7 @@
 .about .right .highlight {
   margin-top: 1rem;
   font-weight: 600;
-  color: #a85458;
+  color: #955453;
 }
 .about .right .highlight span {
   display: block;

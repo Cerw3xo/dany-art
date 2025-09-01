@@ -1,0 +1,95 @@
+.product {
+  width: 100vw;
+  margin: 0 auto;
+  padding: 6rem 6% 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f3;
+  flex-direction: column;
+}
+.product .info {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+.product .info .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.product .info .right .heading {
+  font-size: 2rem;
+  color: #955453;
+  margin-bottom: 2rem;
+}
+.product .info .right .description {
+  width: 70%;
+  color: #425958;
+  margin-bottom: 2rem;
+}
+.product .info .right .price {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.product .info .right .addToCart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding: 0.1rem 1.1rem;
+  border: 2px solid #ecbbb4;
+  border-radius: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  background-color: #f7f4ee;
+  color: #425958;
+  color: white;
+  background-color: #ecbbb4;
+  border-radius: 0.1rem;
+  border: none;
+  padding: 0.2rem 1.2rem;
+  margin-bottom: 2rem;
+}
+.product .info .right .addToCart:hover {
+  background-color: #ecbbb4;
+  color: #f7f4ee;
+  border-color: #955453;
+}
+.product .info .right .addToCart:hover {
+  outline: 1px solid #ecbbb4;
+  outline-offset: 0.1rem;
+}
+.product .info .right .back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding: 0.1rem 1.1rem;
+  border: 2px solid #ecbbb4;
+  border-radius: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  background-color: #f7f4ee;
+  color: #425958;
+}
+.product .info .right .back:hover {
+  background-color: #ecbbb4;
+  color: #f7f4ee;
+  border-color: #955453;
+}
+.product .info .gallery {
+  flex: 1;
+}
+.product .productInfo {
+  width: 80%;
+}/*# sourceMappingURL=Product.module.css.map */

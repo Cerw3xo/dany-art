@@ -1,7 +1,8 @@
 import { products } from "@/data/products";
-import Link from "next/link";
+import styles from "./Product.module.scss";
 import { formatPrice } from "@/lib/format";
 import AddToCartButton from "@/components/AddToCartButton";
+import ProductGallery from "../ProductGallery";
 
 export default async function ProductPage({
   params,
@@ -14,23 +15,35 @@ export default async function ProductPage({
   if (!product) return <section>Produkt nenalezen</section>;
 
   return (
-    <section>
-      <h1>{product.name}</h1>
-      <p>Cena: {formatPrice(product.price)}</p>
+    <section className={styles.product}>
+      <div className={styles.info}>
+        <div className={styles.right}>
+          <h1 className={styles.heading}>{product.name}</h1>
 
-      <AddToCartButton product={product} />
-      <div>
-        {product.images.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={product.name}
-            style={{ maxWidth: "320px" }}
+          <p className={styles.description}>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            At eos facilis iste perferendis et quaerat.
+          </p>
+          <p className={styles.price}>{formatPrice(product.price)}</p>
+          <AddToCartButton
+            product={product}
+            className={styles.addToCart}
           />
-        ))}
+        </div>
+
+        <div className={styles.gallery}>
+          <ProductGallery
+            images={product.images}
+            name={product.name}
+          />
+        </div>
       </div>
-      <p>
-        <Link href="/shop">← Zpět do e‑shopu</Link>
+
+      <p className={styles.productInfo}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Provident accusantium necessitatibus aperiam eligendi porro
+        facilis nobis impedit nostrum voluptate repudiandae, aliquam
+        totam vel et minus ad doloremque quasi consectetur voluptatem?
       </p>
     </section>
   );
