@@ -14,6 +14,10 @@ export default function Header() {
   const pathname = usePathname();
   const items = useCartStore((state) => state.items);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const totalCount = items.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
 
   return (
     <>
@@ -55,7 +59,7 @@ export default function Header() {
               <div>
                 <LuShoppingCart className={styles.cartIcon} />
                 {items.length > 0 && (
-                  <span className={styles.badge}>{items.length}</span>
+                  <span className={styles.badge}>{totalCount}</span>
                 )}
               </div>
             </button>

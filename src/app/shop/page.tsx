@@ -1,24 +1,31 @@
-import Link from "next/link";
-import { products, type Product } from "@/data/products";
-import {
-  categories,
-  isCategory,
-  categoryLabel,
-  type Category,
-} from "@/data/categories";
-import styles from "./Shop.module.scss";
+"use client";
 
-export default async function ShopPage({
-  searchParams,
-}: {
-  searchParams?: Promise<{ category?: string }>;
-}) {
-  const { category } = (await searchParams) ?? {};
-  const selected = category ?? "all";
-  const list: Product[] =
-    selected === "all" || !isCategory(selected as string)
-      ? products
-      : products.filter((p) => p.category === (selected as Category));
+import { products, type Product } from "@/data/products";
+import { categories } from "@/data/categories";
+import styles from "./Shop.module.scss";
+import { useState } from "react";
+import Link from "next/link";
+
+export default function ShopPage() {
+  const [selectedCategory, setSelectedCategory] = useState<
+    string | null
+  >(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<
+    string | null
+  >(null);
+
+  const filteredProducts = products.filter((p) => {
+    if (selectedCategory && selectedSubcategory) {
+      return (
+        p.category === selectedCategory &&
+        p.subcategory === selectedSubcategory
+      );
+    }
+    if (selectedCategory) {
+      return p.category === selectedCategory;
+    }
+    return true;
+  });
 
   return (
     <section className={styles.shop}>
@@ -30,46 +37,80 @@ export default async function ShopPage({
       </div>
 
       <nav className={styles.chips} aria-label="Kategorie">
-        <Link href="/shop">Vše</Link>
-        {categories.map((c) => (
-          <Link key={c.slug} href={`/shop?category=${c.slug}`}>
-            {c.label}
-          </Link>
+        <button
+          className={!selectedCategory ? styles.active : ""}
+          onClick={() => {
+            setSelectedCategory(null);
+            setSelectedSubcategory(null);
+          }}
+        >
+          Vše
+        </button>
+        {categories.map((cat) => (
+          <button
+            key={cat.slug}
+            className={
+              selectedCategory === cat.slug ? styles.active : ""
+            }
+            onClick={() => {
+              setSelectedCategory(cat.slug);
+              setSelectedSubcategory(null);
+            }}
+          >
+            {cat.label}
+          </button>
         ))}
       </nav>
 
       <div className={styles.content}>
         <h2 className={styles.sectionTitle}>
-          {selected === "all" || !isCategory(selected as string)
+          {!selectedCategory
             ? "Všechny produkty"
-            : categoryLabel(selected as Category)}
+            : categories.find((c) => c.slug === selectedCategory)
+                ?.label}
         </h2>
 
         <div className={styles.categories}>
           <aside className={styles.sidebar}>
             <h3>Kategorie</h3>
             <ul>
-              {categories.map((c) => (
-                <li key={c.slug}>
-                  <Link href={`/shop?category=${c.slug}`}>
-                    {c.label}
-                  </Link>
+              {categories.map((cat) => (
+                <li key={cat.slug}>
+                  <div
+                    className={styles.cat}
+                    onClick={() => {
+                      setSelectedCategory(cat.slug);
+                      setSelectedSubcategory(null);
+                    }}
+                  >
+                    {cat.label}
+                  </div>
+                  {cat.subcategories &&
+                    selectedCategory === cat.slug && (
+                      <ul>
+                        {cat.subcategories.map((sub) => (
+                          <li
+                            className={styles.sub}
+                            key={sub.slug}
+                            onClick={() =>
+                              setSelectedSubcategory(sub.slug)
+                            }
+                          >
+                            {sub.label}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                 </li>
               ))}
             </ul>
           </aside>
+
           <div className={styles.grid}>
-            {list.map((p) => (
+            {filteredProducts.map((p: Product) => (
               <article key={p.slug} className={styles.card}>
-                <Link
-                  href={`/product/${p.slug}`}
-                  className={styles.link}
-                >
-                  <img
-                    className={styles.thumb}
-                    src={p.thumbnail}
-                    alt={p.name}
-                  />
+                <Link href={`/product/${p.slug}`}>
+                  <img className={styles.thumb} src={p.thumbnail} />
                   <div className={styles.name}>{p.name}</div>
                   <div className={styles.price}>{p.price} Kč</div>
                 </Link>

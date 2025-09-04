@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
 import type { Product } from "@/data/products";
+import AddToCartModal from "./AddToCartModal";
+import styles from "./AddToCartModal.module.scss";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {
   product: Product;
@@ -18,16 +21,23 @@ export default function AddToCartButton({
 }: Props) {
   const { add } = useCart();
   const [isAdding, setIsAdding] = useState(false);
-  const [showToast, setShowToast] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const router = useRouter();
 
   const handleClick = () => {
     setIsAdding(true);
     add(product, 1);
-
-    setShowToast(true), setTimeout(() => setShowToast(false), 3000);
+    setModalOpen(true);
 
     setTimeout(() => setIsAdding(false), 500);
   };
+
+  const handleGoToCart = () => {
+    router.push("/checkout");
+    setModalOpen(false);
+  };
+
+  const handleClose = () => setModalOpen(false);
 
   return (
     <>
@@ -39,25 +49,15 @@ export default function AddToCartButton({
         {isAdding ? "Přidávám.." : label}
       </button>
 
-      <AnimatePresence>
-        {showToast && (
-          <motion.div
-            style={{
-              bottom: "10%",
-              left: "50%",
-              color: "red",
-              fontSize: "1rem",
-              zIndex: 10,
-            }}
-            initial={{ opacity: 0, y: 20, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.8 }}
-            transition={{ duration: 3 }}
-          >
-            Přidán do košíku
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {modalOpen && (
+        <AddToCartModal
+          onClose={handleClose}
+          onGoToCart={handleGoToCart}
+          quantity={1}
+          product={product}
+          aria-model={true}
+        />
+      )}
     </>
   );
 }

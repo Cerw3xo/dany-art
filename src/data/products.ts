@@ -1,5 +1,4 @@
-// src/data/products.ts
-import type { Category } from "./categories";
+
 
 export type Product = {
     id: string;
@@ -7,13 +6,13 @@ export type Product = {
     name: string;
     price: number;
     currency: "CZK";
-    category: Category;
+    category: string;
     images: string[];
     thumbnail: string;
     summary?: string;
     available: boolean;
     featured?: boolean;
-    subCategory?: string;
+    subcategory?: string;
 };
 
 export const products: Product[] = [
@@ -25,10 +24,12 @@ export const products: Product[] = [
         price: 400,
         currency: "CZK",
         category: "grafika",
+        subcategory: "printy",
         images: ["/portfolio/etikety/vino.jpg"],
         thumbnail: "/portfolio/etikety/vino.jpg",
         available: true,
         summary: "Originální etiketa na víno.",
+
     },
     {
         id: "vino-palava",
@@ -37,6 +38,7 @@ export const products: Product[] = [
         price: 400,
         currency: "CZK",
         category: "grafika",
+        subcategory: "printy",
         images: ["/portfolio/etikety/vino-palava.jpg"],
         thumbnail: "/portfolio/etikety/vino-palava.jpg",
         available: true,
@@ -49,6 +51,7 @@ export const products: Product[] = [
         price: 400,
         currency: "CZK",
         category: "grafika",
+        subcategory: "printy",
         images: ["/portfolio/etikety/vino-lipa.jpg"],
         thumbnail: "/portfolio/etikety/vino-lipa.jpg",
         available: true,
@@ -61,6 +64,7 @@ export const products: Product[] = [
         price: 400,
         currency: "CZK",
         category: "grafika",
+        subcategory: "printy",
         images: ["/portfolio/etikety/vino-suchyna.jpg"],
         thumbnail: "/portfolio/etikety/vino-suchyna.jpg",
         available: true,
@@ -73,6 +77,7 @@ export const products: Product[] = [
         price: 400,
         currency: "CZK",
         category: "grafika",
+        subcategory: "printy",
         images: ["/portfolio/etikety/vino-svatebni.jpg"],
         thumbnail: "/portfolio/etikety/vino-svatebni.jpg",
         available: true,
@@ -85,6 +90,7 @@ export const products: Product[] = [
         price: 400,
         currency: "CZK",
         category: "grafika",
+        subcategory: "printy",
         images: ["/portfolio/etikety/etiketa-vino.jpg"],
         thumbnail: "/portfolio/etikety/etiketa-vino.jpg",
         available: true,
@@ -99,6 +105,7 @@ export const products: Product[] = [
         price: 500,
         currency: "CZK",
         category: "grafika",
+        subcategory: "tradicni-grafika",
         images: ["/portfolio/grafika/grafika-folklor.jpg"],
         thumbnail: "/portfolio/grafika/grafika-folklor.jpg",
         available: true,
@@ -111,6 +118,7 @@ export const products: Product[] = [
         price: 500,
         currency: "CZK",
         category: "grafika",
+        subcategory: "tradicni-grafika",
         images: ["/portfolio/grafika/grafika-makky.jpg"],
         thumbnail: "/portfolio/grafika/grafika-makky.jpg",
         available: true,
@@ -123,6 +131,7 @@ export const products: Product[] = [
         price: 500,
         currency: "CZK",
         category: "grafika",
+        subcategory: "tradicni-grafika",
         images: ["/portfolio/grafika/grafika-rozmarin.jpg"],
         thumbnail: "/portfolio/grafika/grafika-rozmarin.jpg",
         available: true,
@@ -137,6 +146,7 @@ export const products: Product[] = [
         price: 600,
         currency: "CZK",
         category: "rucni-tvorba",
+        subcategory: "knihy",
         images: ["/portfolio/knihy/svadlencin-pomocnik.jpg"],
         thumbnail: "/portfolio/knihy/svadlencin-pomocnik.jpg",
         available: true,
@@ -149,6 +159,7 @@ export const products: Product[] = [
         price: 600,
         currency: "CZK",
         category: "rucni-tvorba",
+        subcategory: "knihy",
         images: ["/portfolio/knihy/nalezenecek4.jpg"],
         thumbnail: "/portfolio/knihy/nalezenecek4.jpg",
         available: true,
@@ -189,6 +200,7 @@ export const products: Product[] = [
         price: 350,
         currency: "CZK",
         category: "obleceni-a-doplnky",
+        subcategory: "platene-tasky",
         images: ["/portfolio/textil/taska-dame-kafe.jpg"],
         thumbnail: "/portfolio/textil/taska-dame-kafe.jpg",
         available: true,
@@ -201,6 +213,7 @@ export const products: Product[] = [
         price: 350,
         currency: "CZK",
         category: "obleceni-a-doplnky",
+        subcategory: "platene-tasky",
         images: ["/portfolio/textil/taska-slnecnice.jpg"],
         thumbnail: "/portfolio/textil/taska-slnecnice.jpg",
         available: true,
@@ -213,6 +226,7 @@ export const products: Product[] = [
         price: 490,
         currency: "CZK",
         category: "obleceni-a-doplnky",
+        subcategory: "tricka",
         images: ["/portfolio/textil/tricko-dame-kafe.JPG"],
         thumbnail: "/portfolio/textil/tricko-dame-kafe.JPG",
         available: true,

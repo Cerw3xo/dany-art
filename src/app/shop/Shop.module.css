@@ -1,7 +1,7 @@
 .shop {
   width: 100vw;
   margin: 0 auto;
-  padding: 6rem 6% 2rem;
+  padding: 8rem 6% 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,7 +39,8 @@
   margin: 1.5rem auto 2rem;
   max-width: 70rem;
 }
-.chips a {
+.chips button {
+  cursor: pointer;
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -52,7 +53,7 @@
   background: #d7e5d5;
   transition: background 0.2s, color 0.2s, border 0.2s;
 }
-.chips a:hover {
+.chips button:hover {
   background: #d7e5d5;
   outline: 1px solid #9ab49e;
   outline-offset: 0.1rem;
@@ -95,22 +96,29 @@
 .content .categories .sidebar h3 {
   font-size: 1rem;
   color: #425958;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.6rem;
 }
 .content .categories .sidebar ul {
   list-style: none;
+  cursor: pointer;
   margin: 0;
   padding: 0;
 }
-.content .categories .sidebar ul li {
-  margin-bottom: 0.4rem;
+.content .categories .sidebar ul .cat {
+  margin-bottom: 0.5rem;
+  color: #425958;
+  font-weight: 600;
 }
-.content .categories .sidebar ul a {
+.content .categories .sidebar ul .sub {
+  color: #526766;
+  margin-left: 0.2rem;
+}
+.content .categories .sidebar ul li {
   color: #526766;
   text-decoration: none;
   font-size: 0.9rem;
 }
-.content .categories .sidebar ul a:hover {
+.content .categories .sidebar ul li:hover {
   color: #425958;
 }
 .content .categories .grid {

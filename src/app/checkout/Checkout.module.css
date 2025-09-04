@@ -1,0 +1,9 @@
+.checkout {
+  width: 100vw;
+  margin: 0 auto;
+  padding: 8rem 6% 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f3;
+}/*# sourceMappingURL=Checkout.module.css.map */

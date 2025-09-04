@@ -4,6 +4,7 @@ import { useCartStore } from "@/store/cart";
 import styles from "./CartDrawer.module.scss";
 import { formatPrice } from "@/lib/format";
 import { useRouter } from "next/navigation";
+import { image } from "framer-motion/client";
 
 export default function CartDrawer({
   isOpen,
@@ -41,45 +42,49 @@ export default function CartDrawer({
             <p>Košík je prázdny</p>
           ) : (
             <>
-              {items.map((item) => (
-                <div key={item.id} className={styles.cartItem}>
-                  <img
-                    src={item.image || "/placeholder.jpg"}
-                    alt={item.name}
-                  />
-                  <div className={styles.itemInfo}>
-                    <h4>{item.name}</h4>
-                    <p>{formatPrice(item.price)} </p>
-                    <div className={styles.quantity}>
-                      <button
-                        onClick={() =>
-                          changeQuantity(
-                            item.id,
-                            Math.max(0, item.quantity - 1)
-                          )
-                        }
-                        disabled={item.quantity <= 1}
-                      >
-                        -
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button
-                        onClick={() =>
-                          changeQuantity(item.id, item.quantity + 1)
-                        }
-                      >
-                        +
-                      </button>
+              {items.map((item) => {
+                const imgSrc =
+                  item.thumbnail ||
+                  (item.images && item.images[0]) ||
+                  "paceholder.png";
+
+                return (
+                  <div key={item.id} className={styles.cartItem}>
+                    <img src={imgSrc} alt={item.name} />
+                    <div className={styles.itemInfo}>
+                      <h4>{item.name}</h4>
+                      <p>{formatPrice(item.price)} </p>
+                      <div className={styles.quantity}>
+                        <button
+                          onClick={() =>
+                            changeQuantity(
+                              item.id,
+                              Math.max(0, item.quantity - 1)
+                            )
+                          }
+                          disabled={item.quantity <= 1}
+                        >
+                          -
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button
+                          onClick={() =>
+                            changeQuantity(item.id, item.quantity + 1)
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
+                    <button
+                      onClick={() => removeItem(item.id)}
+                      className={styles.removeBtn}
+                    >
+                      ✕
+                    </button>
                   </div>
-                  <button
-                    onClick={() => removeItem(item.id)}
-                    className={styles.removeBtn}
-                  >
-                    ✕
-                  </button>
-                </div>
-              ))}
+                );
+              })}
 
               <div className={styles.total}>
                 <strong>
