@@ -1,0 +1,76 @@
+.stepper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5rem;
+}
+.stepper .lineBase,
+.stepper .lineProgress {
+  position: absolute;
+  top: 1.25rem;
+  left: calc(50% - 50vw);
+  height: 4px;
+  pointer-events: none;
+}
+.stepper .lineBase {
+  width: 100vw;
+  background: #526766;
+  z-index: 1;
+}
+.stepper .lineProgress {
+  width: 0;
+  background: #d66666;
+  z-index: 2;
+  transition: width 0.3s ease;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  flex: 1;
+}
+.step .circle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid #d66666;
+  background: #526766;
+  color: #d66666;
+  font-weight: bold;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  outline: 1px solid #526766;
+  outline-offset: 0.1rem;
+}
+.step .label {
+  margin-top: 0.2rem;
+  font-weight: bold;
+  color: #d66666;
+}
+.step.completed .circle {
+  background: #d66666;
+  color: white;
+  outline-color: #d66666;
+}
+.step.active .circle {
+  background: #d66666;
+  color: white;
+  outline-color: #d66666;
+}
+.step.future .circle {
+  border-color: #526766;
+  color: white;
+  background: #526766;
+}
+.step.future .label {
+  color: #526766;
+  font-weight: normal;
+}/*# sourceMappingURL=Stepper.module.css.map */

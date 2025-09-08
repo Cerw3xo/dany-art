@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f3;
+  background-color: #f7f4ee;
   position: relative;
   min-height: calc(100vh - 7rem);
   background: #f7f4ee;
@@ -75,7 +75,7 @@
   min-width: 5rem;
   display: block;
   margin-bottom: 0.5rem;
-  color: #955453;
+  color: #d66666;
   font-size: 0.9rem;
 }
 .form .field .input,
@@ -104,7 +104,7 @@
   justify-content: center;
   font-size: 1.1rem;
   padding: 0.1rem 1.1rem;
-  border: 2px solid #ecbbb4;
+  border: 2px solid #ffd7d7;
   border-radius: 2rem;
   font-weight: 500;
   text-decoration: none;
@@ -112,25 +112,26 @@
   transition: background 0.2s;
   background-color: #f7f4ee;
   color: #425958;
-  background-color: #ecbbb4;
-  color: #955453;
-  border: 1px solid #955453;
+  background-color: #ffd7d7;
+  color: #d66666;
+  border: 1px solid #d66666;
   display: block;
   margin-left: auto;
   transition: all 0.1s ease-in;
 }
 .form .submit:hover {
-  background-color: #ecbbb4;
+  background-color: #ffd7d7;
   color: #f7f4ee;
-  border-color: #955453;
+  border-color: #d66666;
 }
 .form .submit:hover {
-  outline: 1px solid #ecbbb4;
+  outline: 1px solid #d66666;
   outline-offset: 0.1rem;
-  border-color: #ecbbb4;
+  border-color: #ffd7d7;
+  color: white;
 }
 .form .submit:disabled {
-  background: #b77e7e;
+  background: #e6a2a2;
   cursor: not-allowed;
 }
 
@@ -154,8 +155,8 @@
   text-align: center;
 }
 .thankYou .container .message .thankYouTitle {
-  color: #955453;
-  background: rgba(245, 245, 243, 0.3);
+  color: #d66666;
+  background: rgba(255, 142, 146, 0.3);
 }
 .thankYou .container .message .text {
   color: #425958;

@@ -1,0 +1,93 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as *;
+
+.stepper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5rem;
+
+  .lineBase,
+  .lineProgress {
+    position: absolute;
+    top: 1.25rem;
+    left: calc(50% - 50vw);
+    height: 4px;
+    pointer-events: none;
+  }
+
+  .lineBase {
+    width: 100vw;
+    background: $color-text-light;
+    z-index: 1;
+  }
+
+  .lineProgress {
+    width: 0;
+    background: $color-primary;
+    z-index: 2;
+    transition: width 0.3s ease;
+  }
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  flex: 1;
+
+  .circle {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 2px solid $color-primary;
+    background: $color-text-light;
+    color: $color-primary;
+    font-weight: bold;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    outline: 1px solid $color-text-light;
+    outline-offset: 0.1rem;
+  }
+
+  .label {
+    margin-top: 0.2rem;
+    font-weight: bold;
+    color: $color-primary;
+  }
+
+  &.completed {
+    .circle {
+      background: $color-primary;
+      color: white;
+      outline-color: $color-primary;
+    }
+  }
+
+  &.active {
+    .circle {
+      background: $color-primary;
+      color: white;
+      outline-color: $color-primary;
+    }
+  }
+
+  &.future {
+    .circle {
+      border-color: $color-text-light;
+      color: white;
+      background: $color-text-light;
+    }
+    .label {
+      color: $color-text-light;
+      font-weight: normal;
+    }
+  }
+}

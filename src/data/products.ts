@@ -11,6 +11,7 @@ export type Product = {
     thumbnail: string;
     summary?: string;
     available: boolean;
+    variants?: [];
     featured?: boolean;
     subcategory?: string;
 };
@@ -67,7 +68,7 @@ export const products: Product[] = [
         subcategory: "printy",
         images: ["/portfolio/etikety/vino-suchyna.jpg"],
         thumbnail: "/portfolio/etikety/vino-suchyna.jpg",
-        available: true,
+        available: false,
         summary: "Etiketa na víno Suchyňa.",
     },
     {

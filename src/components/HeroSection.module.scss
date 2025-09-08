@@ -38,13 +38,11 @@
       flex-direction: column;
       align-items: start;
       justify-content: start;
-
-      color: $color-text;
       min-width: 350px;
+      color: white;
 
       .logo {
         font-size: 7rem;
-        color: $color-bg;
         .logoMain {
           font-weight: 200;
         }
@@ -54,7 +52,6 @@
           font-family: inherit;
           font-weight: 400;
           font-size: 9rem;
-          color: $color-bg;
           margin-left: 0.3rem;
           font-family: var(--font-dancing);
         }
@@ -72,13 +69,12 @@
       .headline {
         font-size: 2.1rem;
         font-weight: bold;
-        color: $color-bg;
+        color: white;
         margin-bottom: 1rem;
       }
 
       .description {
         font-size: 1.7rem;
-        color: $color-bg;
         margin-bottom: 3rem;
         p {
           margin: 0;
@@ -95,11 +91,13 @@
         border-color: $color-secondary;
         font-size: 1.3rem;
         font-weight: 700;
+        transition: all 0.2s ease;
 
         &:hover {
-          color: $color-green-light;
-          border: 2px solid $color-green-light;
-          background-color: $color-secondary;
+          background-color: $color-green-light;
+          border-color: $color-green-light;
+          outline: 2px solid $color-secondary;
+          outline-offset: 2px;
         }
       }
     }

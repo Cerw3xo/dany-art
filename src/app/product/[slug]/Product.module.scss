@@ -36,23 +36,33 @@
         margin-bottom: 1rem;
       }
 
-      .addToCart {
-        @include m.cta-button();
-        color: white;
-        background-color: $color-accent;
-        border-radius: 0.1rem;
-        border: none;
-        padding: 0.2rem 1.2rem;
-        margin-bottom: 2rem;
-
-        &:hover {
-          outline: 1px solid $color-accent;
-          outline-offset: 0.1rem;
+      > span {
+        font-size: 0.9rem;
+        margin-bottom: 0.9rem;
+        font-weight: 500;
+        &.inStock {
+          color: green;
+        }
+        &.outOfStock {
+          color: #ffb366;
         }
       }
 
-      .back {
+      .addToCart {
         @include m.cta-button();
+        background-color: $color-primary-light;
+        border-radius: 2rem;
+        color: white;
+        border: none;
+        padding: 0.3rem 1.7rem;
+        margin-bottom: 2rem;
+        transition: 0.3s ease;
+
+        &:hover {
+          outline: 1px solid $color-primary-light;
+          background-color: $color-primary-light;
+          outline-offset: 0.1rem;
+        }
       }
     }
 

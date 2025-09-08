@@ -1,7 +1,7 @@
 .hero {
   width: 100vw;
   margin: 0 auto;
-  padding: 6rem 6% 2rem;
+  padding: 8rem 6% 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,7 +9,7 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background: #ecbbb4;
+  background: #ffd7d7;
 }
 .hero .contentWrapper {
   display: flex;
@@ -40,12 +40,11 @@
   flex-direction: column;
   align-items: start;
   justify-content: start;
-  color: #425958;
   min-width: 350px;
+  color: white;
 }
 .hero .contentWrapper .textWrapper .logo {
   font-size: 7rem;
-  color: #f7f4ee;
 }
 .hero .contentWrapper .textWrapper .logo .logoMain {
   font-weight: 200;
@@ -56,7 +55,6 @@
   font-family: inherit;
   font-weight: 400;
   font-size: 9rem;
-  color: #f7f4ee;
   margin-left: 0.3rem;
   font-family: var(--font-dancing);
 }
@@ -71,12 +69,11 @@
 .hero .contentWrapper .textWrapper .headline {
   font-size: 2.1rem;
   font-weight: bold;
-  color: #f7f4ee;
+  color: white;
   margin-bottom: 1rem;
 }
 .hero .contentWrapper .textWrapper .description {
   font-size: 1.7rem;
-  color: #f7f4ee;
   margin-bottom: 3rem;
 }
 .hero .contentWrapper .textWrapper .description p {
@@ -92,7 +89,7 @@
   justify-content: center;
   font-size: 1.1rem;
   padding: 0.1rem 1.1rem;
-  border: 2px solid #ecbbb4;
+  border: 2px solid #ffd7d7;
   border-radius: 2rem;
   font-weight: 500;
   text-decoration: none;
@@ -104,14 +101,16 @@
   border-color: #425958;
   font-size: 1.3rem;
   font-weight: 700;
+  transition: all 0.2s ease;
 }
 .hero .contentWrapper .textWrapper .cta:hover {
-  background-color: #ecbbb4;
+  background-color: #ffd7d7;
   color: #f7f4ee;
   border-color: #955453;
 }
 .hero .contentWrapper .textWrapper .cta:hover {
-  color: #9ab49e;
-  border: 2px solid #9ab49e;
-  background-color: #425958;
+  background-color: #9ab49e;
+  border-color: #9ab49e;
+  outline: 2px solid #425958;
+  outline-offset: 2px;
 }/*# sourceMappingURL=HeroSection.module.css.map */

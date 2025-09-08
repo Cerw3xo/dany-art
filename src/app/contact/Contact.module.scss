@@ -110,9 +110,10 @@
     transition: all 0.1s ease-in;
 
     &:hover {
-      outline: 1px solid $color-accent;
+      outline: 1px solid $color-primary;
       outline-offset: 0.1rem;
       border-color: $color-accent;
+      color: white;
     }
 
     &:disabled {

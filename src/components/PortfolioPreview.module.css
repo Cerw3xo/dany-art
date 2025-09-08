@@ -1,11 +1,11 @@
 .section {
   width: 100vw;
   margin: 0 auto;
-  padding: 6rem 6% 2rem;
+  padding: 8rem 6% 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f3;
+  background-color: #f7f4ee;
   flex-direction: column;
   min-height: 60vh;
   background: #f7f4ee;
@@ -23,7 +23,7 @@
 }
 .section .heading > h3 {
   font-size: 3rem;
-  color: #955453;
+  color: #d66666;
   margin-bottom: 1rem;
 }
 .section .heading > button {
@@ -33,7 +33,7 @@
   justify-content: center;
   font-size: 1.1rem;
   padding: 0.1rem 1.1rem;
-  border: 2px solid #ecbbb4;
+  border: 2px solid #ffd7d7;
   border-radius: 2rem;
   font-weight: 500;
   text-decoration: none;
@@ -42,27 +42,28 @@
   background-color: #f7f4ee;
   color: #425958;
   font-size: 1.9rem;
-  color: #955453;
-  background-color: #ecbbb4;
+  color: #d66666;
+  background-color: #ffd7d7;
   padding: 0.7rem 1.7rem;
-  outline: 2px solid #ecbbb4;
+  outline: 2px solid #ffd7d7;
   outline-offset: 0.3rem;
   transition: all 0.3s ease;
 }
 .section .heading > button:hover {
-  background-color: #ecbbb4;
+  background-color: #ffd7d7;
   color: #f7f4ee;
-  border-color: #955453;
+  border-color: #d66666;
 }
 .section .heading > button:hover {
   outline: none;
+  color: white;
 }
 .section .inner {
   max-width: 75vw;
   margin: 0 auto;
 }
 .section .inner .title {
-  color: #955453;
+  color: #d66666;
   font-size: 2.5rem;
   font-weight: 400;
   letter-spacing: 0.06rem;
@@ -79,13 +80,13 @@
   height: 35rem;
 }
 .section .inner .wrapper :global(.swiper) :global(.swiper-slide) img {
-  border: 5px solid #ecbbb4;
+  border: 5px solid #ffd7d7;
   height: 30rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
 .section .inner .wrapper :global(.swiper) :global(.swiper-slide-next) img {
-  border: 7px solid #955453;
+  border: 7px solid #d66666;
   transform: scale(1.1);
 }
 .section .inner .wrapper .prev {
@@ -106,7 +107,7 @@
   height: 0;
   border-top: 1rem solid transparent;
   border-bottom: 1rem solid transparent;
-  border-right: 1.5rem solid #955453;
+  border-right: 1.5rem solid #d66666;
 }
 .section .inner .wrapper .next {
   right: -2rem;
@@ -126,7 +127,7 @@
   height: 0;
   border-top: 1rem solid transparent;
   border-bottom: 1rem solid transparent;
-  border-left: 1.5rem solid #955453;
+  border-left: 1.5rem solid #d66666;
 }
 
 .nav {

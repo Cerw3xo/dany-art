@@ -1,0 +1,166 @@
+.cartSummary {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.cartSummary .heading {
+  background-color: #9ab49e;
+  color: white;
+  width: 30%;
+  padding: 0.1rem 1.2rem;
+  margin-bottom: 2rem;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 400;
+  outline: 1px solid #9ab49e;
+  outline-offset: 0.2rem;
+}
+.cartSummary > table {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.cartSummary > table thead tr {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 0.5fr;
+  padding-right: 1rem;
+}
+.cartSummary > table thead tr th {
+  text-align: left;
+  padding-bottom: 0.7rem;
+  padding-left: 1rem;
+  color: #425958;
+  font-weight: 500;
+}
+.cartSummary > table thead tr th:first-child {
+  padding-left: 2rem;
+}
+.cartSummary > table thead tr th:nth-child(2), .cartSummary > table thead tr th:nth-child(3), .cartSummary > table thead tr th:nth-child(4) {
+  text-align: center;
+}
+.cartSummary > table tbody {
+  background-color: white;
+  border-radius: 0.1rem;
+  overflow: hidden;
+  box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.05);
+}
+.cartSummary > table tbody tr {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 0.5fr;
+}
+.cartSummary > table tbody tr:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #9ab49e;
+  width: 98%;
+  left: 50%;
+  transform: translate(-50%);
+}
+.cartSummary > table tbody tr td {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 2rem;
+}
+.cartSummary > table tbody tr td:first-child {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.cartSummary > table tbody tr td:first-child .productImg {
+  width: 3.5rem;
+  height: 3.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.cartSummary > table tbody tr td:nth-child(2), .cartSummary > table tbody tr td:nth-child(3), .cartSummary > table tbody tr td:nth-child(4) {
+  justify-content: center;
+  font-weight: 500;
+}
+.cartSummary > table tbody tr td:last-child {
+  justify-content: center;
+}
+.cartSummary > table tbody tr td:last-child .removeBtn {
+  all: unset;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.cartSummary .totalPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0.1rem;
+  background-color: #d7e5d5;
+  width: 30%;
+  margin: 0 0 0 auto;
+  padding: 2rem 2rem;
+  margin-bottom: 1rem;
+}
+.cartSummary .info {
+  font-size: 0.9rem;
+  margin-bottom: 3rem;
+}
+.cartSummary .info > h3 {
+  color: #d66666;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.cartSummary .info > ol {
+  list-style: decimal;
+  padding-left: 1rem;
+}
+.cartSummary .info > ol .importantItem {
+  color: #d66666;
+  font-weight: bold;
+}
+.cartSummary .info > ol .highlighted {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.cartSummary .info > ol ul {
+  margin-left: 1rem;
+}
+.cartSummary .info > ol ul .highlighted {
+  font-weight: 700;
+}
+.cartSummary .onNext {
+  margin-left: auto;
+  margin-right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding: 0.1rem 1.1rem;
+  border: 2px solid #ffd7d7;
+  border-radius: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  background-color: #f7f4ee;
+  color: #425958;
+  color: white;
+  border: none;
+  font-weight: 700;
+  padding: 0.4rem 1.3rem;
+  transition: outline-color 0.3s ease, outline-offset 0.3s ease, outline-width 0.3s ease;
+  background-color: #d66666;
+}
+.cartSummary .onNext:hover {
+  background-color: #ffd7d7;
+  color: #f7f4ee;
+  border-color: #d66666;
+}
+.cartSummary .onNext:hover {
+  outline: none;
+  background-color: #d66666;
+  outline: 2px solid #d66666;
+  outline-offset: 0.1rem;
+}/*# sourceMappingURL=CartSummary.module.css.map */

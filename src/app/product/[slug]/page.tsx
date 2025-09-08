@@ -3,6 +3,7 @@ import styles from "./Product.module.scss";
 import { formatPrice } from "@/lib/format";
 import AddToCartButton from "@/components/AddToCartButton";
 import ProductGallery from "../ProductGallery";
+import { P } from "node_modules/framer-motion/dist/types.d-Cjd591yU";
 
 export default async function ProductPage({
   params,
@@ -25,6 +26,14 @@ export default async function ProductPage({
             At eos facilis iste perferendis et quaerat.
           </p>
           <p className={styles.price}>{formatPrice(product.price)}</p>
+
+          {product.available ? (
+            <span className={styles.inStock}>Skladem</span>
+          ) : (
+            <span className={styles.outOfStock}>
+              Dostupné do měsíce
+            </span>
+          )}
           <AddToCartButton
             product={product}
             className={styles.addToCart}

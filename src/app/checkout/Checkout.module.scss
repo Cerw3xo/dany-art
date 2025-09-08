@@ -3,4 +3,6 @@
 
 .checkout {
   @include m.section();
+  flex-direction: column;
+  overflow: hidden;
 }

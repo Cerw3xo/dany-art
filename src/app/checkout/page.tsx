@@ -1,9 +1,6 @@
 "use client";
 
-import { useCart } from "@/hooks/useCart";
 import { useState } from "react";
-import { useRouter } from "next/router";
-import { formatPrice } from "@/lib/format";
 import Stepper from "@/components/checkout/Stepper";
 import CartSummary from "../../components/checkout/CartSummary";
 import CheckoutForm from "@/components/checkout/CheckoutForm";

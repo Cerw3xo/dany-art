@@ -109,7 +109,10 @@ export default function ShopPage() {
           <div className={styles.grid}>
             {filteredProducts.map((p: Product) => (
               <article key={p.slug} className={styles.card}>
-                <Link href={`/product/${p.slug}`}>
+                <Link
+                  className={styles.link}
+                  href={`/product/${p.slug}`}
+                >
                   <img className={styles.thumb} src={p.thumbnail} />
                   <div className={styles.name}>{p.name}</div>
                   <div className={styles.price}>{p.price} Kč</div>

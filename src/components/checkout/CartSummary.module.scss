@@ -1,0 +1,178 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as *;
+
+.cartSummary {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .heading {
+    background-color: $color-green-light;
+    color: white;
+    width: 30%;
+    padding: 0.1rem 1.2rem;
+    margin-bottom: 2rem;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 400;
+    outline: 1px solid $color-green-light;
+    outline-offset: 0.2rem;
+  }
+
+  > table {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    thead {
+      tr {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr 0.5fr;
+        padding-right: 1rem;
+
+        th {
+          text-align: left;
+          padding-bottom: 0.7rem;
+          padding-left: 1rem;
+          color: $color-text;
+          font-weight: 500;
+
+          &:first-child {
+            padding-left: 2rem;
+          }
+
+          &:nth-child(2),
+          &:nth-child(3),
+          &:nth-child(4) {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    tbody {
+      background-color: white;
+      border-radius: 0.1rem;
+      overflow: hidden;
+      box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.05);
+
+      tr {
+        position: relative;
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr 0.5fr;
+
+        &:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 1px;
+          background-color: $color-green-light;
+          width: 98%;
+          left: 50%;
+          transform: translate(-50%);
+        }
+        td {
+          position: relative;
+          display: flex;
+          align-items: center;
+          padding: 1.5rem 2rem;
+
+          &:first-child {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .productImg {
+              width: 3.5rem;
+              height: 3.5rem;
+              object-fit: cover;
+            }
+          }
+
+          &:nth-child(2),
+          &:nth-child(3),
+          &:nth-child(4) {
+            justify-content: center;
+            font-weight: 500;
+          }
+
+          &:last-child {
+            justify-content: center;
+
+            .removeBtn {
+              all: unset;
+              font-size: 1rem;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .totalPrice {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0.1rem;
+    background-color: $color-secondary-light;
+    width: 30%;
+    margin: 0 0 0 auto;
+    padding: 2rem 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .info {
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+    > h3 {
+      color: $color-primary;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    > ol {
+      list-style: decimal;
+      padding-left: 1rem;
+
+      .importantItem {
+        color: $color-primary;
+        font-weight: bold;
+      }
+      .highlighted {
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      ul {
+        margin-left: 1rem;
+
+        .highlighted {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  .onNext {
+    margin-left: auto;
+    margin-right: 0;
+    @include m.cta-button();
+    color: white;
+    border: none;
+    font-weight: 700;
+    padding: 0.4rem 1.3rem;
+    transition: outline-color 0.3s ease, outline-offset 0.3s ease,
+      outline-width 0.3s ease;
+    background-color: $color-primary;
+
+    &:hover {
+      outline: none;
+      background-color: $color-primary;
+      outline: 2px solid $color-primary;
+      outline-offset: 0.1rem;
+    }
+  }
+}

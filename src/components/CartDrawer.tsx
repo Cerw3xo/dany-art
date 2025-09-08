@@ -4,7 +4,6 @@ import { useCartStore } from "@/store/cart";
 import styles from "./CartDrawer.module.scss";
 import { formatPrice } from "@/lib/format";
 import { useRouter } from "next/navigation";
-import { image } from "framer-motion/client";
 
 export default function CartDrawer({
   isOpen,
@@ -13,8 +12,7 @@ export default function CartDrawer({
   isOpen: boolean;
   onClose: () => void;
 }) {
-  const { items, removeItem, changeQuantity, clearCart } =
-    useCartStore();
+  const { items, removeItem, changeQuantity } = useCartStore();
 
   const router = useRouter();
   const totalPrice = items.reduce(
@@ -31,7 +29,6 @@ export default function CartDrawer({
       >
         <div className={styles.header}>
           <h3>Košík</h3>
-          <button onClick={() => clearCart()}>Vyprázdniť</button>
           <button onClick={onClose} className={styles.closeBtn}>
             ✕
           </button>

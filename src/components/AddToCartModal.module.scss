@@ -1,2 +1,100 @@
 @use "../styles/variables" as *;
 @use "../styles/mixins" as m;
+
+.layout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+.modal {
+  position: fixed;
+  width: 100%;
+  max-width: 40rem;
+  min-width: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $color-bg;
+  padding: 1.3rem 1rem;
+  border-radius: 0.1rem;
+  z-index: 9999;
+  min-width: 20rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18),
+    0 1.5px 6px rgba(0, 0, 0, 0.1);
+
+  .closeX {
+    position: absolute;
+    cursor: pointer;
+    right: 0.4rem;
+    top: -0.2rem;
+    color: $color-green-light;
+    font-size: 1.5rem;
+  }
+
+  > h2 {
+    color: $color-primary;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    padding: 0.3rem;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid $color-green-light;
+
+    .productName {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    .productImg {
+      width: 4rem;
+      height: 4rem;
+      object-fit: cover;
+    }
+  }
+
+  .btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .onClose {
+      all: unset;
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+
+      .toBack {
+        font-size: 0.5rem;
+      }
+    }
+
+    .goToCart {
+      @include m.cta-button();
+      color: white;
+      background-color: $color-primary;
+      border: none;
+      padding: 0.3rem 1.1rem;
+
+      &:hover {
+        outline: 2px solid $color-primary;
+        background-color: $color-primary;
+        outline-offset: 0.1rem;
+        border: none;
+      }
+    }
+  }
+}

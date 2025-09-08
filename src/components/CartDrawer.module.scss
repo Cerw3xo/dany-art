@@ -7,142 +7,138 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 998;
+  z-index: 9998;
 }
 
 .drawer {
   position: fixed;
   top: 0;
-  right: -400px; // Začne mimo obrazovky
+  right: -400px;
   width: 400px;
   height: 100vh;
   background: $color-bg;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 999;
+  z-index: 9999;
   transition: right 0.3s ease;
   overflow-y: auto;
 
   &.open {
-    right: 0; // Posunie sa do viewportu
-  }
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.73rem;
-  border-bottom: 3px solid $color-accent;
-
-  h3 {
-    margin: 0;
-    color: $color-primary;
+    right: 0;
   }
 
-  .closeBtn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: $color-secondary;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.77rem;
+    border-bottom: 3px solid $color-accent;
 
-    &:hover {
+    h3 {
+      margin: 0;
       color: $color-primary;
+    }
+
+    .closeBtn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: $color-secondary;
+
+      &:hover {
+        color: $color-primary;
+      }
     }
   }
 }
 
 .content {
   padding: 1rem;
-}
 
-.cartItem {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid #eee;
-
-  img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 0.5rem;
-  }
-
-  .itemInfo {
-    flex: 1;
-
-    h4 {
-      margin: 0 0 0.5rem 0;
-      color: $color-primary;
-    }
-
-    p {
-      margin: 0 0 0.5rem 0;
-      color: $color-secondary;
-      font-weight: bold;
-    }
-  }
-
-  .quantity {
+  .cartItem {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    gap: 2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
 
-    button {
-      background: $color-accent;
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+
+    .itemInfo {
+      flex: 1;
+      margin-bottom: 0.4rem;
+
+      h4 {
+        margin-bottom: 0.3rem;
+        color: $color-primary;
+      }
+
+      p {
+        margin-bottom: 0.3rem;
+        color: $color-secondary;
+        font-weight: bold;
+      }
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      button {
+        background: $color-primary;
+        color: white;
+        border: none;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+          background: $color-primary;
+        }
+      }
+    }
+
+    .removeBtn {
+      background: none;
       border: none;
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 50%;
+      color: $color-secondary;
       cursor: pointer;
-      color: white;
+      font-size: 1.2rem;
 
       &:hover {
-        background: $color-primary;
+        color: $color-primary;
       }
     }
   }
 
-  .removeBtn {
-    background: none;
-    border: none;
-    color: red;
-    cursor: pointer;
+  .total {
+    text-align: center;
+    padding: 1rem 0;
     font-size: 1.2rem;
+    color: $color-primary;
+  }
+
+  .checkoutBtn {
+    width: 100%;
+    padding: 1rem;
+    background: $color-primary-light;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
 
     &:hover {
-      color: darkred;
+      background: $color-primary;
+      outline: 2px solid $color-primary;
+      outline-offset: 0.1rem;
     }
-  }
-}
-
-.total {
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 1.2rem;
-  color: $color-primary;
-}
-
-.checkoutBtn {
-  width: 100%;
-  padding: 1rem;
-  background: $color-accent;
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1.1rem;
-  cursor: pointer;
-
-  &:hover {
-    background: $color-primary;
-  }
-}
-
-// Responsive
-@media (max-width: 768px) {
-  .drawer {
-    width: 100vw;
-    right: -100vw;
   }
 }

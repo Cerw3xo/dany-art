@@ -1,7 +1,7 @@
 .portfolio {
   width: 100vw;
   margin: 0 auto;
-  padding: 6rem 6% 2rem;
+  padding: 8rem 6% 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@
 }
 .portfolio .container .title {
   font-size: 2.4rem;
-  color: #955453;
+  color: #d66666;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -56,13 +56,13 @@
   left: 0;
   right: 0;
   width: 100%;
-  background: rgba(236, 187, 180, 0.9);
+  background: rgba(255, 215, 215, 0.9);
   padding: 0.8rem;
   opacity: 0;
   transition: opacity 0.3s;
 }
 .portfolio .container .grid .item .overlay .caption {
-  color: #955453;
+  color: #d66666;
   font-weight: 500;
   display: block;
   text-align: center;

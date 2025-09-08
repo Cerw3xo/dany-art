@@ -94,6 +94,10 @@
       position: relative;
       @include m.cta-button();
       z-index: 1;
+
+      &:hover {
+        color: white;
+      }
     }
     .active {
       background: $color-accent;
