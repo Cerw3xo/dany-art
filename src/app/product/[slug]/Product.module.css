@@ -24,7 +24,7 @@
 }
 .product .info .right .heading {
   font-size: 2rem;
-  color: #955453;
+  color: #d66666;
   margin-bottom: 2rem;
 }
 .product .info .right .description {
@@ -73,7 +73,7 @@
 .product .info .right .addToCart:hover {
   background-color: #ffd7d7;
   color: #f7f4ee;
-  border-color: #955453;
+  border-color: #d66666;
 }
 .product .info .right .addToCart:hover {
   outline: 1px solid #ff8e92;

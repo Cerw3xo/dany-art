@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Stepper from "@/components/checkout/Stepper";
 import CartSummary from "../../components/checkout/CartSummary";
 import CheckoutForm from "@/components/checkout/CheckoutForm";
@@ -9,9 +9,18 @@ import styles from "./Checkout.module.scss";
 
 export default function CheckoutPage() {
   const [step, setStep] = useState(1);
+  const [showBackground, setShowBackground] = useState(false);
+
+  useEffect(() => {
+    setShowBackground(step === 3);
+  }, [step]);
 
   return (
-    <section className={styles.checkout}>
+    <section
+      className={`${styles.checkout} ${
+        showBackground ? styles.withBackground : ""
+      }`}
+    >
       <Stepper step={step} />
       {step === 1 && <CartSummary onNext={() => setStep(2)} />}
       {step === 2 && (

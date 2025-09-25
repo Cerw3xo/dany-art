@@ -26,7 +26,7 @@
   color: #d66666;
   margin-bottom: 1rem;
 }
-.section .heading > button {
+.section .heading .cta {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -49,12 +49,12 @@
   outline-offset: 0.3rem;
   transition: all 0.3s ease;
 }
-.section .heading > button:hover {
+.section .heading .cta:hover {
   background-color: #ffd7d7;
   color: #f7f4ee;
   border-color: #d66666;
 }
-.section .heading > button:hover {
+.section .heading .cta:hover {
   outline: none;
   color: white;
 }

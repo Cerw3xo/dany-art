@@ -17,61 +17,48 @@
     grid-template-columns: 1.6fr 1fr 1fr 1fr;
     gap: 2rem;
 
-    .brand {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      .logo {
-        font-size: 3.2rem;
-        font-weight: 200;
-        letter-spacing: 0.1rem;
-        line-height: 1;
-        color: $color-text;
-        span {
-          font-size: 5.3rem;
-          margin-left: 0.2rem;
-          font-weight: 200;
-          font-family: var(--font-dancing);
-        }
-      }
-      .tagline {
-        font-size: 0.9rem;
-        margin-top: 1rem;
-        letter-spacing: 0.06rem;
-        opacity: 0.85;
-      }
+    .logo {
+      position: relative;
+      width: 22.5rem;
+      height: 11rem;
     }
 
-    .col {
-      margin-top: 0.3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-      align-items: start;
-      h4 {
-        margin-bottom: 0.7rem;
-        font-size: 1rem;
-        font-weight: 700;
-        color: $color-text;
-      }
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      li {
-        margin-bottom: 0.3rem;
-      }
-      a {
-        color: $color-text;
-        text-decoration: none;
-        border-bottom: 0.08rem solid transparent;
-        transition: color 0.2s, border-color 0.2s;
-        &:hover {
-          color: $color-secondary;
-          border-color: $color-secondary;
-        }
+    .tagline {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      letter-spacing: 0.06rem;
+      opacity: 0.85;
+    }
+  }
+
+  .col {
+    margin-top: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    h4 {
+      margin-bottom: 0.7rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: $color-text;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0.3rem;
+    }
+    a {
+      color: $color-text;
+      text-decoration: none;
+      border-bottom: 0.08rem solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      &:hover {
+        color: $color-secondary;
+        border-color: $color-secondary;
       }
     }
   }

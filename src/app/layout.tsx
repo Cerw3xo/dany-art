@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Raleway, Dancing_Script } from "next/font/google";
+import "yet-another-react-lightbox/styles.css";
 import "../styles/globals.scss";
 import Header from "../components/Header";
 import Footer from "../components/Footer";

@@ -16,59 +16,45 @@
   grid-template-columns: 1.6fr 1fr 1fr 1fr;
   gap: 2rem;
 }
-.footer .top .brand {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.footer .top .logo {
+  position: relative;
+  width: 22.5rem;
+  height: 11rem;
 }
-.footer .top .brand .logo {
-  font-size: 3.2rem;
-  font-weight: 200;
-  letter-spacing: 0.1rem;
-  line-height: 1;
-  color: #425958;
-}
-.footer .top .brand .logo span {
-  font-size: 5.3rem;
-  margin-left: 0.2rem;
-  font-weight: 200;
-  font-family: var(--font-dancing);
-}
-.footer .top .brand .tagline {
+.footer .top .tagline {
   font-size: 0.9rem;
   margin-top: 1rem;
   letter-spacing: 0.06rem;
   opacity: 0.85;
 }
-.footer .top .col {
+.footer .col {
   margin-top: 0.3rem;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
 }
-.footer .top .col h4 {
+.footer .col h4 {
   margin-bottom: 0.7rem;
   font-size: 1rem;
   font-weight: 700;
   color: #425958;
 }
-.footer .top .col ul {
+.footer .col ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.footer .top .col li {
+.footer .col li {
   margin-bottom: 0.3rem;
 }
-.footer .top .col a {
+.footer .col a {
   color: #425958;
   text-decoration: none;
   border-bottom: 0.08rem solid transparent;
   transition: color 0.2s, border-color 0.2s;
 }
-.footer .top .col a:hover {
+.footer .col a:hover {
   color: #425958;
   border-color: #425958;
 }

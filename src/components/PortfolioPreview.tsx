@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Link from "next/link";
 import styles from "./PortfolioPreview.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -50,7 +51,10 @@ export default function PortfolioPreview() {
     >
       <div className={styles.heading}>
         <h3>Chceš něco originálniho co má duši?</h3>
-        <button>mrkni do e-shopu</button>
+
+        <Link href="/shop" className={styles.cta}>
+          mrkni do e-shopu
+        </Link>
       </div>
       <div className={styles.inner}>
         <h2 id="portfolio-title" className={styles.title}>

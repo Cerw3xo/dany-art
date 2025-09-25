@@ -7,13 +7,13 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
-        <div className={styles.brand}>
-          <div className={styles.logo}>
-            Danyss<span>Art</span>
-          </div>
-          <p className={styles.tagline}>
-            ruční tvorba · grafický design · obrazy
-          </p>
+        <div className={styles.logo}>
+          <Image
+            src="/logo.svg"
+            alt="Logo Danyss Art"
+            fill
+            style={{ objectFit: "contain" }}
+          />
         </div>
 
         <div className={styles.col}>

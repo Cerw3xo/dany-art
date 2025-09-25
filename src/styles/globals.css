@@ -71,4 +71,8 @@ footer {
 body {
   background: #f7f4ee;
   color: #425958;
+}
+
+.yarl__container {
+  background: rgba(36, 36, 36, 0.9) !important;
 }/*# sourceMappingURL=globals.css.map */

@@ -5,4 +5,35 @@
   @include m.section();
   flex-direction: column;
   overflow: hidden;
+  position: relative;
+}
+
+.withBackground {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    z-index: 0;
+    background-image: url("/ui/sage1.svg"), url("/ui/sage1.svg");
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100%;
+    background-position: -55% 125%;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: url("/ui/sage1.svg"), url("/ui/sage1.svg");
+    background-repeat: no-repeat, no-repeat;
+    background-size: 50%;
+    background-position: -50% 20%;
+    transform: rotate(185deg);
+  }
 }

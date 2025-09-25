@@ -1,5 +1,6 @@
 import styles from "./HeroSection.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -18,12 +19,15 @@ export default function HeroSection() {
 
         <div className={styles.textWrapper}>
           <div className={styles.logo}>
-            <span className={styles.logoMain}>Danyss</span>
-            <span className={styles.logoArt}>Art</span>
+            <Image
+              className={styles.heroLogo}
+              src="/logo.svg"
+              alt="Logo danyss Art"
+              fill
+              style={{ objectFit: "contain" }}
+            />
           </div>
-          <div className={styles.subtitle}>
-            ruční tvorba • grafický design • obrazy
-          </div>
+
           <h1 className={styles.headline}>
             UMĚNÍ, KTERÉ NOSÍŠ A MILUJEŠ
           </h1>
@@ -32,9 +36,10 @@ export default function HeroSection() {
             <p>DESIGN ETIKET NA VÍNO,</p>
             <p>OBRAZY A ILUSTRACE S PŘÍBĚHEM</p>
           </div>
-          <button className={styles.cta}>
+
+          <Link href="/contact" className={styles.cta}>
             CHCI NAVÁZAT SPOLUPRÁCI
-          </button>
+          </Link>
         </div>
       </div>
     </section>

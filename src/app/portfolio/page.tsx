@@ -1,4 +1,7 @@
-// src/app/portfolio/page.tsx
+"use client";
+
+import { useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
 import styles from "./Portfolio.module.scss";
 
 const portfolioItems = [
@@ -66,14 +69,24 @@ const portfolioItems = [
 ];
 
 export default function PortfolioPage() {
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+
   return (
     <section className={styles.portfolio}>
       <div className={styles.container}>
         <h1 className={styles.title}>Portfolio</h1>
 
         <div className={styles.grid}>
-          {portfolioItems.map((item) => (
-            <div key={item.id} className={styles.item}>
+          {portfolioItems.map((item, i) => (
+            <div
+              key={item.id}
+              className={styles.item}
+              onClick={() => {
+                setOpen(true);
+                setIndex(i);
+              }}
+            >
               <img
                 src={item.src}
                 alt={item.alt}
@@ -86,6 +99,16 @@ export default function PortfolioPage() {
           ))}
         </div>
       </div>
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        slides={portfolioItems.map((item) => ({
+          src: item.src,
+          alt: item.alt,
+        }))}
+        index={index}
+        on={{ view: ({ index }) => setIndex(index) }}
+      />
     </section>
   );
 }

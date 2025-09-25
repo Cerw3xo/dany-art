@@ -1,0 +1,257 @@
+.checkoutFormContainer {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+.checkoutFormContainer .errorMessage {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: red;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.1rem;
+  text-align: center;
+}
+.checkoutFormContainer .formContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 5rem;
+  margin-bottom: 2rem;
+}
+.checkoutFormContainer .formContent .formSection .sectionTitle {
+  background-color: #9ab49e;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.2rem 1.1rem;
+  outline: 1px solid #9ab49e;
+  outline-offset: 0.2rem;
+  width: 70%;
+  margin-bottom: 2rem;
+  display: inline-block;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 400;
+}
+.checkoutFormContainer .formContent .formSection .checkoutForm {
+  width: 100%;
+}
+.checkoutFormContainer .formContent .formSection .checkoutForm .formFields {
+  width: 100%;
+  margin-bottom: 2rem;
+  background-color: white;
+  box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formLabel {
+  font-weight: 500;
+  width: 40%;
+  text-align: right;
+  padding-right: 1rem;
+}
+.checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formInput {
+  padding: 0.3rem;
+  border: 1px solid #526766;
+  border-radius: 0.1rem;
+  font-size: 1rem;
+  width: 37%;
+}
+.checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formInput:focus {
+  outline: 1px solid #ffd7d7;
+  border-color: #ff8e92;
+}
+.checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formHint {
+  font-size: 0.8rem;
+  color: #526766;
+  margin-top: 0.25rem;
+  display: block;
+}
+.checkoutFormContainer .formContent .formSection .noteSection {
+  margin-top: 3rem;
+}
+.checkoutFormContainer .formContent .formSection .noteSection .formLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.checkoutFormContainer .formContent .formSection .noteSection .formTextarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #526766;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  resize: none;
+  min-height: 100px;
+}
+.checkoutFormContainer .formContent .formSection .noteSection .formTextarea:focus {
+  outline: 2px solid #d66666;
+  border-color: #d66666;
+}
+.checkoutFormContainer .formContent .orderSummary {
+  padding: 1rem;
+  border-radius: 0.1rem;
+  display: flex;
+  flex-direction: column;
+}
+.checkoutFormContainer .formContent .orderSummary .summaryItems {
+  margin-top: 3.2rem;
+  padding: 0.3rem 0.8rem;
+  background-color: white;
+}
+.checkoutFormContainer .formContent .orderSummary .summaryItems .summaryTitle {
+  color: #425958;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: left;
+}
+.checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0.1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemImage {
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemImage img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemName {
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+.checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .itemQuantity {
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+}
+.checkoutFormContainer .formContent .orderSummary .deliveryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+.checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryInfo {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.9rem;
+  gap: 0.25rem;
+}
+.checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryInfo span:first-child {
+  font-weight: 500;
+}
+.checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryPrice {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.checkoutFormContainer .formContent .orderSummary .summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.1rem 1rem;
+  background-color: #d7e5d5;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.checkoutFormContainer .formContent .orderSummary .summaryTotal .totalAmount {
+  color: #425958;
+}
+.checkoutFormContainer .formContent .orderSummary .termsAgreement {
+  margin: 0.7rem;
+  margin-bottom: 0.9rem;
+  padding: 0 0.5rem;
+  font-size: 0.7rem;
+  text-align: left;
+}
+.checkoutFormContainer .formContent .orderSummary .termsAgreement .termsLink {
+  display: block;
+  color: #425958;
+  margin-top: 0.2rem;
+  text-decoration: underline;
+}
+.checkoutFormContainer .formContent .orderSummary .submitButton {
+  width: 55%;
+  margin-left: auto;
+  margin-right: 0;
+  padding: 0.4rem 1.3rem;
+  background-color: #d66666;
+  color: white;
+  border: none;
+  border-radius: 1.4rem;
+  line-height: 1.2;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: outline-color 0.3s ease, outline-offset 0.3s ease, outline-width 0.3s ease;
+}
+.checkoutFormContainer .formContent .orderSummary .submitButton:hover {
+  background-color: #d66666;
+  outline: 2px solid #d66666;
+  outline-offset: 0.1rem;
+}
+.checkoutFormContainer .actions {
+  display: flex;
+  margin-top: 2rem;
+}
+.checkoutFormContainer .actions .backButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding: 0.1rem 1.1rem;
+  border: 2px solid #ffd7d7;
+  border-radius: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  background-color: #f7f4ee;
+  color: #425958;
+  background-color: #d66666;
+  color: white;
+  border: none;
+  font-weight: 700;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: outline-color 0.3s ease, outline-offset 0.3s ease, outline-width 0.3s ease;
+}
+.checkoutFormContainer .actions .backButton:hover {
+  background-color: #ffd7d7;
+  color: #f7f4ee;
+  border-color: #d66666;
+}
+.checkoutFormContainer .actions .backButton:hover {
+  background-color: #d66666;
+  outline: 2px solid #d66666;
+  outline-offset: 0.1rem;
+}/*# sourceMappingURL=CheckoutForm.module.css.map */

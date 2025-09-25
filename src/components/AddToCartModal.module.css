@@ -33,7 +33,7 @@
   font-size: 1.5rem;
 }
 .modal > h2 {
-  color: #955453;
+  color: #d66666;
   font-size: 2rem;
   margin-bottom: 2rem;
 }
@@ -88,18 +88,18 @@
   background-color: #f7f4ee;
   color: #425958;
   color: white;
-  background-color: #955453;
+  background-color: #d66666;
   border: none;
   padding: 0.3rem 1.1rem;
 }
 .modal .btnContainer .goToCart:hover {
   background-color: #ffd7d7;
   color: #f7f4ee;
-  border-color: #955453;
+  border-color: #d66666;
 }
 .modal .btnContainer .goToCart:hover {
-  outline: 2px solid #955453;
-  background-color: #955453;
+  outline: 2px solid #d66666;
+  background-color: #d66666;
   outline-offset: 0.1rem;
   border: none;
 }/*# sourceMappingURL=AddToCartModal.module.css.map */

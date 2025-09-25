@@ -62,7 +62,7 @@
   align-items: center;
   justify-content: center;
   font-size: 0.6rem;
-  background: #955453;
+  background: #d66666;
   color: rgb(255, 255, 255);
   border-radius: 100%;
   padding-bottom: 0.15rem;
@@ -100,14 +100,14 @@
 .header .nav .navLink:hover {
   background-color: #ffd7d7;
   color: #f7f4ee;
-  border-color: #955453;
+  border-color: #d66666;
 }
 .header .nav .navLink:hover {
   color: white;
 }
 .header .nav .active {
   background: #ffd7d7;
-  color: #955453;
+  color: #d66666;
   font-weight: 600;
-  border: 2px solid #955453;
+  border: 2px solid #d66666;
 }/*# sourceMappingURL=Header.module.css.map */

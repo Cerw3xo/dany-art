@@ -1,11 +1,16 @@
+import { StyleRegistry } from "styled-jsx";
+import styles from "./CheckoutSucces.module.scss";
+
 export default function CheckoutSucces() {
   return (
-    <section>
-      <h2>Objednávka byla úspěšne odeslána!</h2>
+    <section className={styles.checkoutSucces}>
+      <h2 className={styles.heading}>
+        Objednávka byla úspěšne odeslána!
+      </h2>
 
-      <div>
+      <div className={styles.container}>
         <p>Děkuji! Tvou objednávku zpracuji co nejdříve.</p>
-        <p>VYČKEJ na email ode mě,</p>
+        <p className={styles.highlight}>VYČKEJ na email ode mě,</p>
         <p>kam Ti zašlu platební informace.</p>
       </div>
     </section>
