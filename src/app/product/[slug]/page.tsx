@@ -1,17 +1,26 @@
-import { products } from "@/data/products";
+import type { Product } from "@/data/products";
 import styles from "./Product.module.scss";
 import { formatPrice } from "@/lib/format";
 import AddToCartButton from "@/components/AddToCartButton";
 import ProductGallery from "../ProductGallery";
-import { P } from "node_modules/framer-motion/dist/types.d-Cjd591yU";
+import { useEffect, useState } from "react";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default async function ProductPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
-  const product = products.find((p) => p.slug === slug);
+  // const { slug } = await params;
+  // const product = products.find((p) => p.slug === slug);
+  const [product, setProduct] = useState<Product | null>(null);
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/produkts`)
+      .then((res) => res.json())
+      .then((json) => {});
+  });
 
   if (!product) return <section>Produkt nenalezen</section>;
 

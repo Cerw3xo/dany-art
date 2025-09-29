@@ -1,18 +1,73 @@
 "use client";
 
-import { products, type Product } from "@/data/products";
+import type { Product } from "@/data/products";
+import { useState, useEffect } from "react";
 import { categories } from "@/data/categories";
 import styles from "./Shop.module.scss";
-import { useState } from "react";
 import Link from "next/link";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function ShopPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [selectedCategory, setSelectedCategory] = useState<
     string | null
   >(null);
+
   const [selectedSubcategory, setSelectedSubcategory] = useState<
     string | null
   >(null);
+
+  function getThumbnailUrl(thumbnail: any) {
+    if (!thumbnail) return "/placeholder.jpg";
+    if (
+      thumbnail.formats &&
+      thumbnail.formats.medium &&
+      thumbnail.formats.medium.url
+    ) {
+      return API_URL + thumbnail.formats.medium.url;
+    }
+    if (thumbnail.url) {
+      return API_URL + thumbnail.url;
+    }
+    return "/placeholder.jpg";
+  }
+
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+    fetch(`${API_URL}/api/produkts?populate=thumbnail`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Chyba pri načítaní produktov");
+        return res.json();
+      })
+      .then((json) => {
+        setProducts(
+          json.data.map((item: any) => ({
+            id: item.id,
+            slug: item.slug,
+            name: item.name,
+            price: item.price,
+            currency: item.currency,
+            category: item.category,
+            subcategory: item.subcategory,
+            images: item.images ?? [],
+            thumbnail: getThumbnailUrl(item.thumbnail),
+            summary: item.summary,
+            available: item.available,
+            featured: item.featured,
+          }))
+        );
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message || "Nepodarilo sa načítat produkty");
+        setLoading(false);
+      });
+  }, []);
 
   const filteredProducts = products.filter((p) => {
     if (selectedCategory && selectedSubcategory) {
@@ -36,92 +91,111 @@ export default function ShopPage() {
         </p>
       </div>
 
-      <nav className={styles.chips} aria-label="Kategorie">
-        <button
-          className={!selectedCategory ? styles.active : ""}
-          onClick={() => {
-            setSelectedCategory(null);
-            setSelectedSubcategory(null);
+      {error ? (
+        <div
+          style={{
+            color: "red",
+            textAlign: "center",
+            margin: "2rem",
           }}
         >
-          Vše
-        </button>
-        {categories.map((cat) => (
-          <button
-            key={cat.slug}
-            className={
-              selectedCategory === cat.slug ? styles.active : ""
-            }
-            onClick={() => {
-              setSelectedCategory(cat.slug);
-              setSelectedSubcategory(null);
-            }}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </nav>
-
-      <div className={styles.content}>
-        <h2 className={styles.sectionTitle}>
-          {!selectedCategory
-            ? "Všechny produkty"
-            : categories.find((c) => c.slug === selectedCategory)
-                ?.label}
-        </h2>
-
-        <div className={styles.categories}>
-          <aside className={styles.sidebar}>
-            <h3>Kategorie</h3>
-            <ul>
-              {categories.map((cat) => (
-                <li key={cat.slug}>
-                  <div
-                    className={styles.cat}
-                    onClick={() => {
-                      setSelectedCategory(cat.slug);
-                      setSelectedSubcategory(null);
-                    }}
-                  >
-                    {cat.label}
-                  </div>
-                  {cat.subcategories &&
-                    selectedCategory === cat.slug && (
-                      <ul>
-                        {cat.subcategories.map((sub) => (
-                          <li
-                            className={styles.sub}
-                            key={sub.slug}
-                            onClick={() =>
-                              setSelectedSubcategory(sub.slug)
-                            }
-                          >
-                            {sub.label}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                </li>
-              ))}
-            </ul>
-          </aside>
-
-          <div className={styles.grid}>
-            {filteredProducts.map((p: Product) => (
-              <article key={p.slug} className={styles.card}>
-                <Link
-                  className={styles.link}
-                  href={`/product/${p.slug}`}
-                >
-                  <img className={styles.thumb} src={p.thumbnail} />
-                  <div className={styles.name}>{p.name}</div>
-                  <div className={styles.price}>{p.price} Kč</div>
-                </Link>
-              </article>
-            ))}
-          </div>
+          {error}
         </div>
-      </div>
+      ) : loading ? (
+        <div>Načítam produkty</div>
+      ) : (
+        <>
+          <nav className={styles.chips} aria-label="Kategorie">
+            <button
+              className={!selectedCategory ? styles.active : ""}
+              onClick={() => {
+                setSelectedCategory(null);
+                setSelectedSubcategory(null);
+              }}
+            >
+              Vše
+            </button>
+            {categories.map((cat) => (
+              <button
+                key={cat.slug}
+                className={
+                  selectedCategory === cat.slug ? styles.active : ""
+                }
+                onClick={() => {
+                  setSelectedCategory(cat.slug);
+                  setSelectedSubcategory(null);
+                }}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </nav>
+
+          <div className={styles.content}>
+            <h2 className={styles.sectionTitle}>
+              {!selectedCategory
+                ? "Všechny produkty"
+                : categories.find((c) => c.slug === selectedCategory)
+                    ?.label}
+            </h2>
+
+            <div className={styles.categories}>
+              <aside className={styles.sidebar}>
+                <h3>Kategorie</h3>
+                <ul>
+                  {categories.map((cat) => (
+                    <li key={cat.slug}>
+                      <div
+                        className={styles.cat}
+                        onClick={() => {
+                          setSelectedCategory(cat.slug);
+                          setSelectedSubcategory(null);
+                        }}
+                      >
+                        {cat.label}
+                      </div>
+                      {cat.subcategories &&
+                        selectedCategory === cat.slug && (
+                          <ul>
+                            {cat.subcategories.map((sub) => (
+                              <li
+                                className={styles.sub}
+                                key={sub.slug}
+                                onClick={() =>
+                                  setSelectedSubcategory(sub.slug)
+                                }
+                              >
+                                {sub.label}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+
+              <div className={styles.grid}>
+                {filteredProducts.map((p) => (
+                  <article key={p.slug} className={styles.card}>
+                    <Link
+                      className={styles.link}
+                      href={`/product/${p.slug}`}
+                    >
+                      <img
+                        className={styles.thumb}
+                        src={p.thumbnail || "/placeholder.jpg"}
+                      />
+                      <div className={styles.name}>{p.name}</div>
+                      <div className={styles.price}>{p.price} Kč</div>
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </section>
   );
 }
