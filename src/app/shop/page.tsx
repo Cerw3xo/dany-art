@@ -48,17 +48,20 @@ export default function ShopPage() {
         setProducts(
           json.data.map((item: any) => ({
             id: item.id,
-            slug: item.slug,
-            name: item.name,
-            price: item.price,
-            currency: item.currency,
-            category: item.category,
-            subcategory: item.subcategory,
-            images: item.images ?? [],
-            thumbnail: getThumbnailUrl(item.thumbnail),
-            summary: item.summary,
-            available: item.available,
-            featured: item.featured,
+            slug: item.slug || item.attributes?.slug,
+            name: item.name || item.attributes?.name,
+            price: item.price || item.attributes?.price,
+            currency: item.currency || item.attributes?.currency,
+            category: item.category || item.attributes?.category,
+            subcategory:
+              item.subcategory || item.attributes?.subcategory,
+            images: item.images || item.attributes?.images,
+            thumbnail: getThumbnailUrl(
+              item.thumbnail || item.attributes?.thumbnail
+            ),
+            summary: item.summary || item.attributes?.summary,
+            available: item.available || item.attributes?.available,
+            featured: item.featured || item.attributes?.featured,
           }))
         );
         setLoading(false);
