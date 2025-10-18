@@ -7,18 +7,29 @@
   min-height: 60vh;
   background: $color-bg;
   padding: 3rem 2rem;
-
-  background-image: url("/ui/pink_1.svg");
-  background-repeat: no-repeat;
-  background-size: 66%;
-  background-position: -70% -70%;
+  position: relative;
 
   .heading {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 7rem;
-    > h3 {
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-86%, -36%) rotate(1deg);
+      width: 150%;
+      height: 120%;
+      background-image: url("/ui/pink_1.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+      z-index: 0;
+    }
+    h3 {
       font-size: 3rem;
       color: $color-primary;
       margin-bottom: 1rem;
@@ -129,6 +140,99 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-
+  z-index: 9999;
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .section {
+    padding: 2rem 1rem;
+
+    .heading {
+      margin-bottom: 6rem;
+
+      > h3 {
+        font-size: 2.7rem;
+      }
+    }
+
+    .inner {
+      max-width: 86vw;
+
+      .title {
+        font-size: 2.3rem;
+      }
+
+      .wrapper {
+        :global(.swiper) {
+          :global(.swiper-slide) {
+            height: 31rem;
+            img {
+              height: 27rem;
+              border: 3px solid $color-accent;
+            }
+          }
+
+          :global(.swiper-slide-next) {
+            img {
+              border: 5px solid $color-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    background-size: 80%;
+    background-position: -100% 10%;
+
+    .heading {
+      h3 {
+        font-size: 1.7rem;
+      }
+
+      .cta {
+        padding: 0.3rem 1.5rem;
+        font-size: 1.7rem;
+      }
+    }
+
+    .inner {
+      max-width: 99vw;
+
+      .title {
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .wrapper {
+        :global(.swiper-slide) {
+          width: 100% !important;
+
+          > img {
+            border: 20px solid blue;
+          }
+          :global(.swiper-slide-prev),
+          :global(.swiper-slide-next) {
+            opacity: 0;
+            pointer-events: none;
+          }
+        }
+
+        :global(.swiper-slide-active) img {
+          width: 100%;
+          height: auto;
+          border-width: 0;
+        }
+
+        .prev,
+        .next {
+          display: none;
+        }
+      }
+    }
+  }
 }

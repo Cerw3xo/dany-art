@@ -88,13 +88,14 @@
   gap: 2rem;
 }
 .content .categories .sidebar {
+  margin-top: 0.8rem;
   width: 13rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
   border-radius: 0.1rem;
   padding: 1rem;
 }
 .content .categories .sidebar h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #425958;
   margin-bottom: 0.6rem;
 }
@@ -112,7 +113,7 @@
 .content .categories .sidebar ul .sub {
   color: #526766;
   margin-left: 0.2rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
 }
 .content .categories .sidebar ul li {
   color: #526766;
@@ -161,4 +162,134 @@
 .content .categories .grid .card .price {
   color: #526766;
   margin-top: 0.25rem;
+}
+
+@media (max-width: 1200px) {
+  .shop {
+    padding: 8rem 3% 2rem;
+  }
+  .shop .header .title {
+    font-size: 3.2rem;
+  }
+  .shop .header .subtitle {
+    font-size: 1.8rem;
+  }
+  .shop .content .sectionTitle {
+    left: -12rem;
+    width: 55%;
+    font-size: 1.5rem;
+  }
+  .shop .content .categories .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+  }
+}
+@media (max-width: 1024px) {
+  .shop .header .title {
+    font-size: 2.6rem;
+  }
+  .shop .header .subtitle {
+    font-size: 1.6rem;
+  }
+  .shop .chips {
+    gap: 1rem;
+    margin-bottom: 7rem;
+  }
+  .shop .chips button {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  .shop .content {
+    margin-top: 4rem;
+  }
+  .shop .content .sectionTitle {
+    left: -6rem;
+  }
+  .shop .content .categories {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .shop .content .categories .sidebar {
+    width: 30%;
+    padding: 0.8rem;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  }
+  .shop .content .categories .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+    justify-items: stretch;
+  }
+  .shop .content .categories .grid .card {
+    padding: 1.1rem;
+  }
+}
+@media (max-width: 768px) {
+  .shop {
+    background-size: 57%, 70%;
+  }
+  .shop .chips {
+    gap: 1rem;
+    max-width: none;
+    margin: 1rem auto 1.5rem;
+  }
+  .shop .content .sectionTitle {
+    text-align: right;
+    width: 60%;
+    font-size: 1.3rem;
+    margin-bottom: 4rem;
+  }
+  .shop .content .categories .sidebar {
+    width: 40%;
+  }
+  .shop .content .categories .grid .card {
+    padding: 0.6rem;
+  }
+  .shop .content .categories .grid .card .thumb {
+    height: 14rem;
+  }
+  .shop .content .categories .grid .card .name {
+    font-size: 0.9rem;
+  }
+  .shop .content .categories .grid .card .price {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 560px) {
+  .shop .header .title {
+    font-size: 2.2rem;
+  }
+  .shop .header .subtitle {
+    font-size: 1.4rem;
+  }
+  .shop .chips {
+    padding: 0.5rem;
+  }
+  .shop .chips button {
+    font-size: 0.85rem;
+    padding: 0.45rem 1rem;
+  }
+  .shop .content .sectionTitle {
+    font-size: 1.1rem;
+    width: 82%;
+    border-radius: 1rem;
+  }
+  .shop .content .categories .sidebar {
+    width: 50%;
+  }
+  .shop .content .categories .sidebar h3 {
+    font-size: 0.9rem;
+  }
+  .shop .content .categories .sidebar ul .sub {
+    font-size: 0.8rem;
+  }
+  .shop .content .categories .sidebar ul .cat {
+    font-size: 0.8rem;
+  }
+  .shop .content .categories .grid {
+    gap: 0.2rem;
+  }
+  .shop .content .categories .grid .card .thumb {
+    height: 12rem;
+  }
 }/*# sourceMappingURL=Shop.module.css.map */

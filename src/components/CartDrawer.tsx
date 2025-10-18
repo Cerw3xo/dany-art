@@ -4,6 +4,7 @@ import { useCartStore } from "@/store/cart";
 import styles from "./CartDrawer.module.scss";
 import { formatPrice } from "@/lib/format";
 import { useRouter } from "next/navigation";
+import { LuX } from "react-icons/lu";
 
 export default function CartDrawer({
   isOpen,
@@ -29,14 +30,13 @@ export default function CartDrawer({
       >
         <div className={styles.header}>
           <h3>Košík</h3>
-          <button onClick={onClose} className={styles.closeBtn}>
-            ✕
-          </button>
+
+          <LuX onClick={onClose} className={styles.closeBtn} />
         </div>
 
         <div className={styles.content}>
           {items.length === 0 ? (
-            <p>Košík je prázdny</p>
+            <p>Košík je prázdný</p>
           ) : (
             <>
               {items.map((item) => {

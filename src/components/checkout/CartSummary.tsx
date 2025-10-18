@@ -14,7 +14,7 @@ export default function CartSummary({
   );
 
   if (items.length === 0) {
-    return <p>Košík je prazdny.</p>;
+    return <p>Košík je prázdný.</p>;
   }
 
   return (

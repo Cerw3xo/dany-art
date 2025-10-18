@@ -1,4 +1,3 @@
-// src/app/contact/page.tsx
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -25,15 +24,20 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulácia odoslania (neskôr tu bude API volanie)
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    // Namiesto presmerovania len zmeníme stav
-    setIsSubmitted(true);
-    setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Chyba při odesílání");
+      setIsSubmitted(true);
+    } catch {
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  // Automatické presmerovanie na hlavnú stránku po 5 sekundách od odoslania
   useEffect(() => {
     if (isSubmitted) {
       const timer = setTimeout(() => {
@@ -44,30 +48,26 @@ export default function ContactPage() {
     }
   }, [isSubmitted, router]);
 
-  // Zobrazenie poďakovania po odoslaní
   if (isSubmitted) {
     return (
       <section className={styles.thankYou}>
         <div className={styles.container}>
-          <div className={styles.message}>
-            <h1 className={styles.thankYouTitle}>
-              Děkuji! Tvoje zpráva byla odeslána
-            </h1>
-            <p className={styles.text}>
-              Ozvu se ti co nejdříve.
-              <br />
-              Těším se na spolupráci!
-            </p>
-            <p className={styles.redirect}>
-              Za 5 sekund budeš přesměrován na hlavní stránku...
-            </p>
-          </div>
+          <h1 className={styles.thankYouTitle}>
+            Děkuji! Tvoje zpráva byla odeslána
+          </h1>
+          <p className={styles.text}>
+            Ozvu se ti co nejdříve.
+            <br />
+            Těším se na spolupráci!
+          </p>
+          <p className={styles.redirect}>
+            Za 5 sekund budeš přesměrován na hlavní stránku...
+          </p>
         </div>
       </section>
     );
   }
 
-  // Zobrazenie formulára
   return (
     <section className={styles.contact}>
       <div className={styles.container}>

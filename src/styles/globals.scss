@@ -5,6 +5,10 @@
 *::after {
   box-sizing: border-box;
 }
+
+html {
+  font-size: 100%;
+}
 html,
 body {
   height: 100%;
@@ -68,4 +72,10 @@ body {
 
 .yarl__container {
   background: rgba(36, 36, 36, 0.9) !important;
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 125%;
+  }
 }

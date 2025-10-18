@@ -41,7 +41,7 @@ export default function ShopPage() {
     setError(null);
     fetch(`${API_URL}/api/produkts?populate=thumbnail`)
       .then((res) => {
-        if (!res.ok) throw new Error("Chyba pri načítaní produktov");
+        if (!res.ok) throw new Error("Chyba při načítání produktů");
         return res.json();
       })
       .then((json) => {
@@ -67,7 +67,7 @@ export default function ShopPage() {
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message || "Nepodarilo sa načítat produkty");
+        setError(err.message || "Nepodařilo se načítat produkty");
         setLoading(false);
       });
   }, []);
@@ -105,7 +105,7 @@ export default function ShopPage() {
           {error}
         </div>
       ) : loading ? (
-        <div>Načítam produkty</div>
+        <div>Načítám produkty</div>
       ) : (
         <>
           <nav className={styles.chips} aria-label="Kategorie">

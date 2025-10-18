@@ -15,6 +15,23 @@ type CheckoutFormData = {
   country: string;
 };
 
+type OrderItem = { name: string; quantity: number; price: number };
+type OrderDelivery = {
+  method: string;
+  address: string;
+  city: string;
+  zip: string;
+  country: string;
+};
+type OrderPayload = {
+  orderNumber: string;
+  customer: { name: string; email: string; phone: string };
+  items: OrderItem[];
+  delivery: OrderDelivery;
+  note?: string;
+  total: number;
+};
+
 export default function CheckoutForm({
   onBack,
   onSubmit,
@@ -23,7 +40,7 @@ export default function CheckoutForm({
   onSubmit: () => void;
 }) {
   const { items, total, clearCart } = useCart();
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<CheckoutFormData>({
     name: "",
     email: "",
     phone: "",
@@ -50,6 +67,11 @@ export default function CheckoutForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (items.length === 0) {
+      setError("Košík je prázdný");
+      return;
+    }
+
     if (
       !form.name ||
       !form.email ||
@@ -61,14 +83,42 @@ export default function CheckoutForm({
       return;
     }
 
-    // Zatiaľ len simulácia odoslania
-    // API pre e-maily implementujeme neskôr
+    const orderNumber = Date.now().toString().slice(-6);
+
+    const orderData = {
+      orderNumber,
+      customer: {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+      },
+      items: items.map((i) => ({
+        name: i.name,
+        quantity: i.quantity,
+        price: i.price,
+      })),
+      delivery: {
+        method: form.deliveryMethod,
+        address: form.address,
+        city: form.city,
+        zip: form.zip,
+        country: form.country,
+      },
+      note: form.note,
+      total: totalWithDelivery,
+    };
+
     try {
-      // Simulácia úspešného odoslania
-      setTimeout(() => {
-        clearCart();
-        onSubmit();
-      }, 500);
+      const res = await fetch("/api/send-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderData),
+      });
+
+      if (!res.ok) throw new Error("Chyba při odesílání");
+
+      clearCart();
+      onSubmit();
     } catch (err) {
       setError("Chyba při odesílání objednávky");
     }
@@ -293,9 +343,9 @@ export default function CheckoutForm({
           </div>
 
           <button
-            type="submit"
-            className={styles.submitButton}
+            type="button"
             onClick={handleSubmit}
+            className={styles.submitButton}
           >
             Dokončit objednávku zavazující k platbě
           </button>

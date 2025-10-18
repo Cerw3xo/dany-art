@@ -18,7 +18,7 @@ const dancing = Dancing_Script({
 
 export const metadata: Metadata = {
   title: "Dany Art",
-  description: "Minimalistycký umelecky e-shop",
+  description: "Minimalistický umělecký e-shop",
 };
 
 export default function RootLayout({

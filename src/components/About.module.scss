@@ -16,11 +16,6 @@
     justify-content: center;
     align-items: center;
 
-    background-image: url("/ui/sage1.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center 2rem; //
-
     .logo {
       width: 100%;
       color: $color-primary;
@@ -29,16 +24,13 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      z-index: 1;
+      z-index: 99;
 
-      .logoMain {
-        font-size: 3.3rem;
+      .image {
+        width: 23rem;
+        max-width: 50rem;
+        height: auto;
       }
-      .logoArt {
-        font-size: 3.5rem;
-        font-family: var(--font-dancing);
-      }
-
       .name {
         position: relative;
         font-size: 1.1rem;
@@ -55,6 +47,21 @@
       align-items: center;
       width: 100%;
 
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-61%, -51%) rotate(33deg);
+        width: 190%;
+        height: 180%;
+        background-image: url("/ui/sage1.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        z-index: 1;
+      }
+
       .photo {
         width: clamp(20rem, 35vw, 25em);
         height: clamp(35rem, 45vh, 30rem);
@@ -63,7 +70,7 @@
         object-fit: cover;
         border-radius: 0.1rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 2;
+        z-index: 99;
       }
     }
   }
@@ -113,7 +120,164 @@
         display: block;
         margin-top: 0.2rem;
         font-weight: normal;
-        color: $color-text;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .about {
+    padding: 7rem 3% 2rem;
+    gap: 3rem;
+
+    .left {
+      .imgContainer {
+        width: 80%;
+      }
+    }
+    .right {
+      gap: 0.7rem;
+      .heading {
+        font-size: 1.7rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .about {
+    align-items: center;
+
+    .left {
+      width: 100%;
+      max-width: 300px;
+
+      .imgContainer {
+        width: 100%;
+        margin-bottom: 2rem;
+
+        &::before {
+          width: 243%;
+          height: 200%;
+          transform: translate(-71%, -42%) rotate(10deg);
+        }
+
+        .photo {
+          width: 100%;
+
+          height: auto;
+          aspect-ratio: 3/4;
+        }
+      }
+    }
+
+    .right {
+      width: 100%;
+      gap: 0.5rem;
+      .heading {
+        font-size: 1.7rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 4rem 5% 2rem;
+    gap: 6rem;
+    flex-direction: column;
+
+    .left {
+      order: 1;
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+      .logo {
+        .logoMain {
+          font-size: 2.5rem;
+        }
+        .logoArt {
+          font-size: 2.7rem;
+        }
+        .name {
+          left: 5rem;
+          font-size: 1rem;
+        }
+      }
+
+      .imgContainer {
+        width: 100%;
+
+        &::before {
+          width: 200%;
+          height: 200%;
+          transform: translate(-67%, -44%) rotate(10deg);
+        }
+        .photo {
+          max-width: 60vw;
+        }
+      }
+    }
+
+    .right {
+      order: 2;
+      align-items: start;
+      justify-content: center;
+      .heading {
+        font-size: 1.5rem;
+        width: 140%;
+        left: 0;
+        text-align: left;
+        margin-left: 13rem;
+        margin-bottom: 4rem;
+      }
+
+      .subheading {
+        font-size: 1.1rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 3rem 4% 2rem;
+
+    .left {
+      .logo {
+        .logoMain {
+          font-size: 2rem;
+        }
+        .logoArt {
+          font-size: 2.2rem;
+        }
+        .name {
+          left: 3rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .right {
+      .heading {
+        font-size: 1.3rem;
+        padding: 0.25rem 1rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1450px) {
+  .about {
+    .left {
+      .imgContainer {
+        &::before {
+          width: 204%;
+          height: 224%;
+          transform: translate(-66%, -52%) rotate(19deg);
+          opacity: 1;
+        }
       }
     }
   }

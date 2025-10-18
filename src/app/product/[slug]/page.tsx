@@ -47,7 +47,7 @@ export default async function ProductPage({
     const res = await fetch(
       `${API_URL}/api/produkts?filters[slug][$eq]=${slug}&populate=*`
     );
-    if (!res.ok) throw new Error("Chyba pri načítaní produktu");
+    if (!res.ok) throw new Error("Chyba při načítaní produktu");
     const json = await res.json();
     if (!json.data || !json.data.length) {
       error = "Produkt nenalezen";
@@ -73,8 +73,8 @@ export default async function ProductPage({
   } catch (err: any) {
     error =
       err.message === "Failed to fetch"
-        ? "Nepodarilo sa pripojiť k serveru. Skontroluj, či beží Strapi alebo sieť."
-        : err.message || "Nepodarilo sa načítať produkt";
+        ? "Nepodařilo sae připojiť k serveru. Zkontroluj, či beží Strapi alebo síť."
+        : err.message || "Nepodařilo se načíst produkt";
   }
 
   if (error)
