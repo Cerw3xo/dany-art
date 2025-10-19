@@ -10,6 +10,11 @@
   background-color: #ffd7d7;
   position: relative;
 }
+@media (min-width: 1920px) {
+  .hero {
+    padding: 8rem 18% 2rem;
+  }
+}
 .hero .background {
   position: absolute;
   top: 0;
@@ -64,7 +69,7 @@
 .hero .contentWrapper .textWrapper .text {
   margin-top: 1rem;
 }
-.hero .contentWrapper .textWrapper text .headline {
+.hero .contentWrapper .textWrapper .text .headline {
   font-size: clamp(1.35rem, 2.2vw + 0.6rem, 2.3rem);
   margin-bottom: 0.75rem;
   color: white;

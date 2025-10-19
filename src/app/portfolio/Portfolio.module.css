@@ -8,6 +8,11 @@
   background-color: #f7f4ee;
   background: #f7f4ee;
 }
+@media (min-width: 1920px) {
+  .portfolio {
+    padding: 8rem 18% 2rem;
+  }
+}
 .portfolio .container {
   margin: 0 auto;
   padding: 0 1.5rem;

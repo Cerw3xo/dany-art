@@ -12,6 +12,11 @@
   padding: 3rem 2rem;
   position: relative;
 }
+@media (min-width: 1920px) {
+  .section {
+    padding: 8rem 18% 2rem;
+  }
+}
 .section .heading {
   display: flex;
   flex-direction: column;

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./Contact.module.scss";
 
@@ -12,6 +12,7 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -23,7 +24,6 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -32,7 +32,8 @@ export default function ContactPage() {
       });
       if (!res.ok) throw new Error("Chyba při odesílání");
       setIsSubmitted(true);
-    } catch {
+    } catch (err) {
+      setError("Nepodařilo se odeslat formulář.");
     } finally {
       setIsSubmitting(false);
     }
@@ -134,6 +135,7 @@ export default function ContactPage() {
           >
             {isSubmitting ? "Odesílám..." : "Odeslat"}
           </button>
+          {error && <div className="error">{error}</div>}
         </form>
       </div>
     </section>

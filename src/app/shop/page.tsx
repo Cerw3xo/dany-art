@@ -60,8 +60,8 @@ export default function ShopPage() {
               item.thumbnail || item.attributes?.thumbnail
             ),
             summary: item.summary || item.attributes?.summary,
-            available: item.available || item.attributes?.available,
-            featured: item.featured || item.attributes?.featured,
+            available: item.available ?? item.attributes?.available,
+            featured: item.featured ?? item.attributes?.featured,
           }))
         );
         setLoading(false);

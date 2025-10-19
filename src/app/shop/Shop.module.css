@@ -13,6 +13,11 @@
   background-size: 50%, 60%;
   background-position: -50% 15%, 170% 5%;
 }
+@media (min-width: 1920px) {
+  .shop {
+    padding: 8rem 18% 2rem;
+  }
+}
 
 .header {
   text-align: center;

@@ -16,6 +16,12 @@
   background-size: 80%;
   overflow: hidden;
 }
+@media (min-width: 1920px) {
+  .contact,
+  .thankYou {
+    padding: 8rem 18% 2rem;
+  }
+}
 .contact::before,
 .thankYou::before {
   content: "";
