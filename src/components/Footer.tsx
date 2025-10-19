@@ -20,7 +20,7 @@ export default function Footer() {
           <h4>INFORMACE</h4>
           <ul>
             <li>Daniela Konečná</li>
-            <li>Rakovice, Jihomoravský kraj</li>
+            <li>Tvořihráz, Jihomoravský kraj</li>
             <li>Česká republika</li>
             <li>IČO: 21306958</li>
           </ul>
@@ -37,9 +37,36 @@ export default function Footer() {
                 dani.konecna@email.cz
               </a>
             </li>
-            <li>@ danyss_art</li>
-            <li>tiktok: Danyss_Art</li>
-            <li>facebook: DanyssArt</li>
+            <li>
+              <a
+                href="https://www.instagram.com/danyss_art/?hl=cs"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                Instagram: danyss_art
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.tiktok.com/@danyss_art"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+              >
+                TikTok: Danyss_Art
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/p/Danyss_Art-61551925113012/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                Facebook: DanyssArt
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -64,7 +91,6 @@ export default function Footer() {
           width={730}
           height={200}
         />
-        <div></div>
         <p>
           © {new Date().getFullYear()} Daniela Konečná – danyss_art –
           grafický design a ruční tvorba

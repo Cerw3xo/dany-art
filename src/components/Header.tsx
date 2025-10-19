@@ -9,11 +9,14 @@ import { SiTiktok } from "react-icons/si";
 import { LuShoppingCart } from "react-icons/lu";
 import { useCartStore } from "@/store/cart";
 import CartDrawer from "./CartDrawer";
+import { LuMenu } from "react-icons/lu";
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const pathname = usePathname();
   const items = useCartStore((state) => state.items);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const totalCount = items.reduce(
     (sum, item) => sum + item.quantity,
     0
@@ -24,7 +27,7 @@ export default function Header() {
       <header className={styles.header}>
         <div className={styles.left}>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/danyss_art/?hl=cs"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -32,7 +35,7 @@ export default function Header() {
             <FaInstagram className={styles.icon} />
           </a>
           <a
-            href="https://tiktok.com"
+            href="https://www.tiktok.com/@danyss_art"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="TikTok"
@@ -40,7 +43,7 @@ export default function Header() {
             <SiTiktok className={styles.icon} />
           </a>
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/p/Danyss_Art-61551925113012/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -50,6 +53,14 @@ export default function Header() {
         </div>
 
         <nav className={styles.nav}>
+          <button
+            className={styles.hamburgerBtn}
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Otevřít menu"
+          >
+            <LuMenu />
+          </button>
+
           <div className={styles.center}>
             <button
               onClick={() => setIsCartOpen(true)}
@@ -103,6 +114,11 @@ export default function Header() {
       <CartDrawer
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
+      />
+
+      <MobileMenu
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
       />
     </>
   );

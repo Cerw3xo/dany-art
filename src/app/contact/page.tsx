@@ -1,6 +1,5 @@
-// src/app/contact/page.tsx
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./Contact.module.scss";
 
@@ -13,6 +12,7 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,16 +24,21 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Simulácia odoslania (neskôr tu bude API volanie)
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    // Namiesto presmerovania len zmeníme stav
-    setIsSubmitted(true);
-    setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Chyba při odesílání");
+      setIsSubmitted(true);
+    } catch (err) {
+      setError("Nepodařilo se odeslat formulář.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  // Automatické presmerovanie na hlavnú stránku po 5 sekundách od odoslania
   useEffect(() => {
     if (isSubmitted) {
       const timer = setTimeout(() => {
@@ -44,30 +49,26 @@ export default function ContactPage() {
     }
   }, [isSubmitted, router]);
 
-  // Zobrazenie poďakovania po odoslaní
   if (isSubmitted) {
     return (
       <section className={styles.thankYou}>
         <div className={styles.container}>
-          <div className={styles.message}>
-            <h1 className={styles.thankYouTitle}>
-              Děkuji! Tvoje zpráva byla odeslána
-            </h1>
-            <p className={styles.text}>
-              Ozvu se ti co nejdříve.
-              <br />
-              Těším se na spolupráci!
-            </p>
-            <p className={styles.redirect}>
-              Za 5 sekund budeš přesměrován na hlavní stránku...
-            </p>
-          </div>
+          <h1 className={styles.thankYouTitle}>
+            Děkuji! Tvoje zpráva byla odeslána
+          </h1>
+          <p className={styles.text}>
+            Ozvu se ti co nejdříve.
+            <br />
+            Těším se na spolupráci!
+          </p>
+          <p className={styles.redirect}>
+            Za 5 sekund budeš přesměrován na hlavní stránku...
+          </p>
         </div>
       </section>
     );
   }
 
-  // Zobrazenie formulára
   return (
     <section className={styles.contact}>
       <div className={styles.container}>
@@ -134,6 +135,7 @@ export default function ContactPage() {
           >
             {isSubmitting ? "Odesílám..." : "Odeslat"}
           </button>
+          {error && <div className="error">{error}</div>}
         </form>
       </div>
     </section>

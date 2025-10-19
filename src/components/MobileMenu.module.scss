@@ -1,0 +1,74 @@
+@use "../styles/mixins" as m;
+@use "../styles/variables" as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 999;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(80vw, 320px);
+  background: $color-bg;
+
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  .header {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .logo {
+    margin-top: 10rem;
+    margin-left: 1rem;
+  }
+}
+
+.open {
+  transform: translateX(0);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
+}
+
+.closeBtn {
+  background: none;
+  border: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: $color-secondary;
+}
+
+.list {
+  list-style: none;
+  padding: 1rem 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.link {
+  @include m.cta-button();
+  width: 100%;
+  padding: 0.7rem 1.5rem;
+  color: $color-secondary;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 1.5rem;
+
+  &:active {
+    border-color: $color-primary;
+    background: $color-accent;
+    color: $color-primary;
+    font-weight: 600;
+  }
+}

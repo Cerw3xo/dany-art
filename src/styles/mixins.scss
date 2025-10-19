@@ -15,6 +15,10 @@
   align-items: center;
   justify-content: center;
   background-color: $color-bg;
+
+  @media (min-width: 1920px) {
+    padding: 8rem 18% 2rem;
+  }
 }
 
 @mixin cta-button() {

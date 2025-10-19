@@ -2,36 +2,30 @@
 
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 9998;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 999;
 }
 
 .drawer {
   position: fixed;
   top: 0;
-  right: -400px;
-  width: 400px;
+  right: 0;
   height: 100vh;
+  width: min(80vw, 370px);
   background: $color-bg;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 9999;
-  transition: right 0.3s ease;
-  overflow-y: auto;
-
-  &.open {
-    right: 0;
-  }
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
 
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.77rem;
-    border-bottom: 3px solid $color-accent;
+    padding: 1.1rem 0.9rem;
+    // border-bottom: 3px solid $color-accent;
 
     h3 {
       margin: 0;
@@ -50,6 +44,10 @@
       }
     }
   }
+}
+.open {
+  transform: translateX(0);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
 }
 
 .content {
@@ -122,11 +120,12 @@
     padding: 1rem 0;
     font-size: 1.2rem;
     color: $color-primary;
+    margin-bottom: 1rem;
   }
 
   .checkoutBtn {
     width: 100%;
-    padding: 1rem;
+    padding: 0.7rem 1rem;
     background: $color-primary-light;
     color: white;
     border: none;

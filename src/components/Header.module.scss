@@ -106,4 +106,68 @@
       border: 2px solid $color-primary;
     }
   }
+
+  .hamburgerBtn {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+      stroke: $color-secondary;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 1rem 5% 0.6rem;
+    .left {
+      .icon {
+        width: 1.1rem;
+      }
+    }
+
+    .nav {
+      gap: 1.1rem;
+
+      .center {
+        .cartLink {
+          .cartIcon {
+            width: 1.7rem;
+          }
+        }
+      }
+      .navLink {
+        font-size: 0.9rem;
+        padding: 0.1rem 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    .nav {
+      .navLink {
+        display: none;
+      }
+      .hamburgerBtn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .center {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .header {
+    padding: 1.1rem 10% 1rem;
+  }
 }

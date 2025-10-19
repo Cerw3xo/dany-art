@@ -89,13 +89,14 @@
     gap: 2rem;
 
     .sidebar {
+      margin-top: 0.8rem;
       width: 13rem;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
       border-radius: 0.1rem;
       padding: 1rem;
 
       h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
         color: $color-secondary;
         margin-bottom: 0.6rem;
       }
@@ -112,7 +113,7 @@
         .sub {
           color: $color-text-light;
           margin-left: 0.2rem;
-          margin-bottom: 0.2rem;
+          margin-bottom: 0.3rem;
         }
         li {
           color: $color-text-light;
@@ -166,6 +167,178 @@
         .price {
           color: $color-text-light;
           margin-top: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .shop {
+    padding: 8rem 3% 2rem;
+    .header {
+      .title {
+        font-size: 3.2rem;
+      }
+      .subtitle {
+        font-size: 1.8rem;
+      }
+    }
+
+    .content {
+      .sectionTitle {
+        left: -12rem;
+        width: 55%;
+        font-size: 1.5rem;
+      }
+      .categories {
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .shop {
+    .header {
+      .title {
+        font-size: 2.6rem;
+      }
+      .subtitle {
+        font-size: 1.6rem;
+      }
+    }
+
+    .chips {
+      gap: 1rem;
+      margin-bottom: 7rem;
+      button {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    .content {
+      margin-top: 4rem;
+      .sectionTitle {
+        left: -6rem;
+      }
+
+      .categories {
+        flex-direction: column;
+        gap: 1.2rem;
+
+        .sidebar {
+          width: 30%;
+          padding: 0.8rem;
+          box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+          width: 100%;
+          justify-items: stretch;
+          .card {
+            padding: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .shop {
+    background-size: 57%, 70%;
+    .chips {
+      gap: 1rem;
+      max-width: none;
+      margin: 1rem auto 1.5rem;
+    }
+
+    .content {
+      .sectionTitle {
+        text-align: right;
+        width: 60%;
+        font-size: 1.3rem;
+        margin-bottom: 4rem;
+      }
+      .categories {
+        .sidebar {
+          width: 40%;
+        }
+        .grid {
+          .card {
+            padding: 0.6rem;
+            .thumb {
+              height: 14rem;
+            }
+            .name {
+              font-size: 0.9rem;
+            }
+            .price {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .shop {
+    .header {
+      .title {
+        font-size: 2.2rem;
+      }
+      .subtitle {
+        font-size: 1.4rem;
+      }
+    }
+
+    .chips {
+      padding: 0.5rem;
+      button {
+        font-size: 0.85rem;
+        padding: 0.45rem 1rem;
+      }
+    }
+
+    .content {
+      .sectionTitle {
+        font-size: 1.1rem;
+        width: 82%;
+        border-radius: 1rem;
+      }
+      .categories {
+        .sidebar {
+          width: 50%;
+
+          h3 {
+            font-size: 0.9rem;
+          }
+
+          ul {
+            .sub {
+              font-size: 0.8rem;
+            }
+            .cat {
+              font-size: 0.8rem;
+            }
+          }
+        }
+        .grid {
+          gap: 0.2rem;
+          .card {
+            .thumb {
+              height: 12rem;
+            }
+          }
         }
       }
     }

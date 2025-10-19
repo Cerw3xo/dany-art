@@ -3,71 +3,78 @@
 
 .hero {
   @include m.section();
-  min-height: 100vh;
+  padding: 4rem 0;
+  background-color: $color-accent;
   position: relative;
-  overflow: hidden;
-  background: $color-accent;
 
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .contentWrapper {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    max-width: 90%;
-    height: 70vh;
-    gap: clamp(4rem, 6vw, 8rem);
-    z-index: 1;
+    gap: clamp(1.25rem, 4vw, 4rem);
+    width: 100%;
+    max-width: 1200px;
+    min-height: 95vh;
+    margin: 0 auto;
+    padding: 0 4%;
 
     .imageWrapper {
+      flex: 0 1 clamp(240px, 32vw, 420px);
+      aspect-ratio: 4/ 6;
+      overflow: hidden;
       border: 4px solid $color-bg;
       padding: 0.3rem;
-      border-radius: 0.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 0.25rem;
 
       .image {
-        height: 100%;
         width: 100%;
+        height: 100%;
         object-fit: cover;
+        display: block;
       }
     }
 
     .textWrapper {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      justify-content: start;
-      min-width: 350px;
+      flex: 1 1 0;
+      min-width: 0;
+      gap: clamp(0.5rem, 1.2vw, 1rem);
       color: white;
+      position: relative;
+      top: -4rem;
 
       .logo {
         position: relative;
-        width: 26rem;
-        height: 12rem;
+        top: 1rem;
+        left: -6%;
+        width: clamp(280px, 50vw, 520px);
+        height: auto;
       }
 
-      .subtitle {
-        position: relative;
-        top: -1.3rem;
-        color: $color-primary;
-        font-size: 1.2rem;
-        letter-spacing: 5px;
-        margin-bottom: 1.5rem;
+      .text {
+        margin-top: 1rem;
       }
-
-      .headline {
-        font-size: 2.1rem;
-        font-weight: bold;
+      .text .headline {
+        font-size: clamp(1.35rem, 2.2vw + 0.6rem, 2.3rem);
+        margin-bottom: 0.75rem;
         color: white;
-        margin-bottom: 1rem;
+        font-weight: bold;
       }
 
       .description {
-        font-size: 1.7rem;
-        margin-bottom: 3rem;
+        font-size: clamp(1rem, 1.5vw + 0.4rem, 1.6rem);
+        margin-bottom: clamp(1.25rem, 3vw, 2.25rem);
+        color: white;
         p {
-          margin: 0;
-          font-weight: 700;
+          font-weight: bold;
         }
       }
 
@@ -78,8 +85,9 @@
         @include m.cta-button();
         background-color: $color-green-light;
         border-color: $color-secondary;
-        font-size: 1.3rem;
+        font-size: clamp(1rem, 1.2vw + 0.8rem, 1.3rem);
         font-weight: 700;
+        padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(1rem, 2vw, 1.5rem);
         transition: all 0.2s ease;
 
         &:hover {
@@ -88,6 +96,64 @@
           outline: 2px solid $color-secondary;
           outline-offset: 2px;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100dvh;
+    padding: 0;
+
+    .contentWrapper {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 70vh;
+      min-width: 100vw;
+      gap: 0.75rem;
+      padding: 0;
+      display: flex;
+      align-items: start;
+      justify-content: center;
+
+      .textWrapper {
+        height: 100%;
+        text-align: left;
+        padding: 0 1rem 0 2.7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .logo {
+          width: 75vw;
+          height: auto;
+          top: 6rem;
+          margin: 4rem 0;
+        }
+
+        .headline {
+          font-size: 2rem;
+          margin-bottom: 0.4rem;
+        }
+
+        .description {
+          font-size: 1.2rem;
+          max-width: 90%;
+          margin-bottom: 0.9rem;
+        }
+
+        .cta {
+          font-size: 0.9rem;
+          padding: 0.3rem 0.7rem;
+          top: -1.5rem;
+          max-width: 80%;
+        }
+      }
+
+      .imageWrapper {
+        display: none;
       }
     }
   }

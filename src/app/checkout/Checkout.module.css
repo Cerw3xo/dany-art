@@ -10,6 +10,11 @@
   overflow: hidden;
   position: relative;
 }
+@media (min-width: 1920px) {
+  .checkout {
+    padding: 8rem 18% 2rem;
+  }
+}
 
 .withBackground::before {
   content: "";

@@ -8,6 +8,11 @@
   background-color: #f7f4ee;
   flex-direction: column;
 }
+@media (min-width: 1920px) {
+  .product {
+    padding: 8rem 18% 2rem;
+  }
+}
 .product .info {
   width: 100%;
   display: flex;

@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
 import type { Product } from "@/data/products";
 import AddToCartModal from "./AddToCartModal";
-import styles from "./AddToCartModal.module.scss";
-import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {
   product: Product;
@@ -46,7 +44,7 @@ export default function AddToCartButton({
         disabled={isAdding}
         className={className}
       >
-        {isAdding ? "Přidávám.." : label}
+        {isAdding ? "Přidávám..." : label}
       </button>
 
       {modalOpen && (
@@ -55,7 +53,6 @@ export default function AddToCartButton({
           onGoToCart={handleGoToCart}
           quantity={1}
           product={product}
-          aria-model={true}
         />
       )}
     </>
