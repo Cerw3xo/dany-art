@@ -2,11 +2,13 @@
 @use "../styles/mixins" as m;
 
 .about {
-  gap: 2rem;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 5rem;
-  @include m.section();
+  & {
+    gap: 2rem;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 5rem;
+    @include m.section();
+  }
 
   .left {
     position: relative;

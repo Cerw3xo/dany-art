@@ -2,12 +2,14 @@
 @use "../styles/mixins" as m;
 
 .section {
-  flex-direction: column;
-  min-height: 60vh;
-  background: $color-bg;
-  padding: 3rem 2rem;
-  position: relative;
-  @include m.section();
+  & {
+    flex-direction: column;
+    min-height: 60vh;
+    background: $color-bg;
+    padding: 3rem 2rem;
+    position: relative;
+    @include m.section();
+  }
 
   .heading {
     display: flex;
