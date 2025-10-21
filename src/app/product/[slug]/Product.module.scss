@@ -2,8 +2,8 @@
 @use "../../../styles/mixins" as m;
 
 .product {
-  @include m.section();
   flex-direction: column;
+  @include m.section();
 
   .info {
     width: 100%;

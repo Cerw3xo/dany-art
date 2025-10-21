@@ -23,14 +23,6 @@ type OrderDelivery = {
   zip: string;
   country: string;
 };
-type OrderPayload = {
-  orderNumber: string;
-  customer: { name: string; email: string; phone: string };
-  items: OrderItem[];
-  delivery: OrderDelivery;
-  note?: string;
-  total: number;
-};
 
 export default function CheckoutForm({
   onBack,
@@ -92,11 +84,13 @@ export default function CheckoutForm({
         email: form.email,
         phone: form.phone,
       },
-      items: items.map((i) => ({
-        name: i.name,
-        quantity: i.quantity,
-        price: i.price,
-      })),
+      items: items.map(
+        (i): OrderItem => ({
+          name: i.name,
+          quantity: i.quantity,
+          price: i.price,
+        })
+      ),
       delivery: {
         method: form.deliveryMethod,
         address: form.address,
@@ -119,8 +113,13 @@ export default function CheckoutForm({
 
       clearCart();
       onSubmit();
-    } catch (err) {
-      setError("Chyba při odesílání objednávky");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError("Chyba při odesílání objednávky: " + err.message);
+        console.error(err);
+      } else {
+        setError("Chyba při odesílání objednávky (neznámy dôvod)");
+      }
     }
   };
 

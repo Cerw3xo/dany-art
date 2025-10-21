@@ -1,4 +1,10 @@
 .shop {
+  flex-direction: column;
+  background: #f7f4ee;
+  background-image: url("/ui/pink_1.svg"), url("/ui/pink_2.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-size: 50%, 60%;
+  background-position: -50% 15%, 170% 5%;
   width: 100vw;
   margin: 0 auto;
   padding: 8rem 6% 2rem;
@@ -6,12 +12,6 @@
   align-items: center;
   justify-content: center;
   background-color: #f7f4ee;
-  flex-direction: column;
-  background: #f7f4ee;
-  background-image: url("/ui/pink_1.svg"), url("/ui/pink_2.svg");
-  background-repeat: no-repeat, no-repeat;
-  background-size: 50%, 60%;
-  background-position: -50% 15%, 170% 5%;
 }
 @media (min-width: 1920px) {
   .shop {

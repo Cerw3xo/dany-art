@@ -1,4 +1,7 @@
 .checkout {
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
   width: 100vw;
   margin: 0 auto;
   padding: 8rem 6% 2rem;
@@ -6,9 +9,6 @@
   align-items: center;
   justify-content: center;
   background-color: #f7f4ee;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
 }
 @media (min-width: 1920px) {
   .checkout {

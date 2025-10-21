@@ -3,15 +3,15 @@
 
 .contact,
 .thankYou {
-  @include m.section();
-  position: relative;
   min-height: calc(100vh - 7rem);
+  position: relative;
   background: $color-bg;
   background-image: url("/ui/sage1.svg");
   background-repeat: no-repeat;
   background-position: -25rem 15rem;
   background-size: 80%;
   overflow: hidden;
+  @include m.section();
 
   &::before {
     content: "";
@@ -117,7 +117,7 @@
     }
 
     &:disabled {
-      background: lighten($color-primary, 15%);
+      background: $color-accent;
       cursor: not-allowed;
     }
   }

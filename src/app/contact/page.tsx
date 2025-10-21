@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./Contact.module.scss";
 
@@ -32,8 +32,13 @@ export default function ContactPage() {
       });
       if (!res.ok) throw new Error("Chyba při odesílání");
       setIsSubmitted(true);
-    } catch (err) {
-      setError("Nepodařilo se odeslat formulář.");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError("Nepodařilo se odeslat formulář: " + err.message);
+        console.error(err);
+      } else {
+        setError("Nepodařilo se odeslat formuář z neznámeho důvodu.");
+      }
     } finally {
       setIsSubmitting(false);
     }

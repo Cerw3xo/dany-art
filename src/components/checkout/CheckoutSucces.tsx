@@ -1,4 +1,3 @@
-import { StyleRegistry } from "styled-jsx";
 import styles from "./CheckoutSucces.module.scss";
 
 export default function CheckoutSucces() {

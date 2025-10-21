@@ -2,10 +2,10 @@
 @use "../styles/mixins" as m;
 
 .hero {
-  @include m.section();
   padding: 4rem 0;
   background-color: $color-accent;
   position: relative;
+  @include m.section();
 
   .background {
     position: absolute;

@@ -1,5 +1,13 @@
 .contact,
 .thankYou {
+  min-height: calc(100vh - 7rem);
+  position: relative;
+  background: #f7f4ee;
+  background-image: url("/ui/sage1.svg");
+  background-repeat: no-repeat;
+  background-position: -25rem 15rem;
+  background-size: 80%;
+  overflow: hidden;
   width: 100vw;
   margin: 0 auto;
   padding: 8rem 6% 2rem;
@@ -7,14 +15,6 @@
   align-items: center;
   justify-content: center;
   background-color: #f7f4ee;
-  position: relative;
-  min-height: calc(100vh - 7rem);
-  background: #f7f4ee;
-  background-image: url("/ui/sage1.svg");
-  background-repeat: no-repeat;
-  background-position: -25rem 15rem;
-  background-size: 80%;
-  overflow: hidden;
 }
 @media (min-width: 1920px) {
   .contact,
@@ -137,7 +137,7 @@
   color: white;
 }
 .form .submit:disabled {
-  background: #e6a2a2;
+  background: #ffd7d7;
   cursor: not-allowed;
 }
 

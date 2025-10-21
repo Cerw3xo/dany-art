@@ -1,4 +1,8 @@
 .about {
+  gap: 2rem;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 5rem;
   width: 100vw;
   margin: 0 auto;
   padding: 8rem 6% 2rem;
@@ -6,10 +10,6 @@
   align-items: center;
   justify-content: center;
   background-color: #f7f4ee;
-  gap: 2rem;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 5rem;
 }
 @media (min-width: 1920px) {
   .about {

@@ -1,4 +1,7 @@
 .hero {
+  padding: 4rem 0;
+  background-color: #ffd7d7;
+  position: relative;
   width: 100vw;
   margin: 0 auto;
   padding: 8rem 6% 2rem;
@@ -6,9 +9,6 @@
   align-items: center;
   justify-content: center;
   background-color: #f7f4ee;
-  padding: 4rem 0;
-  background-color: #ffd7d7;
-  position: relative;
 }
 @media (min-width: 1920px) {
   .hero {
