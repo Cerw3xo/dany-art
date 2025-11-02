@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import styles from "./ProductGallery.module.scss";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
 
@@ -27,14 +28,17 @@ export default function ProductGallery({
           <FaChevronUp />
         </button>
         {images.map((src, i) => (
-          <img
+          <Image
             key={i}
             src={src}
             alt={name}
+            width={80}
+            height={70}
             className={`${styles.thumb} ${
               mainImg === i ? styles.active : ""
             }`}
             onClick={() => setMainImg(i)}
+            style={{ objectFit: "cover" }}
           />
         ))}
         <button
@@ -46,7 +50,13 @@ export default function ProductGallery({
         </button>
       </div>
       <div className={styles.mainImg}>
-        <img src={images[mainImg]} alt={name} />
+        <Image
+          src={images[mainImg]}
+          alt={name}
+          width={800}
+          height={600}
+          style={{ objectFit: "contain" }}
+        />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { formatPrice } from "@/lib/format";
 import { Product } from "@/data/products";
 import styles from "./AddToCartModal.module.scss";
@@ -33,10 +34,13 @@ export default function AddToCartModal({
 
         <div className={styles.product}>
           <div className={styles.productName}>
-            <img
+            <Image
               src={product.thumbnail}
               alt={product.name}
               className={styles.productImg}
+              width={80}
+              height={80}
+              style={{ objectFit: "cover" }}
             />
             <strong>{product.name}</strong>
           </div>

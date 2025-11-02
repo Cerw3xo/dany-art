@@ -6,7 +6,20 @@ import ProductGallery from "../ProductGallery";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-function getThumbnailUrl(thumbnail: any) {
+type StrapiMediaFormat = {
+  url: string;
+};
+
+type StrapiMedia = {
+  url?: string;
+  formats?: {
+    medium?: StrapiMediaFormat;
+  };
+};
+
+function getThumbnailUrl(
+  thumbnail: StrapiMedia | null | undefined
+): string {
   if (!thumbnail) return "/placeholder.jpg";
   if (
     thumbnail.formats &&
@@ -21,7 +34,9 @@ function getThumbnailUrl(thumbnail: any) {
   return "/placeholder.jpg";
 }
 
-function getImages(images: any) {
+function getImages(
+  images: StrapiMedia[] | null | undefined
+): string[] {
   if (!images || !Array.isArray(images)) return [];
   return images.map((img) => {
     if (img.formats && img.formats.medium && img.formats.medium.url) {
@@ -37,9 +52,9 @@ function getImages(images: any) {
 export default async function ProductPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const slug = params.slug;
+  const { slug } = await params;
   let product: Product | null = null;
   let error: string | null = null;
 
@@ -70,11 +85,14 @@ export default async function ProductPage({
         featured: item.featured ?? item.attributes?.featured,
       };
     }
-  } catch (err: any) {
-    error =
-      err.message === "Failed to fetch"
-        ? "Nepodařilo sae připojiť k serveru. Zkontroluj, či beží Strapi alebo síť."
-        : err.message || "Nepodařilo se načíst produkt";
+  } catch (err: unknown) {
+    const errorMessage =
+      err instanceof Error
+        ? err.message === "Failed to fetch"
+          ? "Nepodařilo sae připojiť k serveru. Zkontroluj, či beží Strapi alebo síť."
+          : err.message
+        : "Nepodařilo se načíst produkt";
+    error = errorMessage;
   }
 
   if (error)

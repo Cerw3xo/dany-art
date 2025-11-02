@@ -65,10 +65,13 @@ export default function About() {
           <p className={styles.name}>Daniela Konečná</p>
         </div>
         <div className={styles.imgContainer}>
-          <img
+          <Image
             src="/dany.webp"
             alt="Daniela Konečná maluje obraz"
             className={styles.photo}
+            width={400}
+            height={600}
+            style={{ objectFit: "cover" }}
           />
         </div>
       </motion.div>

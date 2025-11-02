@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { Product } from "@/data/products";
 import { useState, useEffect } from "react";
 import { categories } from "@/data/categories";
@@ -7,6 +8,45 @@ import styles from "./Shop.module.scss";
 import Link from "next/link";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+type StrapiMediaFormat = {
+  url: string;
+};
+
+type StrapiMedia = {
+  url?: string;
+  formats?: {
+    medium?: StrapiMediaFormat;
+  };
+};
+
+type StrapiProductData = {
+  id: string;
+  slug?: string;
+  name?: string;
+  price?: number;
+  currency?: string;
+  category?: string;
+  subcategory?: string;
+  images?: StrapiMedia[];
+  thumbnail?: StrapiMedia;
+  summary?: string;
+  available?: boolean;
+  featured?: boolean;
+  attributes?: {
+    slug?: string;
+    name?: string;
+    price?: number;
+    currency?: string;
+    category?: string;
+    subcategory?: string;
+    images?: StrapiMedia[];
+    thumbnail?: StrapiMedia;
+    summary?: string;
+    available?: boolean;
+    featured?: boolean;
+  };
+};
 
 export default function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -21,7 +61,7 @@ export default function ShopPage() {
     string | null
   >(null);
 
-  function getThumbnailUrl(thumbnail: any) {
+  function getThumbnailUrl(thumbnail: StrapiMedia | null | undefined): string {
     if (!thumbnail) return "/placeholder.jpg";
     if (
       thumbnail.formats &&
@@ -36,6 +76,19 @@ export default function ShopPage() {
     return "/placeholder.jpg";
   }
 
+  function getImages(images: StrapiMedia[] | null | undefined): string[] {
+    if (!images || !Array.isArray(images)) return [];
+    return images.map((img) => {
+      if (img.formats && img.formats.medium && img.formats.medium.url) {
+        return API_URL + img.formats.medium.url;
+      }
+      if (img.url) {
+        return API_URL + img.url;
+      }
+      return "/placeholder.jpg";
+    });
+  }
+
   useEffect(() => {
     setLoading(true);
     setError(null);
@@ -44,25 +97,27 @@ export default function ShopPage() {
         if (!res.ok) throw new Error("Chyba při načítání produktů");
         return res.json();
       })
-      .then((json) => {
+      .then((json: { data: StrapiProductData[] }) => {
         setProducts(
-          json.data.map((item: any) => ({
-            id: item.id,
-            slug: item.slug || item.attributes?.slug,
-            name: item.name || item.attributes?.name,
-            price: item.price || item.attributes?.price,
-            currency: item.currency || item.attributes?.currency,
-            category: item.category || item.attributes?.category,
-            subcategory:
-              item.subcategory || item.attributes?.subcategory,
-            images: item.images || item.attributes?.images,
-            thumbnail: getThumbnailUrl(
-              item.thumbnail || item.attributes?.thumbnail
-            ),
-            summary: item.summary || item.attributes?.summary,
-            available: item.available ?? item.attributes?.available,
-            featured: item.featured ?? item.attributes?.featured,
-          }))
+          json.data
+            .map((item) => ({
+              id: item.id,
+              slug: item.slug || item.attributes?.slug || "",
+              name: item.name || item.attributes?.name || "",
+              price: item.price || item.attributes?.price || 0,
+              currency: (item.currency || item.attributes?.currency || "CZK") as "CZK",
+              category: item.category || item.attributes?.category || "",
+              subcategory:
+                item.subcategory || item.attributes?.subcategory,
+              images: getImages(item.images || item.attributes?.images),
+              thumbnail: getThumbnailUrl(
+                item.thumbnail || item.attributes?.thumbnail
+              ),
+              summary: item.summary || item.attributes?.summary,
+              available: item.available ?? item.attributes?.available ?? false,
+              featured: item.featured ?? item.attributes?.featured ?? false,
+            }))
+            .filter((p) => Boolean(p.slug && p.name)) as Product[]
         );
         setLoading(false);
       })
@@ -185,9 +240,13 @@ export default function ShopPage() {
                       className={styles.link}
                       href={`/product/${p.slug}`}
                     >
-                      <img
+                      <Image
                         className={styles.thumb}
                         src={p.thumbnail || "/placeholder.jpg"}
+                        alt={p.name}
+                        width={300}
+                        height={300}
+                        style={{ objectFit: "cover" }}
                       />
                       <div className={styles.name}>{p.name}</div>
                       <div className={styles.price}>{p.price} Kč</div>

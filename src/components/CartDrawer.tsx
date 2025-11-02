@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCartStore } from "@/store/cart";
 import styles from "./CartDrawer.module.scss";
 import { formatPrice } from "@/lib/format";
@@ -47,7 +48,13 @@ export default function CartDrawer({
 
                 return (
                   <div key={item.id} className={styles.cartItem}>
-                    <img src={imgSrc} alt={item.name} />
+                    <Image
+                      src={imgSrc}
+                      alt={item.name}
+                      width={80}
+                      height={80}
+                      style={{ objectFit: "cover" }}
+                    />
                     <div className={styles.itemInfo}>
                       <h4>{item.name}</h4>
                       <p>{formatPrice(item.price)} </p>

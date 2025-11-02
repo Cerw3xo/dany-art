@@ -1,11 +1,13 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./PortfolioPreview.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { motion, useInView, type Variants } from "framer-motion";
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -30,7 +32,7 @@ const items = [
 export default function PortfolioPreview() {
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
   const portfolioRef = useRef(null);
 
   const isInView = useInView(portfolioRef, {
@@ -178,10 +180,13 @@ export default function PortfolioPreview() {
                         : { opacity: 0, y: -40, scale: 0.9 }
                     }
                   >
-                    <img
+                    <Image
                       src={item.src}
                       alt={item.alt}
+                      width={400}
+                      height={300}
                       loading="lazy"
+                      style={{ objectFit: "cover" }}
                     />
                   </motion.div>
                 </SwiperSlide>

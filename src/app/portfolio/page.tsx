@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
 import styles from "./Portfolio.module.scss";
 
@@ -87,10 +88,13 @@ export default function PortfolioPage() {
                 setIndex(i);
               }}
             >
-              <img
+              <Image
                 src={item.src}
                 alt={item.alt}
                 className={styles.image}
+                width={800}
+                height={600}
+                style={{ objectFit: "cover" }}
               />
               <div className={styles.overlay}>
                 <span className={styles.caption}>{item.alt}</span>

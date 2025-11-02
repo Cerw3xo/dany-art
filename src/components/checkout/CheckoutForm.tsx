@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import { useCart } from "@/hooks/useCart";
 import { formatPrice } from "@/lib/format";
 import styles from "./CheckoutForm.module.scss";
@@ -16,13 +17,6 @@ type CheckoutFormData = {
 };
 
 type OrderItem = { name: string; quantity: number; price: number };
-type OrderDelivery = {
-  method: string;
-  address: string;
-  city: string;
-  zip: string;
-  country: string;
-};
 
 export default function CheckoutForm({
   onBack,
@@ -297,10 +291,13 @@ export default function CheckoutForm({
               <div key={item.id} className={styles.summaryItem}>
                 <div className={styles.item}>
                   {item.thumbnail && (
-                    <img
+                    <Image
                       className={styles.itemImage}
                       src={item.thumbnail}
                       alt={item.name}
+                      width={60}
+                      height={60}
+                      style={{ objectFit: "cover" }}
                     />
                   )}
                   <p className={styles.itemName}>{item.name}</p>

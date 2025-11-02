@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useCartStore } from "@/store/cart";
 import { formatPrice } from "@/lib/format";
 import styles from "./CartSummary.module.scss";
@@ -34,10 +35,13 @@ export default function CartSummary({
           {items.map((item) => (
             <tr key={item.id}>
               <td>
-                <img
+                <Image
                   src={item.thumbnail}
                   alt={item.name}
                   className={styles.productImg}
+                  width={60}
+                  height={60}
+                  style={{ objectFit: "cover" }}
                 />{" "}
                 {item.name}
               </td>
