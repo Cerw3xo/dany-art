@@ -212,7 +212,8 @@
 
       .wrapper {
         :global(.swiper-slide) {
-          width: 100% !important;
+          min-width: 0;
+          width: 100%;
 
           > img {
             border: 20px solid blue;

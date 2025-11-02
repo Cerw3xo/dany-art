@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Raleway, Dancing_Script } from "next/font/google";
 import "yet-another-react-lightbox/styles.css";
 import "../styles/globals.scss";
@@ -19,6 +19,14 @@ const dancing = Dancing_Script({
 export const metadata: Metadata = {
   title: "Dany Art",
   description: "Minimalistický umělecký e-shop",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

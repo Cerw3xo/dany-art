@@ -122,8 +122,18 @@ export default function PortfolioPreview() {
           <Swiper
             loop={true}
             spaceBetween={24}
+            touchEventsTarget="container"
+            touchRatio={1}
+            touchAngle={45}
+            grabCursor={true}
+            watchSlidesProgress={true}
             breakpoints={{
               0: {
+                slidesPerView: 1,
+                centeredSlides: true,
+                spaceBetween: 0,
+              },
+              375: {
                 slidesPerView: 1,
                 centeredSlides: true,
                 spaceBetween: 0,

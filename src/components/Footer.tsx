@@ -86,7 +86,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         <Image
           className={styles.image}
-          src="/danyArt.png"
+          src="/danyArt1.png"
           alt="abstraktne pozadi"
           width={730}
           height={200}

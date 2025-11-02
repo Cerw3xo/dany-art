@@ -79,3 +79,14 @@ body {
     font-size: 125%;
   }
 }
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  .hero .contentWrapper {
+    min-height: -webkit-fill-available;
+  }
+}
