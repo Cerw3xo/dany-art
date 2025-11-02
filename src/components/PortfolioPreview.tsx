@@ -14,8 +14,8 @@ import "swiper/css/navigation";
 const items = [
   { src: "/portfolio/etikety/vino.jpg", alt: "Etiketa na vino" },
   {
-    src: "/portfolio/knihy/kniha-vazba.JPG",
-    alt: "Etiketa na vino",
+    src: "/portfolio/knihy/kniha-vazba.jpg",
+    alt: "Švadlenčin pomocník",
   },
   { src: "/portfolio/textil/dany.jpg", alt: "Trika s potiskem" },
   {

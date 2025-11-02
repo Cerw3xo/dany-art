@@ -1,12 +1,5 @@
 @use "./variables" as *;
 
-@mixin container($max-width: 70rem) {
-  max-width: $max-width;
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
 @mixin section {
   width: 100vw;
   margin: 0 auto;

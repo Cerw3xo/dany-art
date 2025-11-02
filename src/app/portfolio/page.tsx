@@ -34,11 +34,11 @@ const portfolioItems = [
   {
     id: "malba-kravy",
     src: "/portfolio/malba/obraz-dany.jpg",
-    alt: "Maľba kravy",
+    alt: "Danyss",
   },
   {
     id: "kapka-v-mori",
-    src: "/portfolio/knihy/svadlencin-pomocnik.JPG",
+    src: "/portfolio/knihy/svadlencin-pomocnik.jpg",
     alt: "Kapka v moři",
   },
   {
