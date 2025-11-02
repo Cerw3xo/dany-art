@@ -5,10 +5,15 @@ import { contactCustomerTemplate, contactOwnerTemplate } from "../emailTemplates
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(res: Request) {
     try {
+        if (!process.env.RESEND_API_KEY) {
+            console.error("RESEND_API_KEY nie je nastavený");
+            return NextResponse.json({ error: "Email service nie je nakonfigurovaný" }, { status: 500 });
+        }
+
+        const resend = new Resend(process.env.RESEND_API_KEY);
+
         const body = await res.json()
         const { name, email, message } = body || {};
         if (!name || !email || !message) {
