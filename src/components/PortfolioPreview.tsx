@@ -127,11 +127,14 @@ export default function PortfolioPreview() {
             touchAngle={45}
             grabCursor={true}
             watchSlidesProgress={true}
+            watchOverflow={true}
             breakpoints={{
               0: {
                 slidesPerView: 1,
-                centeredSlides: true,
+                centeredSlides: false,
                 spaceBetween: 0,
+                slidesOffsetBefore: 0,
+                slidesOffsetAfter: 0,
               },
 
               768: {

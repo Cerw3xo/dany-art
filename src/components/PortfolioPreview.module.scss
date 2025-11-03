@@ -69,17 +69,28 @@
 
     .wrapper {
       position: relative;
+      width: 100%;
 
       :global(.swiper) {
+        overflow: hidden;
+        width: 100%;
+
+        :global(.swiper-wrapper) {
+          align-items: stretch;
+        }
+
         :global(.swiper-slide) {
           transition: transform 0.3s ease;
           display: flex;
           justify-content: center;
           align-items: center;
           height: 35rem;
+          box-sizing: border-box;
+
           img {
             border: 5px solid $color-accent;
             height: 30rem;
+            width: 100%;
             object-fit: cover;
           }
         }
@@ -102,6 +113,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 10;
 
         &::before {
           content: "";
@@ -123,6 +135,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 10; // Zabezpečí viditeľnosť
 
         &::before {
           content: "";
@@ -211,29 +224,54 @@
       }
 
       .wrapper {
-        :global(.swiper-slide) {
-          min-width: 0;
+        padding: 0 1rem;
+
+        :global(.swiper) {
+          overflow: hidden;
           width: 100%;
 
-          > img {
-            border: 20px solid blue;
-          }
-          :global(.swiper-slide-prev),
-          :global(.swiper-slide-next) {
-            opacity: 0;
-            pointer-events: none;
-          }
-        }
+          :global(.swiper-slide) {
+            width: 100% !important;
+            min-width: 100% !important;
+            flex-shrink: 0;
+            height: auto;
+            max-height: 25rem;
 
-        :global(.swiper-slide-active) img {
-          width: 100%;
-          height: auto;
-          border-width: 0;
+            img {
+              width: 100%;
+              height: auto;
+              max-height: 25rem;
+              object-fit: cover;
+              border: 3px solid $color-accent;
+            }
+          }
+
+          :global(.swiper-slide-active) {
+            img {
+              border: 3px solid $color-accent;
+            }
+          }
         }
 
         .prev,
         .next {
           display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    .inner {
+      .wrapper {
+        :global(.swiper) {
+          :global(.swiper-slide) {
+            img {
+              max-height: 20rem;
+            }
+          }
         }
       }
     }

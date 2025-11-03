@@ -88,6 +88,14 @@
 }
 .section .inner .wrapper {
   position: relative;
+  width: 100%;
+}
+.section .inner .wrapper :global(.swiper) {
+  overflow: hidden;
+  width: 100%;
+}
+.section .inner .wrapper :global(.swiper) :global(.swiper-wrapper) {
+  align-items: stretch;
 }
 .section .inner .wrapper :global(.swiper) :global(.swiper-slide) {
   transition: transform 0.3s ease;
@@ -95,10 +103,12 @@
   justify-content: center;
   align-items: center;
   height: 35rem;
+  box-sizing: border-box;
 }
 .section .inner .wrapper :global(.swiper) :global(.swiper-slide) img {
   border: 5px solid #ffd7d7;
   height: 30rem;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -116,6 +126,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 .section .inner .wrapper .prev::before {
   content: "";
@@ -136,6 +147,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 .section .inner .wrapper .next::before {
   content: "";
@@ -201,25 +213,38 @@
     font-size: 2rem;
     text-align: center;
   }
-  .section .inner .wrapper :global(.swiper-slide) {
-    min-width: 0;
+  .section .inner .wrapper {
+    padding: 0 1rem;
+  }
+  .section .inner .wrapper :global(.swiper) {
+    overflow: hidden;
     width: 100%;
   }
-  .section .inner .wrapper :global(.swiper-slide) > img {
-    border: 20px solid blue;
+  .section .inner .wrapper :global(.swiper) :global(.swiper-slide) {
+    width: 100% !important;
+    min-width: 100% !important;
+    flex-shrink: 0;
+    height: auto;
+    max-height: 25rem;
   }
-  .section .inner .wrapper :global(.swiper-slide) :global(.swiper-slide-prev),
-  .section .inner .wrapper :global(.swiper-slide) :global(.swiper-slide-next) {
-    opacity: 0;
-    pointer-events: none;
-  }
-  .section .inner .wrapper :global(.swiper-slide-active) img {
+  .section .inner .wrapper :global(.swiper) :global(.swiper-slide) img {
     width: 100%;
     height: auto;
-    border-width: 0;
+    max-height: 25rem;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border: 3px solid #ffd7d7;
+  }
+  .section .inner .wrapper :global(.swiper) :global(.swiper-slide-active) img {
+    border: 3px solid #ffd7d7;
   }
   .section .inner .wrapper .prev,
   .section .inner .wrapper .next {
     display: none;
+  }
+}
+@media (max-width: 560px) {
+  .section .inner .wrapper :global(.swiper) :global(.swiper-slide) img {
+    max-height: 20rem;
   }
 }/*# sourceMappingURL=PortfolioPreview.module.css.map */
