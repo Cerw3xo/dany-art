@@ -7,23 +7,33 @@
     min-height: calc(100vh - 7rem);
     position: relative;
     background: $color-bg;
-    background-image: url("/ui/sage1.svg");
-    background-repeat: no-repeat;
-    background-position: -25rem 15rem;
-    background-size: 80%;
     overflow: hidden;
     @include m.section();
   }
 
+  &:after {
+    content: "";
+    position: absolute;
+    right: 60%;
+    top: -2vw;
+    width: 58rem;
+    height: 68rem;
+    background: url("/ui/sage1.svg") no-repeat;
+    background-size: contain;
+    pointer-events: none;
+    rotate: -3deg;
+  }
   &::before {
     content: "";
     position: absolute;
-    right: -65rem;
-    top: -4rem;
-    width: 98rem;
-    height: 92rem;
+    right: -71rem;
+    top: -45rem;
+    width: 67rem;
+    height: 112rem;
     background: url("/ui/sage1.svg") no-repeat;
-    rotate: 213deg;
+    background-size: contain;
+    pointer-events: none;
+    rotate: 218deg;
   }
 }
 
@@ -176,13 +186,6 @@
     min-height: calc(100vh - 6rem);
     background-size: 70%;
     background-position: -17rem 15rem;
-
-    &::before {
-      right: -58rem;
-      top: -3rem;
-      width: 88rem;
-      height: 84rem;
-    }
   }
 
   .container {
@@ -240,14 +243,6 @@
     min-height: 100vh;
     background-size: 80%;
     background-position: -17rem 10rem;
-
-    &::before {
-      right: -45rem;
-      top: -6rem;
-      width: 80rem;
-      height: 60rem;
-      opacity: 0.8;
-    }
   }
 
   .container {
