@@ -1,4 +1,3 @@
-/* src/components/Footer.module.scss */
 @use "../styles/variables" as *;
 
 .footer {
@@ -7,8 +6,9 @@
   padding-top: 3rem;
   color: $color-text;
   border-top: 4px solid $color-accent;
-  overflow-y: hidden;
+
   z-index: 999;
+  overflow: hidden;
 
   .top {
     margin: 0 auto;
@@ -163,6 +163,7 @@
       padding: 1rem 1.5rem;
       text-align: center;
       gap: 1rem;
+      width: 100vw;
 
       .logo {
         width: 19rem;
@@ -193,10 +194,11 @@
 
     .image {
       position: absolute;
-      width: 150% !important;
-      height: auto;
-      top: -3.5rem;
+      width: 29rem;
+      height: 9.3rem;
+      top: -3rem;
       max-width: none;
+      z-index: 0;
     }
 
     p {

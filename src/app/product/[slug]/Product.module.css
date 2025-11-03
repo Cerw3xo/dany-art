@@ -1,6 +1,7 @@
 .product {
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   margin: 0 auto;
   padding: 8rem 6% 2rem;
   display: flex;
@@ -25,7 +26,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
 }
 .product .info .right .heading {
   font-size: 2rem;

@@ -133,11 +133,7 @@ export default function PortfolioPreview() {
                 centeredSlides: true,
                 spaceBetween: 0,
               },
-              375: {
-                slidesPerView: 1,
-                centeredSlides: true,
-                spaceBetween: 0,
-              },
+
               768: {
                 slidesPerView: 3,
                 centeredSlides: false,

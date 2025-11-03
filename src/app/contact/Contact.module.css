@@ -8,7 +8,8 @@
   background-position: -25rem 15rem;
   background-size: 80%;
   overflow: hidden;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   margin: 0 auto;
   padding: 8rem 6% 2rem;
   display: flex;
@@ -37,7 +38,7 @@
 .container {
   z-index: 99;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   width: 100%;
@@ -73,7 +74,7 @@
 }
 .form .field {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   gap: 0.7rem;
   margin-bottom: 1.5rem;
 }

@@ -14,7 +14,7 @@
 .checkoutFormContainer .formContent {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 5rem;
+  gap: 3rem;
   margin-bottom: 2rem;
 }
 .checkoutFormContainer .formContent .formSection .sectionTitle {
@@ -93,11 +93,11 @@
   min-height: 100px;
 }
 .checkoutFormContainer .formContent .formSection .noteSection .formTextarea:focus {
-  outline: 2px solid #d66666;
+  outline: 1px solid #d66666;
   border-color: #d66666;
 }
 .checkoutFormContainer .formContent .orderSummary {
-  padding: 1rem;
+  padding: 0.3rem;
   border-radius: 0.1rem;
   display: flex;
   flex-direction: column;
@@ -199,10 +199,10 @@
   text-decoration: underline;
 }
 .checkoutFormContainer .formContent .orderSummary .submitButton {
-  width: 55%;
+  width: 65%;
   margin-left: auto;
   margin-right: 0;
-  padding: 0.4rem 1.3rem;
+  padding: 0.5rem 1.1rem;
   background-color: #d66666;
   color: white;
   border: none;
@@ -254,4 +254,468 @@
   background-color: #d66666;
   outline: 2px solid #d66666;
   outline-offset: 0.1rem;
+}
+
+@media (max-width: 1200px) {
+  .checkoutFormContainer {
+    padding: 1.5rem 0;
+  }
+  .checkoutFormContainer .formContent {
+    gap: 3rem;
+    margin-bottom: 1.5rem;
+    grid-template-columns: 1.8fr 1fr;
+  }
+  .checkoutFormContainer .formContent .formSection .sectionTitle {
+    width: 65%;
+    font-size: 1.4rem;
+    padding: 0.2rem 1rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup {
+    margin-bottom: 1.3rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formLabel {
+    padding-right: 0.8rem;
+    font-size: 0.95rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formInput {
+    font-size: 0.95rem;
+    padding: 0.3rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formHint {
+    font-size: 0.75rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection {
+    margin-top: 2.5rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection .formLabel {
+    font-size: 0.95rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection .formTextarea {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+    min-height: 90px;
+  }
+  .checkoutFormContainer .formContent .orderSummary {
+    padding: 0.1rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems {
+    padding: 0.3rem 0.7rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryTitle {
+    font-size: 1.2rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item {
+    gap: 0.7rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemImage {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemName {
+    font-size: 0.68rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .itemQuantity {
+    font-size: 0.85rem;
+    width: 40%;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem {
+    padding: 0.9rem 0.2rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryInfo {
+    font-size: 0.85rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryPrice {
+    font-size: 0.85rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryTotal {
+    padding: 1rem 0.9rem;
+    font-size: 1rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .termsAgreement {
+    font-size: 0.68rem;
+    margin: 0.6rem;
+    padding: 0 0.4rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .submitButton {
+    width: 70%;
+    margin-top: 0.4rem;
+    font-size: 0.95rem;
+    padding: 0.35rem 1.2rem;
+  }
+  .checkoutFormContainer .actions {
+    margin-top: 1.5rem;
+  }
+  .checkoutFormContainer .actions .backButton {
+    font-size: 0.95rem;
+    padding: 0.35rem 1.2rem;
+  }
+}
+@media (max-width: 1024px) {
+  .checkoutFormContainer {
+    padding: 1.1rem 0;
+  }
+  .checkoutFormContainer .formContent {
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+    grid-template-columns: 1.5fr 1fr;
+  }
+  .checkoutFormContainer .formContent .formSection .sectionTitle {
+    width: 65%;
+    font-size: 1.3rem;
+    padding: 0.2rem 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields {
+    padding: 0.8rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup {
+    margin-bottom: 1.2rem;
+    gap: 0.3rem;
+    justify-content: center;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formLabel {
+    padding-right: 0.7rem;
+    font-size: 0.8rem;
+    width: 50%;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formInput {
+    width: 50%;
+    font-size: 0.9rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formHint {
+    display: none;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection {
+    margin-top: 2rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection .formLabel {
+    font-size: 0.9rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection .formTextarea {
+    font-size: 0.9rem;
+    padding: 0.65rem;
+    min-height: 85px;
+  }
+  .checkoutFormContainer .formContent .orderSummary {
+    padding: 0.7rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems {
+    margin-top: 2.5rem;
+    padding: 0.3rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryTitle {
+    font-size: 1.1rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem {
+    padding: 0.65rem 0.1rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemImage {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemName {
+    font-size: 0.65rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .itemQuantity {
+    font-size: 0.8rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem {
+    padding: 0.8rem 0;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryInfo {
+    font-size: 0.8rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryPrice {
+    font-size: 0.8rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryTotal {
+    padding: 0.9rem 0.8rem;
+    font-size: 0.95rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .termsAgreement {
+    font-size: 0.65rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .submitButton {
+    width: 69%;
+    font-size: 0.9rem;
+    padding: 0.3rem 1.1rem;
+  }
+  .checkoutFormContainer .actions .backButton {
+    font-size: 0.9rem;
+    padding: 0.3rem 1.1rem;
+  }
+}
+@media (max-width: 768px) {
+  .checkoutFormContainer {
+    padding: 1rem 0;
+  }
+  .checkoutFormContainer .errorMessage {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .checkoutFormContainer .formContent {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .checkoutFormContainer .formContent .formSection .sectionTitle {
+    width: 55%;
+    font-size: 1.2rem;
+    padding: 0.2rem 0.8rem;
+    margin-bottom: 1.4rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm {
+    order: 1;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields {
+    padding: 0.7rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup {
+    margin-bottom: 1rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formLabel {
+    width: 100%;
+    text-align: left;
+    padding-right: 0;
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formInput {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.3rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formHint {
+    font-size: 0.7rem;
+    margin-top: 0.2rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection {
+    margin-top: 1.5rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection .formLabel {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection .formTextarea {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+    min-height: 80px;
+  }
+  .checkoutFormContainer .formContent .orderSummary {
+    padding: 0.7rem;
+    order: 2;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems {
+    margin-top: 0;
+    padding: 0.3rem 0.5rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryTitle {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem {
+    padding: 0.8rem 0.1rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item {
+    gap: 1.5rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemImage {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .itemQuantity {
+    font-size: 0.75rem;
+    width: 35%;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem {
+    padding: 0.9rem 0;
+    align-items: flex-start;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryInfo {
+    gap: 2rem;
+    font-size: 0.75rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryPrice {
+    font-size: 0.75rem;
+    align-self: flex-end;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryTotal {
+    padding: 0.8rem 0.7rem;
+    font-size: 0.9rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .termsAgreement {
+    font-size: 0.65rem;
+    margin: 0.5rem;
+    padding: 0 0.3rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .submitButton {
+    width: 45%;
+    margin-right: 0;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.3rem;
+  }
+  .checkoutFormContainer .actions {
+    margin-top: 1rem;
+  }
+  .checkoutFormContainer .actions .backButton {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    text-align: center;
+  }
+}
+@media (max-width: 560px) {
+  .checkoutFormContainer {
+    padding: 0.8rem 0;
+  }
+  .checkoutFormContainer .errorMessage {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+    margin-bottom: 1.2rem;
+  }
+  .checkoutFormContainer .formContent {
+    gap: 2rem;
+  }
+  .checkoutFormContainer .formContent .formSection .sectionTitle {
+    width: 90%;
+    font-size: 1.1rem;
+    padding: 0.15rem 0.7rem;
+    margin-bottom: 1rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields {
+    padding: 0.6rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup {
+    margin-bottom: 0.9rem;
+    gap: 0.4rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formLabel {
+    font-size: 0.8rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formInput {
+    font-size: 0.85rem;
+    padding: 0.35rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formHint {
+    font-size: 0.65rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection {
+    margin-top: 1.2rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection .formLabel {
+    font-size: 0.8rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection .formTextarea {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    min-height: 70px;
+  }
+  .checkoutFormContainer .formContent .orderSummary {
+    padding: 0.6rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems {
+    padding: 0.3rem 0.4rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryTitle {
+    font-size: 0.95rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem {
+    padding: 0.5rem 0.1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item {
+    flex: 1;
+    min-width: 0;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemImage {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemName {
+    font-size: 0.6rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .itemQuantity {
+    font-size: 0.7rem;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem {
+    padding: 0.6rem 0;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryInfo {
+    font-size: 0.7rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .deliveryItem .deliveryPrice {
+    font-size: 0.7rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryTotal {
+    padding: 0.7rem 0.6rem;
+    font-size: 0.85rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .termsAgreement {
+    font-size: 0.6rem;
+    margin: 0.4rem;
+    padding: 0 0.2rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .submitButton {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.9rem;
+    line-height: 1.3;
+  }
+  .checkoutFormContainer .actions {
+    margin-top: 0.8rem;
+  }
+  .checkoutFormContainer .actions .backButton {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.9rem;
+  }
+}
+@media (max-width: 400px) {
+  .checkoutFormContainer {
+    padding: 0.5rem 0;
+  }
+  .checkoutFormContainer .formContent {
+    gap: 1.5rem;
+  }
+  .checkoutFormContainer .formContent .formSection .sectionTitle {
+    width: 95%;
+    font-size: 1rem;
+    padding: 0.1rem 0.6rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields {
+    padding: 0.5rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formLabel {
+    font-size: 0.75rem;
+  }
+  .checkoutFormContainer .formContent .formSection .checkoutForm .formFields .formGroup .formInput {
+    font-size: 0.8rem;
+    padding: 0.3rem;
+  }
+  .checkoutFormContainer .formContent .formSection .noteSection .formTextarea {
+    font-size: 0.75rem;
+    padding: 0.4rem;
+    min-height: 60px;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryTitle {
+    font-size: 0.9rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemImage {
+    width: 2rem;
+    height: 2rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryItems .summaryItem .item .itemName {
+    font-size: 0.55rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .summaryTotal {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.5rem;
+  }
+  .checkoutFormContainer .formContent .orderSummary .submitButton {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
 }/*# sourceMappingURL=CheckoutForm.module.css.map */

@@ -1,12 +1,11 @@
-/* src/components/Footer.module.scss */
 .footer {
   width: 100vw;
   margin-top: 4rem;
   padding-top: 3rem;
   color: #425958;
   border-top: 4px solid #ffd7d7;
-  overflow-y: hidden;
   z-index: 999;
+  overflow: hidden;
 }
 .footer .top {
   margin: 0 auto;
@@ -31,8 +30,8 @@
   margin-top: 0.3rem;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   z-index: 99;
 }
 .footer .col h4 {
@@ -143,6 +142,7 @@
     padding: 1rem 1.5rem;
     text-align: center;
     gap: 1rem;
+    width: 100vw;
   }
   .footer .top .logo {
     width: 19rem;
@@ -167,10 +167,11 @@
   }
   .bottom .image {
     position: absolute;
-    width: 150% !important;
-    height: auto;
-    top: -3.5rem;
+    width: 29rem;
+    height: 9.3rem;
+    top: -3rem;
     max-width: none;
+    z-index: 0;
   }
   .bottom p {
     font-size: 0.65rem;

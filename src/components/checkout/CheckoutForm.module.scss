@@ -18,7 +18,7 @@
   .formContent {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 5rem;
+    gap: 3rem;
     margin-bottom: 2rem;
 
     .formSection {
@@ -107,7 +107,7 @@
           min-height: 100px;
 
           &:focus {
-            outline: 2px solid $color-primary;
+            outline: 1px solid $color-primary;
             border-color: $color-primary;
           }
         }
@@ -115,7 +115,7 @@
     }
 
     .orderSummary {
-      padding: 1rem;
+      padding: 0.3rem;
       border-radius: 0.1rem;
       display: flex;
       flex-direction: column;
@@ -231,10 +231,10 @@
       }
 
       .submitButton {
-        width: 55%;
+        width: 65%;
         margin-left: auto;
         margin-right: 0;
-        padding: 0.4rem 1.3rem;
+        padding: 0.5rem 1.1rem;
         background-color: $color-primary;
         color: white;
         border: none;
@@ -275,6 +275,625 @@
         background-color: $color-primary;
         outline: 2px solid $color-primary;
         outline-offset: 0.1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .checkoutFormContainer {
+    padding: 1.5rem 0;
+
+    .formContent {
+      gap: 3rem;
+      margin-bottom: 1.5rem;
+      grid-template-columns: 1.8fr 1fr;
+
+      .formSection {
+        .sectionTitle {
+          width: 65%;
+          font-size: 1.4rem;
+          padding: 0.2rem 1rem;
+        }
+
+        .checkoutForm {
+          .formFields {
+            .formGroup {
+              margin-bottom: 1.3rem;
+
+              .formLabel {
+                padding-right: 0.8rem;
+                font-size: 0.95rem;
+              }
+
+              .formInput {
+                font-size: 0.95rem;
+                padding: 0.3rem;
+              }
+
+              .formHint {
+                font-size: 0.75rem;
+              }
+            }
+          }
+        }
+
+        .noteSection {
+          margin-top: 2.5rem;
+
+          .formLabel {
+            font-size: 0.95rem;
+          }
+
+          .formTextarea {
+            font-size: 0.95rem;
+            padding: 0.7rem;
+            min-height: 90px;
+          }
+        }
+      }
+
+      .orderSummary {
+        padding: 0.1rem;
+
+        .summaryItems {
+          padding: 0.3rem 0.7rem;
+
+          .summaryTitle {
+            font-size: 1.2rem;
+          }
+
+          .summaryItem {
+            .item {
+              gap: 0.7rem;
+              .itemImage {
+                width: 2.8rem;
+                height: 2.8rem;
+              }
+
+              .itemName {
+                font-size: 0.68rem;
+              }
+            }
+
+            .itemQuantity {
+              font-size: 0.85rem;
+              width: 40%;
+            }
+          }
+        }
+
+        .deliveryItem {
+          padding: 0.9rem 0.2rem;
+
+          .deliveryInfo {
+            font-size: 0.85rem;
+          }
+
+          .deliveryPrice {
+            font-size: 0.85rem;
+          }
+        }
+
+        .summaryTotal {
+          padding: 1rem 0.9rem;
+          font-size: 1rem;
+        }
+
+        .termsAgreement {
+          font-size: 0.68rem;
+          margin: 0.6rem;
+          padding: 0 0.4rem;
+        }
+
+        .submitButton {
+          width: 70%;
+          margin-top: 0.4rem;
+          font-size: 0.95rem;
+          padding: 0.35rem 1.2rem;
+        }
+      }
+    }
+
+    .actions {
+      margin-top: 1.5rem;
+
+      .backButton {
+        font-size: 0.95rem;
+        padding: 0.35rem 1.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .checkoutFormContainer {
+    padding: 1.1rem 0;
+
+    .formContent {
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+      grid-template-columns: 1.5fr 1fr;
+
+      .formSection {
+        .sectionTitle {
+          width: 65%;
+          font-size: 1.3rem;
+          padding: 0.2rem 0.9rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .checkoutForm {
+          .formFields {
+            padding: 0.8rem;
+
+            .formGroup {
+              margin-bottom: 1.2rem;
+              gap: 0.3rem;
+              justify-content: center;
+
+              .formLabel {
+                padding-right: 0.7rem;
+                font-size: 0.8rem;
+                width: 50%;
+              }
+
+              .formInput {
+                width: 50%;
+                font-size: 0.9rem;
+              }
+
+              .formHint {
+                display: none;
+              }
+            }
+          }
+        }
+
+        .noteSection {
+          margin-top: 2rem;
+
+          .formLabel {
+            font-size: 0.9rem;
+          }
+
+          .formTextarea {
+            font-size: 0.9rem;
+            padding: 0.65rem;
+            min-height: 85px;
+          }
+        }
+      }
+
+      .orderSummary {
+        padding: 0.7rem;
+
+        .summaryItems {
+          margin-top: 2.5rem;
+          padding: 0.3rem;
+
+          .summaryTitle {
+            font-size: 1.1rem;
+          }
+
+          .summaryItem {
+            padding: 0.65rem 0.1rem;
+
+            .item {
+              .itemImage {
+                width: 2.6rem;
+                height: 2.6rem;
+              }
+
+              .itemName {
+                font-size: 0.65rem;
+              }
+            }
+
+            .itemQuantity {
+              font-size: 0.8rem;
+            }
+          }
+        }
+
+        .deliveryItem {
+          padding: 0.8rem 0;
+
+          .deliveryInfo {
+            font-size: 0.8rem;
+          }
+
+          .deliveryPrice {
+            font-size: 0.8rem;
+          }
+        }
+
+        .summaryTotal {
+          padding: 0.9rem 0.8rem;
+          font-size: 0.95rem;
+        }
+
+        .termsAgreement {
+          font-size: 0.65rem;
+        }
+
+        .submitButton {
+          width: 69%;
+          font-size: 0.9rem;
+          padding: 0.3rem 1.1rem;
+        }
+      }
+    }
+
+    .actions {
+      .backButton {
+        font-size: 0.9rem;
+        padding: 0.3rem 1.1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .checkoutFormContainer {
+    padding: 1rem 0;
+
+    .errorMessage {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .formContent {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 1rem;
+
+      .formSection {
+        .sectionTitle {
+          width: 55%;
+          font-size: 1.2rem;
+          padding: 0.2rem 0.8rem;
+          margin-bottom: 1.4rem;
+        }
+
+        .checkoutForm {
+          order: 1;
+          .formFields {
+            padding: 0.7rem;
+
+            .formGroup {
+              margin-bottom: 1rem;
+
+              .formLabel {
+                width: 100%;
+                text-align: left;
+                padding-right: 0;
+                font-size: 0.85rem;
+                margin-bottom: 0.2rem;
+              }
+
+              .formInput {
+                width: 100%;
+                font-size: 0.9rem;
+                padding: 0.3rem;
+              }
+
+              .formHint {
+                font-size: 0.7rem;
+                margin-top: 0.2rem;
+              }
+            }
+          }
+        }
+
+        .noteSection {
+          margin-top: 1.5rem;
+
+          .formLabel {
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+          }
+
+          .formTextarea {
+            font-size: 0.85rem;
+            padding: 0.6rem;
+            min-height: 80px;
+          }
+        }
+      }
+
+      .orderSummary {
+        padding: 0.7rem;
+        order: 2;
+
+        .summaryItems {
+          margin-top: 0;
+          padding: 0.3rem 0.5rem;
+
+          .summaryTitle {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+          }
+
+          .summaryItem {
+            padding: 0.8rem 0.1rem;
+            .item {
+              gap: 1.5rem;
+
+              .itemImage {
+                width: 2.5rem;
+                height: 2.5rem;
+              }
+            }
+
+            .itemQuantity {
+              font-size: 0.75rem;
+              width: 35%;
+            }
+          }
+        }
+
+        .deliveryItem {
+          padding: 0.9rem 0;
+
+          align-items: flex-start;
+
+          .deliveryInfo {
+            gap: 2rem;
+            font-size: 0.75rem;
+          }
+
+          .deliveryPrice {
+            font-size: 0.75rem;
+            align-self: flex-end;
+          }
+        }
+
+        .summaryTotal {
+          padding: 0.8rem 0.7rem;
+          font-size: 0.9rem;
+        }
+
+        .termsAgreement {
+          font-size: 0.65rem;
+          margin: 0.5rem;
+          padding: 0 0.3rem;
+        }
+
+        .submitButton {
+          width: 45%;
+          margin-right: 0;
+          font-size: 0.85rem;
+          padding: 0.4rem 0.3rem;
+        }
+      }
+    }
+
+    .actions {
+      margin-top: 1rem;
+
+      .backButton {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        padding: 0.4rem 1rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+// Mobile (560px)
+@media (max-width: 560px) {
+  .checkoutFormContainer {
+    padding: 0.8rem 0;
+
+    .errorMessage {
+      padding: 0.7rem;
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .formContent {
+      gap: 2rem;
+
+      .formSection {
+        .sectionTitle {
+          width: 90%;
+          font-size: 1.1rem;
+          padding: 0.15rem 0.7rem;
+          margin-bottom: 1rem;
+        }
+
+        .checkoutForm {
+          .formFields {
+            padding: 0.6rem;
+
+            .formGroup {
+              margin-bottom: 0.9rem;
+              gap: 0.4rem;
+
+              .formLabel {
+                font-size: 0.8rem;
+              }
+
+              .formInput {
+                font-size: 0.85rem;
+                padding: 0.35rem;
+              }
+
+              .formHint {
+                font-size: 0.65rem;
+              }
+            }
+          }
+        }
+
+        .noteSection {
+          margin-top: 1.2rem;
+
+          .formLabel {
+            font-size: 0.8rem;
+          }
+
+          .formTextarea {
+            font-size: 0.8rem;
+            padding: 0.5rem;
+            min-height: 70px;
+          }
+        }
+      }
+
+      .orderSummary {
+        padding: 0.6rem;
+
+        .summaryItems {
+          padding: 0.3rem 0.4rem;
+
+          .summaryTitle {
+            font-size: 0.95rem;
+          }
+
+          .summaryItem {
+            padding: 0.5rem 0.1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            .item {
+              flex: 1;
+              min-width: 0;
+
+              .itemImage {
+                width: 2.2rem;
+                height: 2.2rem;
+              }
+
+              .itemName {
+                font-size: 0.6rem;
+              }
+            }
+
+            .itemQuantity {
+              font-size: 0.7rem;
+              width: 100%;
+              justify-content: space-between;
+              margin-top: 0.3rem;
+            }
+          }
+        }
+
+        .deliveryItem {
+          padding: 0.6rem 0;
+
+          .deliveryInfo {
+            font-size: 0.7rem;
+          }
+
+          .deliveryPrice {
+            font-size: 0.7rem;
+          }
+        }
+
+        .summaryTotal {
+          padding: 0.7rem 0.6rem;
+          font-size: 0.85rem;
+        }
+
+        .termsAgreement {
+          font-size: 0.6rem;
+          margin: 0.4rem;
+          padding: 0 0.2rem;
+        }
+
+        .submitButton {
+          font-size: 0.8rem;
+          padding: 0.35rem 0.9rem;
+          line-height: 1.3;
+        }
+      }
+    }
+
+    .actions {
+      margin-top: 0.8rem;
+
+      .backButton {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.9rem;
+      }
+    }
+  }
+}
+
+// Extra small mobile (400px)
+@media (max-width: 400px) {
+  .checkoutFormContainer {
+    padding: 0.5rem 0;
+
+    .formContent {
+      gap: 1.5rem;
+
+      .formSection {
+        .sectionTitle {
+          width: 95%;
+          font-size: 1rem;
+          padding: 0.1rem 0.6rem;
+        }
+
+        .checkoutForm {
+          .formFields {
+            padding: 0.5rem;
+
+            .formGroup {
+              .formLabel {
+                font-size: 0.75rem;
+              }
+
+              .formInput {
+                font-size: 0.8rem;
+                padding: 0.3rem;
+              }
+            }
+          }
+        }
+
+        .noteSection {
+          .formTextarea {
+            font-size: 0.75rem;
+            padding: 0.4rem;
+            min-height: 60px;
+          }
+        }
+      }
+
+      .orderSummary {
+        .summaryItems {
+          .summaryTitle {
+            font-size: 0.9rem;
+          }
+
+          .summaryItem {
+            .item {
+              .itemImage {
+                width: 2rem;
+                height: 2rem;
+              }
+
+              .itemName {
+                font-size: 0.55rem;
+              }
+            }
+          }
+        }
+
+        .summaryTotal {
+          font-size: 0.8rem;
+          padding: 0.6rem 0.5rem;
+        }
+
+        .submitButton {
+          font-size: 0.75rem;
+          padding: 0.3rem 0.8rem;
+        }
       }
     }
   }

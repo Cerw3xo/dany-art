@@ -39,3 +39,15 @@
     transform: rotate(185deg);
   }
 }
+
+@media (max-width: 1200px) {
+  .checkout {
+    padding: 8rem 5% 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .checkout {
+    padding: 8rem 3% 2rem;
+  }
+}
