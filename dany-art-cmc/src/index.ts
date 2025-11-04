@@ -41,7 +41,7 @@ export default {
 
         // Resetuj heslo na požadované hodnotu
         try {
-          await strapi.admin.services.user.updateById(existingAdmin.id, {
+          await strapi.admin.services.user.update(existingAdmin.id, {
             password: adminPassword,
           });
           strapi.log.info(`✅ Heslo bolo resetované pre ${adminEmail}`);
