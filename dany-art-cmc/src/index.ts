@@ -23,17 +23,35 @@ export default {
       // Počkaj kým sú admin services úplne pripravené
       await new Promise(resolve => setTimeout(resolve, 2000));
 
-      // Skontroluj počet admin účtov
-      const adminUsers = await strapi.db.query('admin::user').count();
-      strapi.log.info(`📊 Počet admin účtov v databáze: ${adminUsers}`);
+      const adminEmail = process.env.ADMIN_EMAIL || 'admin@dany-art.com';
+      const adminPassword = process.env.ADMIN_PASSWORD || 'Admin123!';
+      const adminFirstname = process.env.ADMIN_FIRSTNAME || 'Admin';
+      const adminLastname = process.env.ADMIN_LASTNAME || 'User';
 
-      if (adminUsers === 0) {
+      // Skontroluj, či už existuje admin účet s týmto emailom
+      const existingAdmin = await strapi.db.query('admin::user').findOne({
+        where: { email: adminEmail },
+      });
+
+      if (existingAdmin) {
+        strapi.log.info(`ℹ️ Admin účet s emailom ${adminEmail} už existuje`);
+        strapi.log.info(`   ID: ${existingAdmin.id}`);
+        strapi.log.info(`   Name: ${existingAdmin.firstname} ${existingAdmin.lastname}`);
+        strapi.log.info(`   Active: ${existingAdmin.isActive}`);
+
+        // Resetuj heslo na požadované hodnotu
+        try {
+          await strapi.admin.services.user.updateById(existingAdmin.id, {
+            password: adminPassword,
+          });
+          strapi.log.info(`✅ Heslo bolo resetované pre ${adminEmail}`);
+          strapi.log.info(`   🔐 Môžeš sa teraz prihlásiť s emailom: ${adminEmail}`);
+          strapi.log.info(`   🔐 A heslom: ${adminPassword}`);
+        } catch (error: any) {
+          strapi.log.warn(`⚠️ Nepodarilo sa resetovať heslo: ${error.message}`);
+        }
+      } else {
         strapi.log.info('🔧 Vytváram nový admin účet...');
-
-        const adminEmail = process.env.ADMIN_EMAIL || 'admin@dany-art.com';
-        const adminPassword = process.env.ADMIN_PASSWORD || 'Admin123!';
-        const adminFirstname = process.env.ADMIN_FIRSTNAME || 'Admin';
-        const adminLastname = process.env.ADMIN_LASTNAME || 'User';
 
         // Nájdi super admin role - musí existovať v Strapi
         const superAdminRole = await strapi.db.query('admin::role').findOne({
@@ -65,18 +83,17 @@ export default {
         strapi.log.info(`   Firstname: ${adminFirstname}`);
         strapi.log.info(`   Lastname: ${adminLastname}`);
         strapi.log.info(`   🔐 Môžeš sa teraz prihlásiť pomocou týchto údajov!`);
-      } else {
-        strapi.log.info(`ℹ️ Admin účet už existuje (${adminUsers} admin users)`);
-
-        // Zobraz existujúce admin účty (bez hesiel)
-        const existingAdmins = await strapi.db.query('admin::user').findMany({
-          select: ['id', 'email', 'firstname', 'lastname', 'isActive'],
-        });
-
-        existingAdmins.forEach(admin => {
-          strapi.log.info(`   - ${admin.email} (${admin.firstname} ${admin.lastname}) - Active: ${admin.isActive}`);
-        });
       }
+
+      // Zobraz všetky existujúce admin účty
+      const allAdmins = await strapi.db.query('admin::user').findMany({
+        select: ['id', 'email', 'firstname', 'lastname', 'isActive'],
+      });
+
+      strapi.log.info(`📋 Všetky admin účty v databáze (${allAdmins.length}):`);
+      allAdmins.forEach(admin => {
+        strapi.log.info(`   - ${admin.email} (${admin.firstname} ${admin.lastname}) - Active: ${admin.isActive}`);
+      });
     } catch (error: any) {
       strapi.log.error('❌ Chyba pri vytváraní admin účtu:');
       strapi.log.error(`   Message: ${error.message}`);
