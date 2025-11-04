@@ -38,18 +38,7 @@ export default {
         strapi.log.info(`   ID: ${existingAdmin.id}`);
         strapi.log.info(`   Name: ${existingAdmin.firstname} ${existingAdmin.lastname}`);
         strapi.log.info(`   Active: ${existingAdmin.isActive}`);
-
-        // Resetuj heslo na požadované hodnotu
-        try {
-          await strapi.admin.services.user.update(existingAdmin.id, {
-            password: adminPassword,
-          });
-          strapi.log.info(`✅ Heslo bolo resetované pre ${adminEmail}`);
-          strapi.log.info(`   🔐 Môžeš sa teraz prihlásiť s emailom: ${adminEmail}`);
-          strapi.log.info(`   🔐 A heslom: ${adminPassword}`);
-        } catch (error: any) {
-          strapi.log.warn(`⚠️ Nepodarilo sa resetovať heslo: ${error.message}`);
-        }
+        strapi.log.info(`   🔐 Použi tento email na prihlásenie.`);
       } else {
         strapi.log.info('🔧 Vytváram nový admin účet...');
 
