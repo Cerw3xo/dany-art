@@ -1,6 +1,11 @@
 export default ({ env }) => [
   'strapi::logger',
   'strapi::errors',
+  // Custom middleware pre Railway HTTPS proxy
+  {
+    name: 'global::forceHTTPS',
+    config: {},
+  },
   'strapi::security',
   {
     name: 'strapi::cors',
@@ -13,7 +18,15 @@ export default ({ env }) => [
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
-  'strapi::session',
+  {
+    name: 'strapi::session',
+    config: {
+      cookie: {
+        secure: env('NODE_ENV') === 'production',
+        sameSite: 'lax',
+      },
+    },
+  },
   'strapi::favicon',
   'strapi::public',
 ];

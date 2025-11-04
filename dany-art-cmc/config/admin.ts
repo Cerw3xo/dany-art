@@ -1,6 +1,13 @@
 export default ({ env }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
+    // Session cookies nastavenia pre Railway (HTTPS proxy)
+    sessions: {
+      cookieOptions: {
+        secure: env('NODE_ENV', 'production') === 'production',
+        sameSite: 'lax',
+      },
+    },
   },
   apiToken: {
     salt: env('API_TOKEN_SALT'),
