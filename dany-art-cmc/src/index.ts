@@ -34,12 +34,22 @@ export default {
       });
 
       if (existingAdmin) {
-        strapi.log.info(`ℹ️ Admin účet s emailom ${adminEmail} už existuje`);
-        strapi.log.info(`   ID: ${existingAdmin.id}`);
-        strapi.log.info(`   Name: ${existingAdmin.firstname} ${existingAdmin.lastname}`);
-        strapi.log.info(`   Active: ${existingAdmin.isActive}`);
-        strapi.log.info(`   🔐 Použi tento email na prihlásenie.`);
-      } else {
+        strapi.log.info(`ℹ️ Admin účet s emailom ${adminEmail} už existuje - vymazávam a vytváram nový`);
+        strapi.log.info(`   Starý účet ID: ${existingAdmin.id}`);
+        
+        // Vymaž starý účet
+        try {
+          await strapi.db.query('admin::user').delete({
+            where: { id: existingAdmin.id },
+          });
+          strapi.log.info(`✅ Starý admin účet bol vymazaný`);
+        } catch (deleteError: any) {
+          strapi.log.error(`❌ Nepodarilo sa vymazať starý účet: ${deleteError.message}`);
+        }
+      }
+      
+      // Vytvor nový admin účet (vždy)
+      {
         strapi.log.info('🔧 Vytváram nový admin účet...');
 
         // Nájdi super admin role - musí existovať v Strapi
