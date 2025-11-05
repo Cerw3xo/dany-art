@@ -1,5 +1,5 @@
 export default ({ env }) => {
-  // Zabezpeč, že URL má https:// prefix
+
   let publicUrl = env('PUBLIC_URL', 'https://dany-art-production.up.railway.app');
   if (publicUrl && !publicUrl.startsWith('http://') && !publicUrl.startsWith('https://')) {
     publicUrl = `https://${publicUrl}`;
@@ -12,7 +12,7 @@ export default ({ env }) => {
     app: {
       keys: env.array('APP_KEYS'),
     },
-    // Dôveruj proxy headers (pre Railway HTTPS)
+
     proxy: true,
   };
 };

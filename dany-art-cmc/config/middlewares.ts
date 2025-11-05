@@ -1,7 +1,7 @@
 export default ({ env }) => [
   'strapi::logger',
   'strapi::errors',
-  // Custom middleware pre Railway HTTPS proxy
+
   {
     name: 'global::forceHTTPS',
     config: {},
