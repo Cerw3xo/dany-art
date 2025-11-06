@@ -5,6 +5,10 @@ export default ({ env }) => [
     name: 'global::health',
     config: {},
   },
+  {
+    name: 'global::forceHTTPS',
+    config: {},
+  },
   'strapi::security',
   {
     name: 'strapi::cors',
@@ -20,7 +24,7 @@ export default ({ env }) => [
     name: 'strapi::session',
     config: {
       cookie: {
-        secure: env('NODE_ENV') === 'production',
+        secure: env.bool('ADMIN_SESSION_SECURE', true),
         sameSite: 'lax',
       },
     },

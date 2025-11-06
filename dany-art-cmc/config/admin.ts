@@ -4,7 +4,7 @@ export default ({ env }) => ({
     // Session cookies nastavenia pre Railway (HTTPS proxy)
     sessions: {
       cookieOptions: {
-        secure: env('NODE_ENV', 'production') === 'production',
+        secure: env.bool('ADMIN_SESSION_SECURE', true),
         sameSite: 'lax',
       },
     },

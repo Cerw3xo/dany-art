@@ -29,11 +29,40 @@ export default {
       const adminFirstname = process.env.ADMIN_FIRSTNAME || 'Admin';
       const adminLastname = process.env.ADMIN_LASTNAME || 'User';
 
-      // Ak už existuje aspoň jeden admin účet, nemeň nič
+      // Ak už existuje aspoň jeden admin účet, buď nerob nič alebo vykonaj reset podľa env
       const adminsCount = await strapi.db.query('admin::user').count();
-      if (adminsCount > 0) {
+      const shouldForceReset = (process.env.ADMIN_RESET || '').toLowerCase() === 'true';
+      if (adminsCount > 0 && !shouldForceReset) {
         strapi.log.info(`ℹ️ Admin účty už existujú (počet: ${adminsCount}) – nevytváram nový.`);
         return;
+      }
+
+      if (adminsCount > 0 && shouldForceReset) {
+        strapi.log.warn('🛠 ADMIN_RESET=true – resetujem existujúci admin účet');
+
+        const superAdminRole = await strapi.db.query('admin::role').findOne({
+          where: { code: 'strapi-super-admin' },
+        });
+        if (!superAdminRole) {
+          strapi.log.error('❌ Super admin role nebola nájdená počas resetu!');
+          return;
+        }
+
+        const existing = await strapi.db.query('admin::user').findOne({ where: { email: adminEmail } });
+        if (!existing) {
+          strapi.log.warn(`⚠️ Admin s emailom ${adminEmail} neexistuje – vytváram nový namiesto resetu`);
+        } else {
+          await strapi.admin.services.user.edit(existing.id, {
+            password: adminPassword,
+            firstname: adminFirstname,
+            lastname: adminLastname,
+            isActive: true,
+            roles: [superAdminRole.id],
+          });
+
+          strapi.log.info(`✅ Admin účet resetnutý (email: ${adminEmail})`);
+          return;
+        }
       }
 
       strapi.log.info('🔧 Nenašli sa žiadne admin účty – vytváram prvý admin účet...');
