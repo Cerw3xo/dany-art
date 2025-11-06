@@ -1,16 +1,14 @@
 export default ({ env }) => [
   'strapi::logger',
   'strapi::errors',
-
   {
-    name: 'global::forceHTTPS',
+    name: 'global::health',
     config: {},
   },
   'strapi::security',
   {
     name: 'strapi::cors',
     config: {
-      enabled: true,
       origin: env.array('FRONTEND_URL', ['http://localhost:3000']),
       credentials: true,
     },

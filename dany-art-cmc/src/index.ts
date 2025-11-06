@@ -18,6 +18,7 @@ export default {
    */
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
     strapi.log.info('🚀 Bootstrap script sa spustil...');
+    strapi.log.info(`ℹ️ ENV PORT=${process.env.PORT} HOST=${process.env.HOST} PUBLIC_URL=${process.env.PUBLIC_URL}`);
 
     try {
       // Počkaj kým sú admin services úplne pripravené
