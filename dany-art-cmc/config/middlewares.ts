@@ -6,17 +6,15 @@ export default ({ env }) => [
     config: {},
   },
   {
+    name: 'global::rootOk',
+    config: {},
+  },
+  {
     name: 'global::forceHTTPS',
     config: {},
   },
   'strapi::security',
-  {
-    name: 'strapi::cors',
-    config: {
-      origin: env.array('FRONTEND_URL', ['http://localhost:3000']),
-      credentials: true,
-    },
-  },
+  'strapi::cors',
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',

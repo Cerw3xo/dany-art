@@ -16,3 +16,4 @@ export default ({ env }) => {
     proxy: true,
   };
 };
+

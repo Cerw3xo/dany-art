@@ -52,7 +52,7 @@ export default {
         if (!existing) {
           strapi.log.warn(`⚠️ Admin s emailom ${adminEmail} neexistuje – vytváram nový namiesto resetu`);
         } else {
-          await strapi.admin.services.user.edit(existing.id, {
+          await strapi.service('admin::user').update(existing.id, {
             password: adminPassword,
             firstname: adminFirstname,
             lastname: adminLastname,
@@ -80,8 +80,8 @@ export default {
 
       strapi.log.info(`✅ Super admin role nájdená (ID: ${superAdminRole.id})`);
 
-      // Vytvor admin účet pomocou Strapi admin service
-      const adminUser = await strapi.admin.services.user.create({
+      // Vytvor admin účet pomocou admin service
+      const adminUser = await strapi.service('admin::user').create({
         email: adminEmail,
         password: adminPassword,
         firstname: adminFirstname,
