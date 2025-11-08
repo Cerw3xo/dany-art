@@ -11,11 +11,11 @@ export default (config, { strapi }) => {
     if (process.env.NODE_ENV === 'production') {
       const publicUrl = process.env.PUBLIC_URL || '';
       if (publicUrl.startsWith('https://')) {
-        // NENASTAVUJ ctx.secure/ctx.request.secure – sú to gettre
-        // Stačí pridať X-Forwarded-Proto pre správnu detekciu HTTPS
-        ctx.headers['x-forwarded-proto'] = 'https';
-        ctx.request.headers['x-forwarded-proto'] = 'https';
-        ctx.set('X-Forwarded-Proto', 'https');
+        // Simuluj proxy hlavičky na RAW req, aby Koa/Strapi považoval spojenie za HTTPS
+        const url = new URL(publicUrl);
+        ctx.req.headers['x-forwarded-proto'] = 'https';
+        ctx.req.headers['x-forwarded-host'] = url.host;
+        ctx.req.headers['x-forwarded-port'] = url.port || '443';
       }
     }
 
