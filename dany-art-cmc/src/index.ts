@@ -49,20 +49,21 @@ export default {
         }
 
         const existing = await strapi.db.query('admin::user').findOne({ where: { email: adminEmail } });
-        if (!existing) {
-          strapi.log.warn(`⚠️ Admin s emailom ${adminEmail} neexistuje – vytváram nový namiesto resetu`);
-        } else {
-          await strapi.service('admin::user').update(existing.id, {
+        if (existing) {
+          // Reset: odstráň používateľa a vytvor ho znova s novým heslom
+          await strapi.db.query('admin::user').delete({ where: { id: existing.id } });
+          const recreated = await strapi.service('admin::user').create({
+            email: adminEmail,
             password: adminPassword,
             firstname: adminFirstname,
             lastname: adminLastname,
             isActive: true,
             roles: [superAdminRole.id],
           });
-
-          strapi.log.info(`✅ Admin účet resetnutý (email: ${adminEmail})`);
+          strapi.log.info(`✅ Admin účet resetnutý (email: ${adminEmail}, id: ${recreated.id})`);
           return;
         }
+        // Ak neexistuje, po reset vetve pokračujeme nižšie na create
       }
 
       strapi.log.info('🔧 Nenašli sa žiadne admin účty – vytváram prvý admin účet...');
