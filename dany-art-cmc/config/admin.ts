@@ -2,7 +2,7 @@ export default ({ env }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
     sessions: {
-
+      enabled: false,
       maxRefreshTokenLifespan: env.int('ADMIN_MAX_REFRESH_LIFESPAN', 7 * 24 * 60 * 60),
       maxSessionLifespan: env.int('ADMIN_MAX_SESSION_LIFESPAN', 24 * 60 * 60),
       cookie: {
