@@ -22,7 +22,7 @@ export default ({ env }) => [
     name: 'strapi::session',
     config: {
       cookie: {
-        secure: env.bool('ADMIN_SESSION_SECURE', true),
+        secure: env.bool('ADMIN_SESSION_SECURE', false),
         sameSite: 'lax',
       },
     },

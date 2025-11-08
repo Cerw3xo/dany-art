@@ -6,7 +6,7 @@ export default ({ env }) => ({
       maxRefreshTokenLifespan: env.int('ADMIN_MAX_REFRESH_LIFESPAN', 7 * 24 * 60 * 60),
       maxSessionLifespan: env.int('ADMIN_MAX_SESSION_LIFESPAN', 24 * 60 * 60),
       cookie: {
-        secure: env.bool('ADMIN_SESSION_SECURE', true),
+        secure: env.bool('ADMIN_SESSION_SECURE', false),
         sameSite: 'lax',
       },
     },
