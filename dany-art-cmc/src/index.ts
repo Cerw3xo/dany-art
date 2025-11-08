@@ -21,6 +21,12 @@ export default {
     strapi.log.info(`ℹ️ ENV PORT=${process.env.PORT} HOST=${process.env.HOST} PUBLIC_URL=${process.env.PUBLIC_URL}`);
 
     try {
+      // Debug: vypíš efektívnu admin cookie konfiguráciu
+      const adminSecure = strapi.config.get('admin.auth.sessions.cookie.secure');
+      const adminMaxRT = strapi.config.get('admin.auth.sessions.maxRefreshTokenLifespan');
+      const adminMaxSess = strapi.config.get('admin.auth.sessions.maxSessionLifespan');
+      strapi.log.info(`ℹ️ ADMIN cookie.secure=${adminSecure} maxRT=${adminMaxRT} maxSess=${adminMaxSess}`);
+
       // Počkaj kým sú admin services úplne pripravené
       await new Promise(resolve => setTimeout(resolve, 2000));
 
