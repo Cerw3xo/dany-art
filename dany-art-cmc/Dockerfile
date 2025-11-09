@@ -4,14 +4,14 @@ FROM node:20-alpine
 # Nastavíme pracovný adresár
 WORKDIR /app
 
-# Skopírujeme package.json a package-lock.json z dany-art-cmc
-COPY dany-art-cmc/package*.json ./
+# Skopírujeme package.json a package-lock.json
+COPY package*.json ./
 
 # Nainštalujeme VŠETKY závislosti (vrátane devDependencies pre build)
 RUN npm ci
 
-# Skopírujeme zvyšok aplikácie z dany-art-cmc
-COPY dany-art-cmc/ .
+# Skopírujeme zvyšok aplikácie
+COPY . .
 
 # Build args pre Railway secrets (potrebné pre Strapi build)
 ARG APP_KEYS
