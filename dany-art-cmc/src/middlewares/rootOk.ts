@@ -1,8 +1,3 @@
-/**
- * global::rootOk middleware
- * Vráti jednoduchú odpoveď pre GET /
- */
-
 export default () => {
   return async (ctx, next) => {
     if (ctx.method === 'GET' && ctx.path === '/') {

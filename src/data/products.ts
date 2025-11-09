@@ -5,7 +5,7 @@ export type Product = {
     slug: string;
     name: string;
     price: number;
-    currency: "CZK";
+    currency: string;
     category: string;
     images: string[];
     thumbnail: string;

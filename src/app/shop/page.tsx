@@ -6,119 +6,25 @@ import { useState, useEffect } from "react";
 import { categories } from "@/data/categories";
 import styles from "./Shop.module.scss";
 import Link from "next/link";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-type StrapiMediaFormat = {
-  url: string;
-};
-
-type StrapiMedia = {
-  url?: string;
-  formats?: {
-    medium?: StrapiMediaFormat;
-  };
-};
-
-type StrapiProductData = {
-  id: string;
-  slug?: string;
-  name?: string;
-  price?: number;
-  currency?: string;
-  category?: string;
-  subcategory?: string;
-  images?: StrapiMedia[];
-  thumbnail?: StrapiMedia;
-  summary?: string;
-  available?: boolean;
-  featured?: boolean;
-  attributes?: {
-    slug?: string;
-    name?: string;
-    price?: number;
-    currency?: string;
-    category?: string;
-    subcategory?: string;
-    images?: StrapiMedia[];
-    thumbnail?: StrapiMedia;
-    summary?: string;
-    available?: boolean;
-    featured?: boolean;
-  };
-};
+import { fetchProducts, convertStrapiProduct } from "@/lib/strapi";
 
 export default function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   const [selectedCategory, setSelectedCategory] = useState<
     string | null
   >(null);
-
   const [selectedSubcategory, setSelectedSubcategory] = useState<
     string | null
   >(null);
 
-  function getThumbnailUrl(thumbnail: StrapiMedia | null | undefined): string {
-    if (!thumbnail) return "/placeholder.jpg";
-    if (
-      thumbnail.formats &&
-      thumbnail.formats.medium &&
-      thumbnail.formats.medium.url
-    ) {
-      return API_URL + thumbnail.formats.medium.url;
-    }
-    if (thumbnail.url) {
-      return API_URL + thumbnail.url;
-    }
-    return "/placeholder.jpg";
-  }
-
-  function getImages(images: StrapiMedia[] | null | undefined): string[] {
-    if (!images || !Array.isArray(images)) return [];
-    return images.map((img) => {
-      if (img.formats && img.formats.medium && img.formats.medium.url) {
-        return API_URL + img.formats.medium.url;
-      }
-      if (img.url) {
-        return API_URL + img.url;
-      }
-      return "/placeholder.jpg";
-    });
-  }
-
   useEffect(() => {
     setLoading(true);
     setError(null);
-    fetch(`${API_URL}/api/produkts?populate=thumbnail`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Chyba při načítání produktů");
-        return res.json();
-      })
-      .then((json: { data: StrapiProductData[] }) => {
-        setProducts(
-          json.data
-            .map((item) => ({
-              id: item.id,
-              slug: item.slug || item.attributes?.slug || "",
-              name: item.name || item.attributes?.name || "",
-              price: item.price || item.attributes?.price || 0,
-              currency: (item.currency || item.attributes?.currency || "CZK") as "CZK",
-              category: item.category || item.attributes?.category || "",
-              subcategory:
-                item.subcategory || item.attributes?.subcategory,
-              images: getImages(item.images || item.attributes?.images),
-              thumbnail: getThumbnailUrl(
-                item.thumbnail || item.attributes?.thumbnail
-              ),
-              summary: item.summary || item.attributes?.summary,
-              available: item.available ?? item.attributes?.available ?? false,
-              featured: item.featured ?? item.attributes?.featured ?? false,
-            }))
-            .filter((p) => Boolean(p.slug && p.name)) as Product[]
-        );
+    fetchProducts()
+      .then((strapiProducts) => {
+        setProducts(strapiProducts.map(convertStrapiProduct));
         setLoading(false);
       })
       .catch((err) => {
@@ -148,7 +54,6 @@ export default function ShopPage() {
           vyber si svůj originální kousek
         </p>
       </div>
-
       {error ? (
         <div
           style={{
@@ -188,7 +93,6 @@ export default function ShopPage() {
               </button>
             ))}
           </nav>
-
           <div className={styles.content}>
             <h2 className={styles.sectionTitle}>
               {!selectedCategory
@@ -196,7 +100,6 @@ export default function ShopPage() {
                 : categories.find((c) => c.slug === selectedCategory)
                     ?.label}
             </h2>
-
             <div className={styles.categories}>
               <aside className={styles.sidebar}>
                 <h3>Kategorie</h3>
@@ -232,7 +135,6 @@ export default function ShopPage() {
                   ))}
                 </ul>
               </aside>
-
               <div className={styles.grid}>
                 {filteredProducts.map((p) => (
                   <article key={p.slug} className={styles.card}>
