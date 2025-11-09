@@ -13,6 +13,9 @@ RUN npm ci
 # Skopírujeme zvyšok aplikácie
 COPY . .
 
+# Vymažeme staré build súbory
+RUN rm -rf .cache build dist
+
 # Build args pre Railway secrets (potrebné pre Strapi build)
 ARG APP_KEYS
 ARG API_TOKEN_SALT
