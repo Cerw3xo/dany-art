@@ -30,7 +30,7 @@ export interface StrapiResponse<T> {
 // Fetch všetky produkty zo Strapi
 export async function fetchProducts(): Promise<StrapiProduct[]> {
     try {
-        const response = await fetch(`${STRAPI_URL}/api/products?populate=*`, {
+        const response = await fetch(`${STRAPI_URL}/api/produkts?populate=*`, {
             next: { revalidate: 60 },
         });
         if (!response.ok) throw new Error(`Strapi API error: ${response.status}`);
