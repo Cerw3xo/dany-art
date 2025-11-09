@@ -5,6 +5,8 @@ export default ({ env }) => {
     publicUrl = `https://${publicUrl}`;
   }
 
+  const isProduction = env('NODE_ENV') === 'production';
+
   return {
     host: env('HOST', '0.0.0.0'),
     port: env.int('PORT', 1337),
@@ -12,8 +14,10 @@ export default ({ env }) => {
     app: {
       keys: env.array('APP_KEYS'),
     },
-
-    proxy: true,
+    proxy: isProduction,
+    cron: {
+      enabled: false,
+    },
   };
 };
 
