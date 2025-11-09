@@ -24,7 +24,10 @@ export default function ShopPage() {
     setError(null);
     fetchProducts()
       .then((strapiProducts) => {
-        setProducts(strapiProducts.map(convertStrapiProduct));
+        const converted = strapiProducts
+          .map(convertStrapiProduct)
+          .filter(Boolean) as Product[];
+        setProducts(converted);
         setLoading(false);
       })
       .catch((err) => {

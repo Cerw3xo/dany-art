@@ -7,15 +7,16 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://dany-art-produ
 export interface StrapiProduct {
     id: number;
     attributes: {
-        nazov: string;
+        name: string;
         slug: string;
-        cena: number;
-        popis?: string;
-        kategoria?: string;
-        subkategoria?: string;
-        dostupny?: boolean;
+        price: number;
+        description?: string;
+        category?: string;
+        subcategory?: string;
+        available?: boolean;
         featured?: boolean;
-        obrazky?: { data: { attributes: { url: string } }[] };
+        images?: { data: { attributes: { url: string } }[] };
+        thumbnail?: { data?: { attributes: { url: string } } };
         createdAt: string;
         updatedAt: string;
         publishedAt: string;
@@ -29,8 +30,8 @@ export interface StrapiResponse<T> {
 // Fetch všetky produkty zo Strapi
 export async function fetchProducts(): Promise<StrapiProduct[]> {
     try {
-        const response = await fetch(`${STRAPI_URL}/api/produkts?populate=*`, {
-            next: { revalidate: 60 }, // ISR revalidácia v Next.js
+        const response = await fetch(`${STRAPI_URL}/api/products?populate=*`, {
+            next: { revalidate: 60 },
         });
         if (!response.ok) throw new Error(`Strapi API error: ${response.status}`);
         const json: StrapiResponse<StrapiProduct[]> = await response.json();
@@ -43,18 +44,24 @@ export async function fetchProducts(): Promise<StrapiProduct[]> {
 
 // Mapa na front-end Product typ
 export function convertStrapiProduct(p: StrapiProduct) {
+    if (!p || !p.attributes || !p.attributes.slug) return undefined;
     return {
         id: String(p.id),
         slug: p.attributes.slug,
-        name: p.attributes.nazov,
-        price: p.attributes.cena,
-        currency: 'CZK',
-        category: p.attributes.kategoria || '',
-        subcategory: p.attributes.subkategoria,
-        images: (p.attributes.obrazky?.data || []).map(img => `${STRAPI_URL}${img.attributes.url}`),
-        thumbnail: p.attributes.obrazky?.data?.[0] ? `${STRAPI_URL}${p.attributes.obrazky.data[0].attributes.url}` : '',
-        summary: p.attributes.popis,
-        available: p.attributes.dostupny ?? true,
+        name: p.attributes.name,
+        price: p.attributes.price,
+        currency: 'CZK', // stále fixne, uprav ak máš v API
+        category: p.attributes.category || '',
+        subcategory: p.attributes.subcategory,
+        images:
+            (p.attributes.images?.data || []).map(
+                (img) => `${STRAPI_URL}${img.attributes.url}`
+            ),
+        thumbnail: p.attributes.thumbnail?.data?.attributes?.url
+            ? `${STRAPI_URL}${p.attributes.thumbnail.data.attributes.url}`
+            : '',
+        summary: p.attributes.description || '',
+        available: p.attributes.available ?? true,
         featured: p.attributes.featured,
     };
 }
