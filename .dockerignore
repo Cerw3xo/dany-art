@@ -1,0 +1,42 @@
+# Node modules
+node_modules
+dany-art-cmc/node_modules
+
+# Logs
+npm-debug.log
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Strapi cache and build
+dany-art-cmc/.cache
+dany-art-cmc/.tmp
+dany-art-cmc/dist
+dany-art-cmc/build
+dany-art-cmc/.strapi-updater.json
+
+# Git
+.git
+.gitignore
+
+# IDE
+.DS_Store
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Next.js (frontend)
+src/.next
+src/out
+.next
+out
+
+# Documentation
+README.md
+*.md
+
