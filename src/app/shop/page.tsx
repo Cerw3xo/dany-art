@@ -18,23 +18,39 @@ export default function ShopPage() {
   const [selectedSubcategory, setSelectedSubcategory] = useState<
     string | null
   >(null);
+  const [expandedCategories, setExpadedCategories] = useState<
+    string[]
+  >([]);
 
   useEffect(() => {
     setLoading(true);
     setError(null);
+
     fetchProducts()
       .then((strapiProducts) => {
         const converted = strapiProducts
           .map(convertStrapiProduct)
           .filter(Boolean) as Product[];
+
         setProducts(converted);
+        converted.forEach((p, i) => {});
         setLoading(false);
       })
       .catch((err) => {
+        console.error("❌ Chyba pri fetchovaní:", err);
+
         setError(err.message || "Nepodařilo se načítat produkty");
         setLoading(false);
       });
   }, []);
+
+  const toggleCategory = (slug: string) => {
+    setExpadedCategories((prev) =>
+      prev.includes(slug)
+        ? prev.filter((s) => s !== slug)
+        : [...prev, slug]
+    );
+  };
 
   const filteredProducts = products.filter((p) => {
     if (selectedCategory && selectedSubcategory) {
@@ -105,13 +121,14 @@ export default function ShopPage() {
             </h2>
             <div className={styles.categories}>
               <aside className={styles.sidebar}>
-                <h3>Kategorie</h3>
+                <h3>KATEGORIE</h3>
                 <ul>
                   {categories.map((cat) => (
                     <li key={cat.slug}>
                       <div
                         className={styles.cat}
                         onClick={() => {
+                          toggleCategory(cat.slug);
                           setSelectedCategory(cat.slug);
                           setSelectedSubcategory(null);
                         }}
@@ -119,15 +136,16 @@ export default function ShopPage() {
                         {cat.label}
                       </div>
                       {cat.subcategories &&
-                        selectedCategory === cat.slug && (
+                        expandedCategories.includes(cat.slug) && (
                           <ul>
                             {cat.subcategories.map((sub) => (
                               <li
                                 className={styles.sub}
                                 key={sub.slug}
-                                onClick={() =>
-                                  setSelectedSubcategory(sub.slug)
-                                }
+                                onClick={() => {
+                                  setSelectedSubcategory(sub.slug);
+                                  setSelectedCategory(cat.slug);
+                                }}
                               >
                                 {sub.label}
                               </li>

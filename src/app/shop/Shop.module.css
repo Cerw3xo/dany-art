@@ -95,15 +95,15 @@
 }
 .content .categories .sidebar {
   margin-top: 0.8rem;
-  width: 13rem;
+  width: 30%;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
   border-radius: 0.1rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 .content .categories .sidebar h3 {
   font-size: 1.1rem;
   color: #425958;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.3rem;
 }
 .content .categories .sidebar ul {
   list-style: none;
@@ -112,14 +112,14 @@
   padding: 0;
 }
 .content .categories .sidebar ul .cat {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
   color: #425958;
   font-weight: 600;
 }
 .content .categories .sidebar ul .sub {
   color: #526766;
-  margin-left: 0.2rem;
-  margin-bottom: 0.3rem;
+  margin-left: 3.7rem;
+  margin-bottom: 0.2rem;
 }
 .content .categories .sidebar ul li {
   color: #526766;
@@ -133,7 +133,7 @@
   flex: 1;
   min-width: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.2rem;
 }
 .content .categories .grid .card {
@@ -216,7 +216,6 @@
     gap: 1.2rem;
   }
   .shop .content .categories .sidebar {
-    width: 30%;
     padding: 0.8rem;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
   }
@@ -246,7 +245,7 @@
     margin-bottom: 4rem;
   }
   .shop .content .categories .sidebar {
-    width: 40%;
+    width: 15rem;
   }
   .shop .content .categories .grid .card {
     padding: 0.6rem;
@@ -279,9 +278,6 @@
     font-size: 1.1rem;
     width: 82%;
     border-radius: 1rem;
-  }
-  .shop .content .categories .sidebar {
-    width: 50%;
   }
   .shop .content .categories .sidebar h3 {
     font-size: 0.9rem;

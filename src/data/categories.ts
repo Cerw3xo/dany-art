@@ -14,8 +14,9 @@ export const categories: Category[] = [
         slug: "obleceni-a-doplnky", label: "Oblečení a doplňky",
         subcategories: [
             { slug: "tricka", label: "Trička" },
+            { slug: "mikiny", label: "Mikiny" },
             { slug: "platene-tasky", label: "Plátěné tašky" },
-            { slug: "mikiny", label: "Mikyny" },
+            { slug: "ostatni-textil", label: "Ostatní textil" },
         ]
     },
     {
@@ -24,16 +25,19 @@ export const categories: Category[] = [
             {
                 slug: "tradicni-grafika", label: "Tradiční grafika"
             },
-            { slug: "printy", label: "Printy" }
+            { slug: "digitalni-grafika", label: "Digitální grafika" }
         ]
     },
     {
-        slug: "rucni-tvorba", label: "Ruční tvorba", subcategories: [
-            { slug: "keramika", label: "Keramika" },
-            { slug: "knihy", label: "Knihy" }
+        slug: "keramika", label: "Keramika",
+        subcategories: [
+            { slug: "broze", label: "Brože" },
+            { slug: "ostatní-keramicke-produkty", label: "Ostatní keramické produkty" }
         ]
     },
-    { slug: "obrazy", label: "Obrazy" },
+    { slug: "obrazy-a-ilustrace", label: "Obrazy a ilustrace" },
+    { slug: "knihy", label: "Knihy" },
+    { slug: "ostatni-autorska-tvorba", label: " Ostatní autorská tvorba" }
 ]
 
 

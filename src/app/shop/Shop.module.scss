@@ -91,15 +91,16 @@
 
     .sidebar {
       margin-top: 0.8rem;
-      width: 13rem;
+      width: 30%;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
       border-radius: 0.1rem;
-      padding: 1rem;
+      padding: 0.5rem 1rem;
 
       h3 {
         font-size: 1.1rem;
+
         color: $color-secondary;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.3rem;
       }
       ul {
         list-style: none;
@@ -107,14 +108,14 @@
         margin: 0;
         padding: 0;
         .cat {
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.2rem;
           color: $color-text;
           font-weight: 600;
         }
         .sub {
           color: $color-text-light;
-          margin-left: 0.2rem;
-          margin-bottom: 0.3rem;
+          margin-left: 3.7rem;
+          margin-bottom: 0.2rem;
         }
         li {
           color: $color-text-light;
@@ -131,7 +132,7 @@
       flex: 1;
       min-width: 0;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.2rem;
 
       .card {
@@ -233,7 +234,6 @@
         gap: 1.2rem;
 
         .sidebar {
-          width: 30%;
           padding: 0.8rem;
           box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
         }
@@ -270,7 +270,7 @@
       }
       .categories {
         .sidebar {
-          width: 40%;
+          width: 15rem;
         }
         .grid {
           .card {
@@ -318,8 +318,6 @@
       }
       .categories {
         .sidebar {
-          width: 50%;
-
           h3 {
             font-size: 0.9rem;
           }

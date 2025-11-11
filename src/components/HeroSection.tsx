@@ -102,15 +102,17 @@ export default function HeroSection() {
               UMĚNÍ, KTERÉ NOSÍŠ A MILUJEŠ
             </h1>
             <div className={styles.description}>
-              <p>ORIGINÁLNÍ GRAFIKA NA OBLEČENÍ,</p>
-              <p>DESIGN ETIKET NA VÍNO,</p>
-              <p>OBRAZY A ILUSTRACE S PŘÍBĚHEM</p>
+              <p>
+                Autorská tvorba pro všechny, kdo milují originalitu -
+                obrazy, potisky i ruční malbu na textil, design etiket
+                na víno, keramika a další ručně tvořené produkty.
+              </p>
             </div>
           </motion.div>
 
           <motion.div variants={fadeUp}>
             <Link href="/contact" className={styles.cta}>
-              CHCI NAVÁZAT SPOLUPRÁCI
+              CHCI SPOLUPRACOVAT
             </Link>
           </motion.div>
         </motion.div>

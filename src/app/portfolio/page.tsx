@@ -9,7 +9,7 @@ const portfolioItems = [
   {
     id: "etiketa-vino",
     src: "/portfolio/etikety/vino.jpg",
-    alt: "Na Mezi",
+    alt: "Etiketa Na Mezi",
   },
   {
     id: "etiketa-vino-lipa",

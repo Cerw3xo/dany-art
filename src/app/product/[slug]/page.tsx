@@ -3,6 +3,10 @@ import styles from "./Product.module.scss";
 import { formatPrice } from "@/lib/format";
 import AddToCartButton from "@/components/AddToCartButton";
 import ProductGallery from "../ProductGallery";
+import {
+  fetchProductBySlug,
+  convertStrapiProduct,
+} from "@/lib/strapi";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 

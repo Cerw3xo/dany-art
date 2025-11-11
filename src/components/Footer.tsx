@@ -33,8 +33,8 @@ export default function Footer() {
               <a href="tel:+420775350613">+420 775 350 613</a>
             </li>
             <li>
-              <a href="mailto:dani.konecna@email.cz">
-                dani.konecna@email.cz
+              <a href="mailto:danyss.art@email.cz">
+                danyss.art@email.cz
               </a>
             </li>
             <li>
@@ -78,6 +78,10 @@ export default function Footer() {
             </li>
             <li>
               <Link href="/returns">Vrácení zboží</Link>
+            </li>
+            <li>
+              <Link href="/personal">Zásady ochrany osobních</Link>
+              údajů
             </li>
           </ul>
         </div>

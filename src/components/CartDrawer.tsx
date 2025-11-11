@@ -44,7 +44,7 @@ export default function CartDrawer({
                 const imgSrc =
                   item.thumbnail ||
                   (item.images && item.images[0]) ||
-                  "paceholder.png";
+                  "placeholder.png";
 
                 return (
                   <div key={item.id} className={styles.cartItem}>
