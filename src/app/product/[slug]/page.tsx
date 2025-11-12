@@ -8,51 +8,6 @@ import {
   convertStrapiProduct,
 } from "@/lib/strapi";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-type StrapiMediaFormat = {
-  url: string;
-};
-
-type StrapiMedia = {
-  url?: string;
-  formats?: {
-    medium?: StrapiMediaFormat;
-  };
-};
-
-function getThumbnailUrl(
-  thumbnail: StrapiMedia | null | undefined
-): string {
-  if (!thumbnail) return "/placeholder.jpg";
-  if (
-    thumbnail.formats &&
-    thumbnail.formats.medium &&
-    thumbnail.formats.medium.url
-  ) {
-    return API_URL + thumbnail.formats.medium.url;
-  }
-  if (thumbnail.url) {
-    return API_URL + thumbnail.url;
-  }
-  return "/placeholder.jpg";
-}
-
-function getImages(
-  images: StrapiMedia[] | null | undefined
-): string[] {
-  if (!images || !Array.isArray(images)) return [];
-  return images.map((img) => {
-    if (img.formats && img.formats.medium && img.formats.medium.url) {
-      return API_URL + img.formats.medium.url;
-    }
-    if (img.url) {
-      return API_URL + img.url;
-    }
-    return "/placeholder.jpg";
-  });
-}
-
 export default async function ProductPage({
   params,
 }: {
@@ -63,31 +18,17 @@ export default async function ProductPage({
   let error: string | null = null;
 
   try {
-    const res = await fetch(
-      `${API_URL}/api/produkts?filters[slug][$eq]=${slug}&populate=*`
-    );
-    if (!res.ok) throw new Error("Chyba při načítaní produktu");
-    const json = await res.json();
-    if (!json.data || !json.data.length) {
+    const strapiProducts = await fetchProductBySlug(slug);
+
+    if (!strapiProducts) {
       error = "Produkt nenalezen";
     } else {
-      const item = json.data[0];
-      product = {
-        id: item.id,
-        slug: item.slug || item.attributes?.slug,
-        name: item.name || item.attributes?.name,
-        price: item.price || item.attributes?.price,
-        currency: item.currency || item.attributes?.currency,
-        category: item.category || item.attributes?.category,
-        subcategory: item.subcategory || item.attributes?.subcategory,
-        images: getImages(item.images || item.attributes?.images),
-        thumbnail: getThumbnailUrl(
-          item.thumbnail || item.attributes?.thumbnail
-        ),
-        summary: item.summary || item.attributes?.summary,
-        available: item.available ?? item.attributes?.available,
-        featured: item.featured ?? item.attributes?.featured,
-      };
+      const converted = convertStrapiProduct(strapiProducts);
+      product = converted ? (converted as Product) : null;
+
+      if (!product) {
+        error = "Chyba při zpracování produktu";
+      }
     }
   } catch (err: unknown) {
     const errorMessage =
@@ -109,6 +50,10 @@ export default async function ProductPage({
     return (
       <section className={styles.product}>Produkt nenalezen</section>
     );
+
+  console.log("🎨 Product pred gallery:", product);
+  console.log("🖼️ Images pred gallery:", product.images);
+  console.log("🖼️ Images length:", product.images?.length);
 
   return (
     <section className={styles.product}>

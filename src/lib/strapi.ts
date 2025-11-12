@@ -1,4 +1,4 @@
-import { error } from "console";
+
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://dany-art-production.up.railway.app';
 
@@ -37,14 +37,16 @@ export interface StrapiResponse<T> {
 export async function fetchProductBySlug(slug: string): Promise<StrapiProduct | null> {
     try {
         const response = await fetch(
-            `${STRAPI_URL}/api/produkts?filter[slug][$eq]=${slug}&populate=*`,
+            `${STRAPI_URL}/api/produkts?filters[slug][$eq]=${slug}&populate=*`,
             {
                 next: { revalidate: 60 },
             }
         );
-        if (!response.ok) throw new Error(`Strapi API error: ${response.status}`);
+        if (!response.ok)
+            throw new Error(`Strapi API error: ${response.status}`);
         const json: StrapiResponse<StrapiProduct[]> = await response.json();
         if (!json.data || !json.data.length) return null;
+
         return json.data[0]
     } catch (error) {
         console.error('Chyba pri fetch produktu zo Strapi:', error)
@@ -75,7 +77,6 @@ export function convertStrapiProduct(p: StrapiProduct) {
         console.warn('⚠️ Produkt nemá slug, preskakujem:', p);
         return undefined;
     }
-
 
     return {
         id: String(p.id || p.documentId),

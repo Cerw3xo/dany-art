@@ -18,7 +18,7 @@ export default function ShopPage() {
   const [selectedSubcategory, setSelectedSubcategory] = useState<
     string | null
   >(null);
-  const [expandedCategories, setExpadedCategories] = useState<
+  const [expandedCategories, setExpandedCategories] = useState<
     string[]
   >([]);
 
@@ -33,7 +33,6 @@ export default function ShopPage() {
           .filter(Boolean) as Product[];
 
         setProducts(converted);
-        converted.forEach((p, i) => {});
         setLoading(false);
       })
       .catch((err) => {
@@ -45,7 +44,7 @@ export default function ShopPage() {
   }, []);
 
   const toggleCategory = (slug: string) => {
-    setExpadedCategories((prev) =>
+    setExpandedCategories((prev) =>
       prev.includes(slug)
         ? prev.filter((s) => s !== slug)
         : [...prev, slug]

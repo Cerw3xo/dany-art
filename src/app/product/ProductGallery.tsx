@@ -11,7 +11,28 @@ export default function ProductGallery({
   images: string[];
   name: string;
 }) {
+  console.log("📸 Gallery dostala images:", images);
+  console.log("📸 Gallery images length:", images?.length);
+  console.log("📸 Gallery prvý obrázok:", images?.[0]);
+
   const [mainImg, setMainImg] = useState(0);
+
+  if (!images || images.length === 0) {
+    return (
+      <div className={styles.galleryWrapper}>
+        <div
+          style={{
+            padding: "2rem",
+            color: "#999",
+            textAlign: "center",
+          }}
+        >
+          Zadne obrazky
+        </div>
+        <div />
+      </div>
+    );
+  }
 
   const prevImg = () => setMainImg((idx) => Math.max(idx - 1, 0));
   const nextImg = () =>

@@ -103,7 +103,7 @@
   border-color: #d66666;
 }
 .header .nav .navLink:hover {
-  color: white;
+  color: #d66666;
 }
 .header .nav .active {
   background: #ffd7d7;
