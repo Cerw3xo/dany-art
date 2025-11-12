@@ -86,8 +86,10 @@ export function convertStrapiProduct(p: StrapiProduct) {
         currency: 'CZK',
         category: p.category || '',
         subcategory: p.subcategory,
-        images: (p.images || []).map((img) => `${STRAPI_URL}${img.url}`),
-        thumbnail: p.thumbnail?.url ? `${STRAPI_URL}${p.thumbnail.url}` : '',
+        images: (p.images || []).map((img) =>
+            img.url.startsWith('http') ? img.url : `${STRAPI_URL}${img.url}`),
+        thumbnail: p.thumbnail?.url
+            ? (p.thumbnail.url.startsWith('http') ? p.thumbnail.url : `${STRAPI_URL}${p.thumbnail.url}`) : '',
         summary: p.description || '',
         available: p.available ?? true,
         featured: p.featured,

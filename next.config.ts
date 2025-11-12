@@ -12,6 +12,11 @@ const remotePatterns = (() => {
                 protocol: (u.protocol.replace(":", "") as "http" | "https"),
                 hostname: u.hostname,
                 pathname: '/uploads/**',
+            },
+            {
+                protocol: 'https' as const,
+                hostname: 'res.cloudinary.com',
+                pathname: '/**',
             }
         ];
 
