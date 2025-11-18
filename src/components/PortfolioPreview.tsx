@@ -82,7 +82,7 @@ export default function PortfolioPreview() {
         variants={textContainer}
       >
         <motion.div variants={fadeUp}>
-          <h3>Chceš něco originálniho co má duši?</h3>
+          <h3>Chceš něco originálního, co má duši?</h3>
         </motion.div>
 
         <motion.div variants={fadeUp}>

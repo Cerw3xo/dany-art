@@ -100,7 +100,7 @@ export default function CartDrawer({
                 className={styles.checkoutBtn}
                 onClick={() => router.push("/checkout")}
               >
-                Pokračovať v objednávke
+                Pokračovat v objednávce
               </button>
             </>
           )}

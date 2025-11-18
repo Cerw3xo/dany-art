@@ -80,8 +80,9 @@ export default function Footer() {
               <Link href="/returns">Vrácení zboží</Link>
             </li>
             <li>
-              <Link href="/personal">Zásady ochrany osobních</Link>
-              údajů
+              <Link href="/personal">
+                Zásady ochrany osobních údajů
+              </Link>
             </li>
           </ul>
         </div>

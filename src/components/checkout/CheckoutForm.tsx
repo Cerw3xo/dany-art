@@ -193,14 +193,7 @@ export default function CheckoutForm({
                   onChange={handleChange}
                 >
                   <option value="Zásilkovna">Zásilkovna</option>
-                  <option value="Česká pošta">Česká pošta</option>
-                  <option value="Zlín">Osobní předání Zlín</option>
-                  <option value="Rakvice">
-                    Osobní předání Rakvice - okolí
-                  </option>
-                  <option value="Tvořihráz">
-                    Osobní předání Tvořihráz - okolí
-                  </option>
+                  <option value="Česká pošta">Balíkovna</option>
                 </select>
               </div>
 
