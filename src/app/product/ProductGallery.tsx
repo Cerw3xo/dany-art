@@ -29,6 +29,7 @@ export default function ProductGallery({
         >
           Zadne obrazky
         </div>
+        
         <div />
       </div>
     );
