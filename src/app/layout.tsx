@@ -19,6 +19,13 @@ const dancing = Dancing_Script({
 export const metadata: Metadata = {
   title: "Dany Art",
   description: "Minimalistický umělecký e-shop",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: "/favicon.png",
+  },
 };
 
 export const viewport: Viewport = {
