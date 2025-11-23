@@ -34,7 +34,7 @@ export default async function ProductPage({
     const errorMessage =
       err instanceof Error
         ? err.message === "Failed to fetch"
-          ? "Nepodařilo sae připojiť k serveru. Zkontroluj, či beží Strapi alebo síť."
+          ? "Nepodařilo se připojit k serveru. Zkontrolujte, zda běží Strapi nebo síť."
           : err.message
         : "Nepodařilo se načíst produkt";
     error = errorMessage;
@@ -50,10 +50,6 @@ export default async function ProductPage({
     return (
       <section className={styles.product}>Produkt nenalezen</section>
     );
-
-  console.log("🎨 Product pred gallery:", product);
-  console.log("🖼️ Images pred gallery:", product.images);
-  console.log("🖼️ Images length:", product.images?.length);
 
   return (
     <section className={styles.product}>

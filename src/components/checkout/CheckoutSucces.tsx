@@ -4,7 +4,7 @@ export default function CheckoutSucces() {
   return (
     <section className={styles.checkoutSucces}>
       <h2 className={styles.heading}>
-        Objednávka byla úspěšne odeslána!
+        Objednávka byla úspěšně odeslána!
       </h2>
 
       <div className={styles.container}>

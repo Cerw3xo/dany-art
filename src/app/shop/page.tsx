@@ -36,9 +36,9 @@ export default function ShopPage() {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("❌ Chyba pri fetchovaní:", err);
+        console.error("Chyba při načítání produktů:", err);
 
-        setError(err.message || "Nepodařilo se načítat produkty");
+        setError(err.message || "Nepodařilo se načíst produkty");
         setLoading(false);
       });
   }, []);

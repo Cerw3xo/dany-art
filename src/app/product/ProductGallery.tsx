@@ -11,11 +11,15 @@ export default function ProductGallery({
   images: string[];
   name: string;
 }) {
-  console.log("📸 Gallery dostala images:", images);
-  console.log("📸 Gallery images length:", images?.length);
-  console.log("📸 Gallery prvý obrázok:", images?.[0]);
-
   const [mainImg, setMainImg] = useState(0);
+  const [imageErrors, setImageErrors] = useState<{
+    [key: number]: boolean;
+  }>({});
+
+  const handleImageError = (index: number) => {
+    console.error("Chyba při načítání obrázku:", images[index]);
+    setImageErrors((prev) => ({ ...prev, [index]: true }));
+  };
 
   if (!images || images.length === 0) {
     return (
@@ -27,9 +31,9 @@ export default function ProductGallery({
             textAlign: "center",
           }}
         >
-          Zadne obrazky
+          Žádné obrázky
         </div>
-        
+
         <div />
       </div>
     );
@@ -49,20 +53,42 @@ export default function ProductGallery({
         >
           <FaChevronUp />
         </button>
-        {images.map((src, i) => (
-          <Image
-            key={i}
-            src={src}
-            alt={name}
-            width={80}
-            height={70}
-            className={`${styles.thumb} ${
-              mainImg === i ? styles.active : ""
-            }`}
-            onClick={() => setMainImg(i)}
-            style={{ objectFit: "cover" }}
-          />
-        ))}
+        {images.map((src, i) =>
+          imageErrors[i] ? (
+            <div
+              key={i}
+              className={`${styles.thumb} ${
+                mainImg === i ? styles.active : ""
+              }`}
+              style={{
+                width: "80px",
+                height: "70px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#f0f0f0",
+                fontSize: "10px",
+                color: "#999",
+              }}
+            >
+              ❌
+            </div>
+          ) : (
+            <Image
+              key={i}
+              src={src}
+              alt={name}
+              width={80}
+              height={70}
+              className={`${styles.thumb} ${
+                mainImg === i ? styles.active : ""
+              }`}
+              onClick={() => setMainImg(i)}
+              style={{ objectFit: "cover" }}
+              onError={() => handleImageError(i)}
+            />
+          )
+        )}
         <button
           className={styles.arrow}
           onClick={prevImg}
@@ -72,13 +98,30 @@ export default function ProductGallery({
         </button>
       </div>
       <div className={styles.mainImg}>
-        <Image
-          src={images[mainImg]}
-          alt={name}
-          width={800}
-          height={600}
-          style={{ objectFit: "contain" }}
-        />
+        {imageErrors[mainImg] ? (
+          <div
+            style={{
+              width: "800px",
+              height: "600px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#f0f0f0",
+              color: "#999",
+            }}
+          >
+            Obrázek se nepodařilo načíst
+          </div>
+        ) : (
+          <Image
+            src={images[mainImg]}
+            alt={name}
+            width={800}
+            height={600}
+            style={{ objectFit: "contain" }}
+            onError={() => handleImageError(mainImg)}
+          />
+        )}
       </div>
     </div>
   );

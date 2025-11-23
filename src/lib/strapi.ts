@@ -9,6 +9,7 @@ export interface StrapiProduct {
     slug: string;
     price: number;
     description?: string;
+    summary?: string;
     category?: string;
     subcategory?: string;
     available?: boolean;
@@ -36,36 +37,45 @@ export interface StrapiResponse<T> {
 
 export async function fetchProductBySlug(slug: string): Promise<StrapiProduct | null> {
     try {
-        const response = await fetch(
-            `${STRAPI_URL}/api/produkts?filters[slug][$eq]=${slug}&populate=*`,
-            {
-                next: { revalidate: 60 },
-            }
-        );
-        if (!response.ok)
-            throw new Error(`Strapi API error: ${response.status}`);
-        const json: StrapiResponse<StrapiProduct[]> = await response.json();
-        if (!json.data || !json.data.length) return null;
+        const url = `${STRAPI_URL}/api/produkts?filters[slug][$eq]=${slug}&populate=*`;
+        const response = await fetch(url, {
+            next: { revalidate: 60 },
+        });
 
-        return json.data[0]
+        if (!response.ok) {
+            console.error(`Strapi API error: ${response.status} ${response.statusText}`);
+            throw new Error(`Strapi API error: ${response.status}`);
+        }
+
+        const json: StrapiResponse<StrapiProduct[]> = await response.json();
+
+        if (!json.data || !json.data.length) {
+            return null;
+        }
+
+        return json.data[0];
     } catch (error) {
-        console.error('Chyba pri fetch produktu zo Strapi:', error)
-        return null
+        console.error('Chyba při načítání produktu ze Strapi:', error);
+        return null;
     }
 }
 
 export async function fetchProducts(): Promise<StrapiProduct[]> {
     try {
-        const response = await fetch(`${STRAPI_URL}/api/produkts?populate=*`, {
+        const url = `${STRAPI_URL}/api/produkts?populate=*`;
+        const response = await fetch(url, {
             next: { revalidate: 60 },
         });
-        if (!response.ok)
-            throw new Error(`Strapi API error: ${response.status}`);
-        const json: StrapiResponse<StrapiProduct[]> = await response.json();
 
+        if (!response.ok) {
+            console.error(`Strapi API error: ${response.status} ${response.statusText}`);
+            throw new Error(`Strapi API error: ${response.status}`);
+        }
+
+        const json: StrapiResponse<StrapiProduct[]> = await response.json();
         return json.data;
     } catch (error) {
-        console.error('Chyba pri fetchnutí produktov zo Strapi:', error);
+        console.error('Chyba při načítání produktů ze Strapi:', error);
         return [];
     }
 }
@@ -74,9 +84,16 @@ export async function fetchProducts(): Promise<StrapiProduct[]> {
 // Mapa na front-end Product typ
 export function convertStrapiProduct(p: StrapiProduct) {
     if (!p || !p.slug) {
-        console.warn('⚠️ Produkt nemá slug, preskakujem:', p);
         return undefined;
     }
+
+    const convertedImages = (p.images || []).map((img) =>
+        img.url.startsWith('http') ? img.url : `${STRAPI_URL}${img.url}`
+    );
+
+    const thumbnailUrl = p.thumbnail?.url
+        ? (p.thumbnail.url.startsWith('http') ? p.thumbnail.url : `${STRAPI_URL}${p.thumbnail.url}`)
+        : '';
 
     return {
         id: String(p.id || p.documentId),
@@ -86,11 +103,9 @@ export function convertStrapiProduct(p: StrapiProduct) {
         currency: 'CZK',
         category: p.category || '',
         subcategory: p.subcategory,
-        images: (p.images || []).map((img) =>
-            img.url.startsWith('http') ? img.url : `${STRAPI_URL}${img.url}`),
-        thumbnail: p.thumbnail?.url
-            ? (p.thumbnail.url.startsWith('http') ? p.thumbnail.url : `${STRAPI_URL}${p.thumbnail.url}`) : '',
-        summary: p.description || '',
+        images: convertedImages,
+        thumbnail: thumbnailUrl,
+        summary: p.summary || p.description || '',
         available: p.available ?? true,
         featured: p.featured,
     };

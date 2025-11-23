@@ -37,7 +37,9 @@ export default function ContactPage() {
         setError("Nepodařilo se odeslat formulář: " + err.message);
         console.error(err);
       } else {
-        setError("Nepodařilo se odeslat formuář z neznámeho důvodu.");
+        setError(
+          "Nepodařilo se odeslat formulář z neznámého důvodu."
+        );
       }
     } finally {
       setIsSubmitting(false);

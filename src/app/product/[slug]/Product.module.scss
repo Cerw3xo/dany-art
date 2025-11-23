@@ -77,3 +77,160 @@
     width: 80%;
   }
 }
+
+@media (max-width: 1200px) {
+  .product {
+    .info {
+      gap: 2rem;
+
+      .right {
+        .heading {
+          font-size: 1.8rem;
+        }
+
+        .description {
+          width: 80%;
+        }
+
+        .price {
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    .productInfo {
+      width: 85%;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .product {
+    .info {
+      flex-direction: column;
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+
+      .right {
+        .heading {
+          font-size: 1.6rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .description {
+          width: 100%;
+          margin-bottom: 1.5rem;
+          font-size: 0.95rem;
+        }
+
+        .price {
+          font-size: 1.2rem;
+          margin-bottom: 0.8rem;
+        }
+
+        > span {
+          font-size: 0.85rem;
+          margin-bottom: 0.8rem;
+        }
+
+        .addToCart {
+          padding: 0.4rem 1.5rem;
+          font-size: 1rem;
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      .gallery {
+        width: 100%;
+        max-width: 35rem;
+      }
+    }
+
+    .productInfo {
+      width: 90%;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .product {
+    .info {
+      gap: 2rem;
+
+      .right {
+        .heading {
+          font-size: 1.4rem;
+          margin-bottom: 1.2rem;
+        }
+
+        .description {
+          font-size: 0.9rem;
+          margin-bottom: 1.2rem;
+        }
+
+        .price {
+          font-size: 1.1rem;
+        }
+
+        > span {
+          font-size: 0.8rem;
+        }
+
+        .addToCart {
+          padding: 0.3rem 1.3rem;
+          font-size: 0.95rem;
+        }
+      }
+
+      .gallery {
+        max-width: 100%;
+      }
+    }
+
+    .productInfo {
+      width: 95%;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .product {
+    .info {
+      gap: 1.5rem;
+
+      .right {
+        .heading {
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+        }
+
+        .description {
+          font-size: 0.85rem;
+          margin-bottom: 1rem;
+        }
+
+        .price {
+          font-size: 1rem;
+          margin-bottom: 0.7rem;
+        }
+
+        > span {
+          font-size: 0.75rem;
+        }
+
+        .addToCart {
+          padding: 0.3rem 1.2rem;
+          font-size: 0.9rem;
+          border-radius: 1.5rem;
+        }
+      }
+    }
+
+    .productInfo {
+      width: 100%;
+      font-size: 0.85rem;
+    }
+  }
+}

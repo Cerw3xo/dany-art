@@ -7,13 +7,13 @@ const colorText = "#425958";
 const colorTextLight = "#526766";
 
 export function contactOwnerTemplate(data: {
-    name: string;
-    email: string;
-    message: string;
+  name: string;
+  email: string;
+  message: string;
 }) {
-    const { name, email, message } = data;
+  const { name, email, message } = data;
 
-    return `
+  return `
   <!doctype html>
   <html>
     <head>
@@ -36,7 +36,7 @@ export function contactOwnerTemplate(data: {
 
               <tr>
                 <td style="padding:22px;color:${colorText};font-size:14px;line-height:1.6;">
-                  <p style="margin:0 0 10px 0;color:${colorTextLight};">Prišla nová správa z kontaktného formulára:</p>
+                  <p style="margin:0 0 10px 0;color:${colorTextLight};">Přišla nová zpráva z kontaktního formuláře:</p>
 
                   <table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;margin:10px 0 14px 0;">
                     <tr>
@@ -55,7 +55,7 @@ export function contactOwnerTemplate(data: {
                   </div>
 
                   <p style="margin:16px 0 0 0;font-size:12px;color:${colorTextLight};">
-                    Tento e‑mail bol vygenerovaný automaticky.
+                    Tento e‑mail byl vygenerován automaticky.
                   </p>
                 </td>
               </tr>
@@ -74,11 +74,11 @@ export function contactOwnerTemplate(data: {
 }
 
 export function contactCustomerTemplate(data: {
-    name: string;
+  name: string;
 }) {
-    const { name } = data;
+  const { name } = data;
 
-    return `
+  return `
   <!doctype html>
   <html>
     <head>
@@ -94,7 +94,7 @@ export function contactCustomerTemplate(data: {
               <tr>
                 <td style="padding:18px 22px;background:${colorAccent};border-bottom:1px solid ${colorSecondaryLight};">
                   <div style="color:${colorPrimary};font-size:18px;font-weight:700;letter-spacing:0.2px;">
-                    Ďakujeme za správu
+                    Děkujeme za zprávu
                   </div>
                 </td>
               </tr>
@@ -103,15 +103,15 @@ export function contactCustomerTemplate(data: {
                 <td style="padding:22px;color:${colorText};font-size:14px;line-height:1.6;">
                   <p style="margin:0 0 10px 0;">Ahoj ${escapeHtml(name)},</p>
                   <p style="margin:0 0 10px 0;">
-                    ďakujem za tvoju správu – ozvem sa čo najskôr. 
+                    děkuji za tvou zprávu – ozvu se co nejdříve. 
                   </p>
 
                   <div style="margin-top:14px;padding:12px;border:1px dashed ${colorSecondaryLight};border-radius:6px;color:${colorTextLight};background:${colorBg};">
-                    Medzitým môžeš pozrieť e‑shop alebo portfólio na webe.
+                    Mezitím můžeš podívat se na e‑shop nebo portfolio na webu.
                   </div>
 
                   <p style="margin:16px 0 0 0;font-size:12px;color:${colorTextLight};">
-                    Tento e‑mail bol vygenerovaný automaticky.
+                    Tento e‑mail byl vygenerován automaticky.
                   </p>
                 </td>
               </tr>
@@ -131,26 +131,26 @@ export function contactCustomerTemplate(data: {
 
 
 function escapeHtml(str: string) {
-    return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
 export function orderOwnerTemplate(data: {
-    orderNumber: string;
-    customer: { name: string; email: string; phone?: string };
-    items: Array<{ name: string; quantity: number; price: number }>;
-    delivery: { method: string; address: string; city: string; zip: string; country: string };
-    note?: string;
-    total: number;
+  orderNumber: string;
+  customer: { name: string; email: string; phone?: string };
+  items: Array<{ name: string; quantity: number; price: number }>;
+  delivery: { method: string; address: string; city: string; zip: string; country: string };
+  note?: string;
+  total: number;
 }) {
-    const { orderNumber, customer, items, delivery, note, total } = data;
+  const { orderNumber, customer, items, delivery, note, total } = data;
 
-    const money = (n: number) =>
-        new Intl.NumberFormat("cs-CZ", { style: "currency", currency: "CZK" }).format(n);
+  const money = (n: number) =>
+    new Intl.NumberFormat("cs-CZ", { style: "currency", currency: "CZK" }).format(n);
 
-    return `
+  return `
     <!doctype html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/></head>
     <body style="margin:0;padding:0;background:${colorBg};-webkit-font-smoothing:antialiased;">
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:${colorBg};padding:24px 0;">
@@ -179,14 +179,14 @@ export function orderOwnerTemplate(data: {
                   </tr>
                 `).join("")}
                 <tr>
-                  <td colspan="2" style="padding:12px 12px;text-align:right;font-weight:700;">Celkom</td>
+                  <td colspan="2" style="padding:12px 12px;text-align:right;font-weight:700;">Celkem</td>
                   <td style="padding:12px 12px;text-align:right;font-weight:700;">${money(total)}</td>
                 </tr>
               </table>
   
-              <div style="margin:16px 0 8px 0;color:${colorTextLight};">Doručenie</div>
+              <div style="margin:16px 0 8px 0;color:${colorTextLight};">Doručení</div>
               <div style="padding:12px;border:1px solid ${colorSecondaryLight};border-radius:6px;background:${colorBg};">
-                <div><strong>Spôsob:</strong> ${escapeHtml(delivery.method)}</div>
+                <div><strong>Způsob:</strong> ${escapeHtml(delivery.method)}</div>
                 <div><strong>Adresa:</strong> ${escapeHtml(delivery.address)}, ${escapeHtml(delivery.city)} ${escapeHtml(delivery.zip)}, ${escapeHtml(delivery.country)}</div>
                 ${note ? `<div style="margin-top:8px;"><strong>Poznámka:</strong> ${escapeHtml(note)}</div>` : ``}
               </div>
@@ -203,16 +203,16 @@ export function orderOwnerTemplate(data: {
 }
 
 export function orderCustomerTemplate(data: {
-    orderNumber: string;
-    customer: { name: string };
-    items: Array<{ name: string; quantity: number; price: number }>;
-    total: number;
+  orderNumber: string;
+  customer: { name: string };
+  items: Array<{ name: string; quantity: number; price: number }>;
+  total: number;
 }) {
-    const { orderNumber, customer, items, total } = data;
-    const money = (n: number) =>
-        new Intl.NumberFormat("cs-CZ", { style: "currency", currency: "CZK" }).format(n);
+  const { orderNumber, customer, items, total } = data;
+  const money = (n: number) =>
+    new Intl.NumberFormat("cs-CZ", { style: "currency", currency: "CZK" }).format(n);
 
-    return `
+  return `
     <!doctype html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/></head>
     <body style="margin:0;padding:0;background:${colorBg};-webkit-font-smoothing:antialiased;">
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:${colorBg};padding:24px 0;">
@@ -224,7 +224,7 @@ export function orderCustomerTemplate(data: {
               </td>
             </tr>
             <tr><td style="padding:22px;color:${colorText};font-size:14px;line-height:1.6;">
-              <p style="margin:0 0 10px 0;">Ahoj ${escapeHtml(customer.name)}, ďakujeme za objednávku!</p>
+              <p style="margin:0 0 10px 0;">Ahoj ${escapeHtml(customer.name)}, děkujeme za objednávku!</p>
               <div style="margin:10px 0 8px 0;color:${colorTextLight};">Rekapitulácia</div>
               <table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;border:1px solid ${colorSecondaryLight};border-radius:6px;">
                 ${items.map(i => `
@@ -235,14 +235,14 @@ export function orderCustomerTemplate(data: {
                   </tr>
                 `).join("")}
                 <tr>
-                  <td colspan="2" style="padding:12px 12px;text-align:right;font-weight:700;">Celkom</td>
+                  <td colspan="2" style="padding:12px 12px;text-align:right;font-weight:700;">Celkem</td>
                   <td style="padding:12px 12px;text-align:right;font-weight:700;">${money(total)}</td>
                 </tr>
               </table>
   
               <div style="margin-top:16px;padding:12px;border:1px dashed ${colorSecondaryLight};border-radius:6px;color:${colorTextLight};background:${colorBg};">
-                Platba prevodom: <strong>3018883028/3030</strong> (Air Bank)<br/>
-                Variabilný symbol: <strong>${orderNumber}</strong>
+                Platba převodem: <strong>3018883028/3030</strong> (Air Bank)<br/>
+                Variabilní symbol: <strong>${orderNumber}</strong>
               </div>
   
               <p style="margin:16px 0 0 0;font-size:12px;color:${colorTextLight};">Automatický e‑mail.</p>
