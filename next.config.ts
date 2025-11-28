@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://dany-art-production.up.railway.app';
 
-console.log('🔍 STRAPI_URL:', strapiUrl);
+
 
 const remotePatterns = (() => {
     try {
@@ -20,7 +20,7 @@ const remotePatterns = (() => {
             }
         ];
 
-        console.log('✅ Remote patterns:', patterns);
+
 
         return patterns;
     } catch (error) {
