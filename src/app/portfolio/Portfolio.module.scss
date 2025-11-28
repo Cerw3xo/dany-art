@@ -28,13 +28,56 @@
         margin-bottom: 2rem;
         display: block;
         overflow: hidden;
-        border-radius: 0.1rem;
-
+        border-radius: $radius-xs;
         cursor: pointer;
-        transition: transform 0.3s;
+
+        // Loading state - skeleton
+        &.loading {
+          opacity: 0;
+          animation: fadeInUp 0.6s ease-out forwards;
+
+          .image {
+            opacity: 0;
+          }
+
+          // Skeleton placeholder
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+              90deg,
+              rgba($color-accent, 0.3) 25%,
+              rgba($color-accent, 0.6) 50%,
+              rgba($color-accent, 0.3) 75%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            z-index: 1;
+          }
+        }
+
+        // Loaded state - smooth fade in
+        &.loaded {
+          opacity: 1;
+          animation: fadeInUp 0.4s ease-out forwards;
+
+          .image {
+            opacity: 1;
+            transition: opacity 0.7s ease-in-out;
+          }
+
+          &::before {
+            display: none;
+          }
+        }
 
         &:hover {
           transform: translateY(-0.25rem);
+          transition: transform 0.3s ease;
 
           .overlay {
             opacity: 1;
@@ -46,6 +89,7 @@
           height: auto;
           object-fit: cover;
           display: block;
+          transition: opacity 0.5s ease-in-out;
         }
 
         .overlay {
@@ -54,16 +98,19 @@
           left: 0;
           right: 0;
           width: 100%;
-          background: rgba($color-accent, 0.7);
+          background: rgba($color-accent, 0.6);
           padding: 0.8rem;
           opacity: 0;
+          border-radius: $radius-sm $radius-sm 0 0;
           transition: opacity 0.3s;
+          backdrop-filter: blur(4px);
 
           .caption {
-            color: $color-primary;
-            font-weight: 500;
+            color: $color-text;
+            font-weight: 600;
             display: block;
             text-align: center;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
           }
         }
       }
@@ -114,5 +161,27 @@
         }
       }
     }
+  }
+}
+
+// Fade-in animácia
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Shimmer efekt pre skeleton
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }

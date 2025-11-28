@@ -43,7 +43,7 @@
   .circle {
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 50%;
+    border-radius: $radius-round;
     border: 2px solid $color-primary;
     background: $color-text-light;
     color: $color-primary;

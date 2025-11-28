@@ -23,7 +23,7 @@
       width: 8rem;
       height: 7rem;
       object-fit: cover;
-      border-radius: 0.1rem;
+      border-radius: $radius-xs;
       opacity: 0.7;
       cursor: pointer;
 
@@ -42,7 +42,7 @@
       width: 100%;
       max-height: 40rem;
       object-fit: contain;
-      border-radius: 0.1rem;
+      border-radius: $radius-xs;
       display: block;
     }
   }
@@ -89,7 +89,7 @@
 
       &::-webkit-scrollbar-thumb {
         background: rgba(0, 0, 0, 0.2);
-        border-radius: 0.2rem;
+        border-radius: $radius-xs;
       }
 
       .arrow {

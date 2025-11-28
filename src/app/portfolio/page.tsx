@@ -111,6 +111,13 @@ const portfolioItems = [
 export default function PortfolioPage() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(
+    new Set()
+  );
+
+  const handleImageLoad = (id: string) => {
+    setLoadedImages((prev) => new Set(prev).add(id));
+  };
 
   return (
     <section className={styles.portfolio}>
@@ -121,7 +128,14 @@ export default function PortfolioPage() {
           {portfolioItems.map((item, i) => (
             <div
               key={item.id}
-              className={styles.item}
+              className={`${styles.item} ${
+                loadedImages.has(item.id)
+                  ? styles.loaded
+                  : styles.loading
+              }`}
+              style={{
+                animationDelay: `${i * 0.05}s`,
+              }}
               onClick={() => {
                 setOpen(true);
                 setIndex(i);
@@ -134,6 +148,8 @@ export default function PortfolioPage() {
                 width={800}
                 height={600}
                 style={{ objectFit: "cover" }}
+                loading="lazy"
+                onLoad={() => handleImageLoad(item.id)}
               />
               <div className={styles.overlay}>
                 <span className={styles.caption}>{item.alt}</span>

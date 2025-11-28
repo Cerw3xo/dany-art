@@ -70,7 +70,7 @@
         max-width: 35rem;
         max-height: 32rem;
         object-fit: cover;
-        border-radius: 0.1rem;
+        border-radius: $radius-xs;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         z-index: 99;
       }
@@ -93,7 +93,7 @@
       outline-offset: 0.2rem;
       color: #fff;
       padding: 0.3rem 1.2rem;
-      border-radius: 2rem;
+      border-radius: $radius-xl;
       font-size: 1.9rem;
       font-weight: 400;
       display: inline-block;

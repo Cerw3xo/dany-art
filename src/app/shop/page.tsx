@@ -21,6 +21,13 @@ export default function ShopPage() {
   const [expandedCategories, setExpandedCategories] = useState<
     string[]
   >([]);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(
+    new Set()
+  );
+
+  const handleImageLoad = (slug: string) => {
+    setLoadedImages((prev) => new Set(prev).add(slug));
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -156,8 +163,18 @@ export default function ShopPage() {
                 </ul>
               </aside>
               <div className={styles.grid}>
-                {filteredProducts.map((p) => (
-                  <article key={p.slug} className={styles.card}>
+                {filteredProducts.map((p, index) => (
+                  <article
+                    key={p.slug}
+                    className={`${styles.card} ${
+                      loadedImages.has(p.slug)
+                        ? styles.loaded
+                        : styles.loading
+                    }`}
+                    style={{
+                      animationDelay: `${index * 0.05}s`,
+                    }}
+                  >
                     <Link
                       className={styles.link}
                       href={`/product/${p.slug}`}
@@ -169,6 +186,8 @@ export default function ShopPage() {
                         width={300}
                         height={300}
                         style={{ objectFit: "cover" }}
+                        loading="lazy"
+                        onLoad={() => handleImageLoad(p.slug)}
                       />
                       <div className={styles.name}>{p.name}</div>
                       <div className={styles.price}>{p.price} Kč</div>

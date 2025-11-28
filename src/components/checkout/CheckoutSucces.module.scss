@@ -20,7 +20,7 @@
     outline: 2px solid $color-primary;
     outline-offset: 0.2rem;
     padding: 0.1rem 1.7rem;
-    border-radius: 2rem;
+    border-radius: $radius-xl;
   }
   .container {
     display: flex;
@@ -137,7 +137,7 @@
     .heading {
       font-size: 1.1rem;
       padding: 0.1rem 0.8rem;
-      border-radius: 1.5rem;
+      border-radius: $radius-lg;
     }
 
     .container {

@@ -34,7 +34,7 @@
       overflow: hidden;
       border: 4px solid $color-bg;
       padding: 0.3rem;
-      border-radius: 0.25rem;
+      border-radius: $radius-xs;
 
       .image {
         width: 100%;

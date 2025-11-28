@@ -12,21 +12,21 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const items = [
-  { src: "/portfolio/etikety/vino.jpg", alt: "Etiketa na vino" },
   {
-    src: "/portfolio/knihy/kniha-vazba.jpg",
-    alt: "Švadlenčin pomocník",
+    src: "/portfolio/Batuv-domek-olejomalba.jpg",
+    alt: "Baťův domek - olejomalba",
   },
-  { src: "/portfolio/textil/dany.jpg", alt: "Trika s potiskem" },
+  { src: "/portfolio/Etikety-Na-Mezi.jpg", alt: "Etikety Na Mezi" },
+  { src: "/portfolio/Keramicke-broze.jpg", alt: "Keramické brože" },
   {
-    src: "/portfolio/textil/taska-demoni1.jpg",
-    alt: "Etikety na víno",
+    src: "/portfolio/Kapka-v-mori-autorska-publikace.jpg",
+    alt: "Kapka v moři",
   },
+  { src: "/portfolio/Tricko-Dame-Kafe.jpg", alt: "Tričko Dáme Kafe" },
   {
-    src: "/portfolio/grafika/grafika-rozmarin.jpg",
-    alt: "Etikety na víno",
+    src: "/portfolio/Svatebni-oznameni.jpg",
+    alt: "Svatební oznámení",
   },
-  { src: "/portfolio/malba/obraz-dany.jpg", alt: "Malovaná taška" },
 ];
 
 export default function PortfolioPreview() {
