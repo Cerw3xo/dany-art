@@ -29,7 +29,7 @@ export default function ShopPage() {
     // Minimálny delay pre shimmer efekt (aj keď sa obrázok načíta rýchlo)
     setTimeout(() => {
       setLoadedImages((prev) => new Set(prev).add(slug));
-    }, 300);
+    }, 700);
   };
 
   useEffect(() => {

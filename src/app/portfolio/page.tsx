@@ -119,7 +119,7 @@ export default function PortfolioPage() {
     // Minimálny delay pre shimmer efekt (aj keď sa obrázok načíta rýchlo)
     setTimeout(() => {
       setLoadedImages((prev) => new Set(prev).add(id));
-    }, 300);
+    }, 700);
   };
 
   return (
