@@ -26,7 +26,10 @@ export default function ShopPage() {
   );
 
   const handleImageLoad = (slug: string) => {
-    setLoadedImages((prev) => new Set(prev).add(slug));
+    // Minimálny delay pre shimmer efekt (aj keď sa obrázok načíta rýchlo)
+    setTimeout(() => {
+      setLoadedImages((prev) => new Set(prev).add(slug));
+    }, 300);
   };
 
   useEffect(() => {

@@ -146,12 +146,13 @@
         &.loading {
           opacity: 0;
           animation: fadeInUp 0.6s ease-out forwards;
+          will-change: opacity, transform;
 
           .thumb {
             opacity: 0;
+            transition: opacity 0.7s ease-in-out;
           }
 
-          // Skeleton placeholder
           &::before {
             content: "";
             position: absolute;
@@ -161,29 +162,31 @@
             bottom: 0;
             background: linear-gradient(
               90deg,
-              rgba($color-accent, 0.3) 25%,
-              rgba($color-accent, 0.6) 50%,
-              rgba($color-accent, 0.3) 75%
+              rgba(255, 215, 215, 0.3) 25%,
+              rgba(255, 215, 215, 0.6) 50%,
+              rgba(255, 215, 215, 0.3) 75%
             );
             background-size: 200% 100%;
             animation: shimmer 1.5s infinite;
             border-radius: $radius-xs;
             z-index: 1;
+            pointer-events: none;
           }
         }
 
         // Loaded state - smooth fade in
         &.loaded {
           opacity: 1;
-          animation: fadeInUp 0.6s ease-out forwards;
+          animation: fadeInUp 0.4s ease-out forwards;
 
           .thumb {
             opacity: 1;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.7s ease-in-out;
           }
 
           &::before {
             display: none;
+            animation: none;
           }
         }
 
