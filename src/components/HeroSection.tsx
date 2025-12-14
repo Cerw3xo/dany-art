@@ -103,9 +103,9 @@ export default function HeroSection() {
             </h1>
             <div className={styles.description}>
               <p>
-                Autorská tvorba pro všechny, kdo milují originalitu -
-                obrazy, potisky i ruční malbu na textil, design etiket
-                na víno, keramika a další ručně tvořené produkty.
+                Autorský potisk a ruční malba na textil. Obrazy,
+                ilustrace i grafický design a další ručně tvořená
+                díla.
               </p>
             </div>
           </motion.div>

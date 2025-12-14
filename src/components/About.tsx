@@ -2,6 +2,7 @@
 
 import styles from "./About.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 
@@ -44,7 +45,6 @@ export default function About() {
 
   return (
     <section className={styles.about} ref={aboutRef}>
-      {/* Ľavá strana: obrázok */}
       <motion.div
         className={styles.left}
         initial="hidden"
@@ -66,7 +66,7 @@ export default function About() {
         </div>
         <div className={styles.imgContainer}>
           <Image
-            src="/dany.webp"
+            src="/dany.jpg"
             alt="Daniela Konečná maluje obraz"
             className={styles.photo}
             width={400}
@@ -76,7 +76,6 @@ export default function About() {
         </div>
       </motion.div>
 
-      {/* Pravá strana: text s postupným zobrazením */}
       <motion.div
         className={styles.right}
         initial="hidden"
@@ -87,53 +86,83 @@ export default function About() {
           <h2 className={styles.heading}>Kdo jsem?</h2>
         </motion.div>
 
-        <motion.div variants={fadeUp}>
+        <motion.div variants={fadeUp} className={styles.aboutMe}>
           <p>
-            Jmenuji se <strong>Daniela Konečná</strong> – grafická
-            designérka a umělkyně, která propojuje kreativitu, funkční
-            design a osobitost. Už více než 4 roky se věnuji tvorbě{" "}
-            <strong>grafiky na míru</strong>, pracuji v reklamní
-            agentuře a zároveň buduji vlastní značku{" "}
-            <strong>DanyssArt</strong>.
+            Jmenuji se <strong>Daniela Konečná</strong> a pod značkou
+            DanyssArt tvořím věci, které mají duši.
+          </p>
+          <p>
+            Moje tvorba je rozmanitá, protože miluji objevovat nové
+            techniky, materiály a způsoby vyjádření. Fascinuje mě
+            moment, kdy se obyčejná myšlenka začne měnit v něco, co
+            může člověka potěšit, zahřát nebo doprovázet v každodenním
+            životě.
+          </p>
+          <p>
+            Stejně jako se život nedá nacpat do jedné škatulky, nedá
+            se do ní nacpat ani moje tvorba — a právě v tom spočívá
+            její krása.
           </p>
         </motion.div>
 
         <motion.div variants={fadeUp}>
-          <h3 className={styles.subheading}>Co tvořím?</h3>
+          <h3 className={styles.subheading}>CO TVOŘÍM?</h3>
+        </motion.div>
+
+        <motion.div variants={fadeUp} className={styles.categories}>
+          <div className={styles.category}>
+            <h4 className={styles.categoryTitle}>
+              Textil s autorskými motivy
+            </h4>
+            <p className={styles.categoryText}>
+              Ručně malované kousky i digitální potisk na přání. Každý
+              produkt je originál vznikající s péčí a pozorností k
+              detailu.
+            </p>
+          </div>
+
+          <div className={styles.category}>
+            <h4 className={styles.categoryTitle}>
+              Ilustrace a obrazy
+            </h4>
+            <p className={styles.categoryText}>
+              Jemné, snové, někdy hravé, jindy melancholické. Tvorba,
+              ve které se odráží ženskost a cit pro detail.
+            </p>
+          </div>
+
+          <div className={styles.category}>
+            <h4 className={styles.categoryTitle}>
+              Etikety a grafické návrhy
+            </h4>
+            <p className={styles.categoryText}>
+              Vizuály na míru pro vinařství, firmy, svatby i osobní
+              projekty. Zakládám si na estetice a funkčním designu,
+              který má charakter.
+            </p>
+          </div>
+
+          <div className={styles.category}>
+            <h4 className={styles.categoryTitle}>Autorské knihy</h4>
+            <p className={styles.categoryText}>
+              Dětská kniha <strong>Nalezeneček</strong> a básnická
+              sbírka <strong>Kapka v moři</strong> – obě jsem sama
+              napsala, ilustrovala i ručně svázala. Každý výtisk je
+              malý příběh, který prochází mýma rukama od začátku do
+              konce.
+            </p>
+          </div>
         </motion.div>
 
         <motion.div variants={fadeUp}>
-          <ul className={styles.list}>
-            <li>Etikety na víno – od návrhu až po tisk</li>
-            <li>
-              Originální malba a digitální potisk na trička, mikiny a
-              tašky
-            </li>
-            <li>
-              Obrazy, autorské ilustrace, keramické výrobky a další
-              ruční tvorba
-            </li>
-            <li>Ručně vázané knihy a autorské publikace</li>
-          </ul>
-        </motion.div>
-
-        <motion.div variants={fadeUp}>
-          <p>
-            Jsem také autorkou dvou knih, které jsem napsala,
-            ilustrovala a svázala – pohádky{" "}
-            <strong>Nalezeneček</strong> a básnické sbírky{" "}
-            <strong>Kapka v moři</strong>.
-          </p>
-        </motion.div>
-
-        <motion.div variants={fadeUp}>
-          <p className={styles.highlight}>
-            👉 Hledáš někoho, kdo vytvoří vizuál, co má duši? <br />
-            <span>
-              Ozvi se mi – ráda ti pomůžu přenést tvůj nápad do
-              jedinečné podoby.
+          <Link href="/contact" className={styles.highlight}>
+            <span className={styles.ctaTitle}>
+              Chceš svůj nápad proměnit v originální vizuál?
             </span>
-          </p>
+            <span className={styles.ctaText}>
+              👉 Ozvi se mi — ráda s tebou vytvořím něco jedinečného.
+            </span>
+          </Link>
         </motion.div>
       </motion.div>
     </section>

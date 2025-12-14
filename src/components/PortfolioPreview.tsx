@@ -131,16 +131,22 @@ export default function PortfolioPreview() {
             breakpoints={{
               0: {
                 slidesPerView: 1,
-                centeredSlides: false,
+                centeredSlides: true,
                 spaceBetween: 0,
                 slidesOffsetBefore: 0,
                 slidesOffsetAfter: 0,
               },
 
+              551: {
+                slidesPerView: 1.2,
+                centeredSlides: true,
+                spaceBetween: 12,
+              },
+
               768: {
                 slidesPerView: 3,
                 centeredSlides: false,
-                spaceBetween: 24,
+                spaceBetween: 14,
               },
             }}
             autoplay={{

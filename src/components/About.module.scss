@@ -100,28 +100,74 @@
       margin-bottom: 1rem;
     }
 
+    .aboutMe {
+      p {
+        margin-bottom: 0.7rem;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+
     .subheading {
       font-size: 1.2rem;
       font-weight: 700;
-      margin-top: 1rem;
+      margin-top: 0.7rem;
+      color: $color-primary;
     }
 
-    .list {
-      padding-left: 1.5rem;
-      list-style-type: disc;
-      li {
-        margin-bottom: 0.3rem;
+    .categories {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 0.5rem;
+
+      .category {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .categoryTitle {
+          font-size: 1rem;
+          font-weight: 700;
+          color: $color-text;
+          margin: 0;
+        }
+
+        .categoryText {
+          font-size: 0.95rem;
+          color: $color-text;
+          line-height: 1.6;
+          margin: 0;
+        }
       }
     }
 
     .highlight {
-      margin-top: 1rem;
-      font-weight: 600;
-      color: $color-primary;
-      span {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      .ctaTitle {
+        font-weight: 700;
+        color: $color-primary;
+        font-size: 1rem;
         display: block;
-        margin-top: 0.2rem;
-        font-weight: normal;
+      }
+
+      .ctaText {
+        font-weight: 400;
+        color: $color-primary;
+        font-size: 1rem;
+        display: block;
       }
     }
   }
@@ -225,6 +271,7 @@
       order: 2;
       align-items: flex-start;
       justify-content: center;
+
       .heading {
         font-size: 1.5rem;
         width: 140%;
@@ -236,7 +283,28 @@
 
       .subheading {
         font-size: 1.1rem;
-        text-align: center;
+        text-align: left;
+      }
+
+      .categories {
+        gap: 1.2rem;
+
+        .category {
+          .categoryTitle {
+            font-size: 0.95rem;
+          }
+
+          .categoryText {
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      .highlight {
+        .ctaTitle,
+        .ctaText {
+          font-size: 0.95rem;
+        }
       }
     }
   }
