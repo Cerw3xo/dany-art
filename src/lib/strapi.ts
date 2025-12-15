@@ -25,11 +25,6 @@ export interface StrapiProduct {
         name?: string;
     };
     sizes?: string[];
-    sizeChart?: {
-        id: number;
-        url: string;
-        name?: string;
-    };
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
@@ -101,9 +96,6 @@ export function convertStrapiProduct(p: StrapiProduct) {
         ? (p.thumbnail.url.startsWith('http') ? p.thumbnail.url : `${STRAPI_URL}${p.thumbnail.url}`)
         : '';
 
-    const sizeChartUrl = p.sizeChart?.url
-        ? (p.sizeChart.url.startsWith('http') ? p.sizeChart.url : `${STRAPI_URL}${p.sizeChart.url}`)
-        : undefined;
 
     return {
         id: String(p.id || p.documentId),
@@ -119,6 +111,6 @@ export function convertStrapiProduct(p: StrapiProduct) {
         available: p.available ?? true,
         featured: p.featured,
         sizes: p.sizes,
-        sizeChart: sizeChartUrl,
+
     };
 }

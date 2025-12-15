@@ -23,10 +23,18 @@ export default function ProductDetails({
 
   // Zistiť, či produkt vyžaduje výber veľkosti
   const requiresSize =
-    (product.subcategory === "tricko" ||
-      product.subcategory === "mikina") &&
+    (product.subcategory === "tricka" ||
+      product.subcategory === "mikiny") &&
     product.sizes &&
     product.sizes.length > 0;
+
+  // Lokálna cesta k PDF tabuľke veľkostí podľa subcategory
+  const sizeChartPath =
+    product.subcategory === "tricka"
+      ? "/size-spec/rozmery produktu tricko.pdf"
+      : product.subcategory === "mikiny"
+      ? "/size-spec/rozmery produktu mikina.pdf"
+      : null;
 
   const handleSizeChange = (size: string) => {
     setSelectedSize(size);
@@ -35,7 +43,7 @@ export default function ProductDetails({
 
   const handleSizeError = () => {
     setSizeError(true);
-    // Scroll k size selectoru
+
     const sizeSelector = document.querySelector(
       `.${styles.sizeSection}`
     );
@@ -71,7 +79,7 @@ export default function ProductDetails({
               selectedSize={selectedSize}
               onSizeChange={handleSizeChange}
               onOpenSizeChart={() => setShowSizeChart(true)}
-              hasSizeChart={!!product.sizeChart}
+              hasSizeChart={!!sizeChartPath}
             />
             {sizeError && (
               <p className={styles.sizeError}>
@@ -91,9 +99,9 @@ export default function ProductDetails({
       </div>
 
       {/* Size Chart Modal */}
-      {showSizeChart && product.sizeChart && (
+      {showSizeChart && sizeChartPath && (
         <SizeChartModal
-          imageUrl={product.sizeChart}
+          imageUrl={sizeChartPath}
           onClose={() => setShowSizeChart(false)}
         />
       )}

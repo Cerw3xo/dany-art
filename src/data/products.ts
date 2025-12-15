@@ -13,5 +13,5 @@ export type Product = {
     featured?: boolean;
     subcategory?: string;
     sizes?: string[];
-    sizeChart?: string;
+
 };
