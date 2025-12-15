@@ -91,6 +91,12 @@
               height: 3.5rem;
               object-fit: cover;
             }
+
+            .itemSize {
+              color: $color-secondary;
+              font-size: 0.9em;
+              font-weight: normal;
+            }
           }
 
           &:nth-child(2),

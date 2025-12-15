@@ -1,8 +1,7 @@
 import type { Product } from "@/data/products";
 import styles from "./Product.module.scss";
-import { formatPrice } from "@/lib/format";
-import AddToCartButton from "@/components/AddToCartButton";
 import ProductGallery from "../ProductGallery";
+import ProductDetails from "./ProductDetails";
 import {
   fetchProductBySlug,
   convertStrapiProduct,
@@ -54,24 +53,7 @@ export default async function ProductPage({
   return (
     <section className={styles.product}>
       <div className={styles.info}>
-        <div className={styles.right}>
-          <h1 className={styles.heading}>{product.name}</h1>
-
-          <p className={styles.description}>{product.summary}</p>
-          <p className={styles.price}>{formatPrice(product.price)}</p>
-
-          {product.available ? (
-            <span className={styles.inStock}>Skladem</span>
-          ) : (
-            <span className={styles.outOfStock}>
-              Dostupné do měsíce
-            </span>
-          )}
-          <AddToCartButton
-            product={product}
-            className={styles.addToCart}
-          />
-        </div>
+        <ProductDetails product={product} />
 
         <div className={styles.gallery}>
           <ProductGallery

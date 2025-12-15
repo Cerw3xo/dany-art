@@ -73,6 +73,12 @@
       h4 {
         margin-bottom: 0.3rem;
         color: $color-primary;
+
+        .itemSize {
+          font-weight: normal;
+          color: $color-secondary;
+          font-size: 0.9em;
+        }
       }
 
       p {

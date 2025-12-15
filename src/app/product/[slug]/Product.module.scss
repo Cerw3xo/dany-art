@@ -50,6 +50,32 @@
         }
       }
 
+      .sizeSection {
+        width: 100%;
+        margin-bottom: 1.5rem;
+      }
+
+      .sizeError {
+        color: #d32f2f;
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+        font-weight: 500;
+        animation: shake 0.3s ease;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        75% {
+          transform: translateX(5px);
+        }
+      }
+
       .addToCart {
         @include m.cta-button();
         background-color: $color-primary-light;
@@ -64,6 +90,11 @@
           outline: 1px solid $color-primary-light;
           background-color: $color-primary-light;
           outline-offset: 0.1rem;
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
       }
     }
@@ -133,6 +164,14 @@
           margin-bottom: 0.8rem;
         }
 
+        .sizeSection {
+          margin-bottom: 1.2rem;
+        }
+
+        .sizeError {
+          font-size: 0.8rem;
+        }
+
         .addToCart {
           padding: 0.4rem 1.5rem;
           font-size: 1rem;
@@ -177,6 +216,14 @@
           font-size: 0.8rem;
         }
 
+        .sizeSection {
+          margin-bottom: 1rem;
+        }
+
+        .sizeError {
+          font-size: 0.75rem;
+        }
+
         .addToCart {
           padding: 0.3rem 1.3rem;
           font-size: 0.95rem;
@@ -218,6 +265,14 @@
 
         > span {
           font-size: 0.75rem;
+        }
+
+        .sizeSection {
+          margin-bottom: 0.8rem;
+        }
+
+        .sizeError {
+          font-size: 0.7rem;
         }
 
         .addToCart {

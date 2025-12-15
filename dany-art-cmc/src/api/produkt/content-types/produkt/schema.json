@@ -58,6 +58,17 @@
     },
     "featured": {
       "type": "boolean"
+    },
+    "sizes": {
+      "type": "json"
+    },
+    "sizeChart": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }

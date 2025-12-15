@@ -12,4 +12,6 @@ export type Product = {
     variants?: [];
     featured?: boolean;
     subcategory?: string;
+    sizes?: string[];
+    sizeChart?: string;
 };

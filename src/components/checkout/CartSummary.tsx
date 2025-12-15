@@ -32,33 +32,46 @@ export default function CartSummary({
           </tr>
         </thead>
         <tbody>
-          {items.map((item) => (
-            <tr key={item.id}>
-              <td>
-                <Image
-                  src={item.thumbnail}
-                  alt={item.name}
-                  className={styles.productImg}
-                  width={60}
-                  height={60}
-                  style={{ objectFit: "cover" }}
-                />{" "}
-                {item.name}
-              </td>
-              <td>{item.quantity} ks</td>
-              <td>{formatPrice(item.price)}</td>
-              <td>{formatPrice(item.price * item.quantity)}</td>
-              <td>
-                <button
-                  className={styles.removeBtn}
-                  onClick={() => removeItem(item.id)}
-                  aria-label="Odstranit polžku"
-                >
-                  x
-                </button>
-              </td>
-            </tr>
-          ))}
+          {items.map((item) => {
+            // Jedinečný kľúč kombinuje id a veľkosť
+            const itemKey = item.size
+              ? `${item.id}-${item.size}`
+              : item.id;
+
+            return (
+              <tr key={itemKey}>
+                <td>
+                  <Image
+                    src={item.thumbnail}
+                    alt={item.name}
+                    className={styles.productImg}
+                    width={60}
+                    height={60}
+                    style={{ objectFit: "cover" }}
+                  />{" "}
+                  {item.name}
+                  {item.size && (
+                    <span className={styles.itemSize}>
+                      {" "}
+                      • {item.size}
+                    </span>
+                  )}
+                </td>
+                <td>{item.quantity} ks</td>
+                <td>{formatPrice(item.price)}</td>
+                <td>{formatPrice(item.price * item.quantity)}</td>
+                <td>
+                  <button
+                    className={styles.removeBtn}
+                    onClick={() => removeItem(item.id)}
+                    aria-label="Odstranit polžku"
+                  >
+                    x
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       <div className={styles.totalPrice}>

@@ -8,6 +8,7 @@ export type CartItem = {
    quantity: number;
    images?: string[];
    thumbnail: string;
+   size?: string;
 }
 
 type CartState = {
@@ -24,11 +25,14 @@ export const useCartStore = create<CartState>()(
          items: [],
          addItem: (item) =>
             set((state) => {
-               const existing = state.items.find((i) => i.id === item.id);
+               // Pre produkty s veľkosťou porovnávame aj veľkosť
+               const existing = state.items.find((i) =>
+                  i.id === item.id && i.size === item.size
+               );
                if (existing) {
                   return {
                      items: state.items.map((i) =>
-                        i.id === item.id ?
+                        i.id === item.id && i.size === item.size ?
                            { ...i, quantity: i.quantity + item.quantity } : i
                      )
                   }

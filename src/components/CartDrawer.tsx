@@ -46,8 +46,13 @@ export default function CartDrawer({
                   (item.images && item.images[0]) ||
                   "placeholder.png";
 
+                // Jedinečný kľúč kombinuje id a veľkosť
+                const itemKey = item.size
+                  ? `${item.id}-${item.size}`
+                  : item.id;
+
                 return (
-                  <div key={item.id} className={styles.cartItem}>
+                  <div key={itemKey} className={styles.cartItem}>
                     <Image
                       src={imgSrc}
                       alt={item.name}
@@ -56,7 +61,15 @@ export default function CartDrawer({
                       style={{ objectFit: "cover" }}
                     />
                     <div className={styles.itemInfo}>
-                      <h4>{item.name}</h4>
+                      <h4>
+                        {item.name}
+                        {item.size && (
+                          <span className={styles.itemSize}>
+                            {" "}
+                            • {item.size}
+                          </span>
+                        )}
+                      </h4>
                       <p>{formatPrice(item.price)} </p>
                       <div className={styles.quantity}>
                         <button
