@@ -31,7 +31,6 @@
         border-radius: $radius-xs;
         cursor: pointer;
 
-        // Loading state - skeleton
         &.loading {
           opacity: 0;
           animation: fadeInUp 0.6s ease-out forwards;
@@ -42,7 +41,6 @@
             transition: opacity 0.7s ease-in-out;
           }
 
-          // Skeleton placeholder - hardcoded farby pre Vercel kompatibilitu
           &::before {
             content: "";
             position: absolute;
@@ -63,7 +61,6 @@
           }
         }
 
-        // Loaded state - smooth fade in
         &.loaded {
           opacity: 1;
           animation: fadeInUp 0.4s ease-out forwards;

@@ -21,14 +21,12 @@ export default function ProductDetails({
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [sizeError, setSizeError] = useState(false);
 
-  // Zistiť, či produkt vyžaduje výber veľkosti
   const requiresSize =
     (product.subcategory === "tricka" ||
       product.subcategory === "mikiny") &&
     product.sizes &&
     product.sizes.length > 0;
 
-  // Lokálna cesta k PDF tabuľke veľkostí podľa subcategory
   const sizeChartPath =
     product.subcategory === "tricka"
       ? "/size-spec/rozmery produktu tricko.pdf"
@@ -71,7 +69,6 @@ export default function ProductDetails({
           </span>
         )}
 
-        {/* Size Selector - zobrazí sa len pre tričká a mikiny */}
         {requiresSize && (
           <div className={styles.sizeSection}>
             <SizeSelector

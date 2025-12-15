@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import styles from "./ProductGallery.module.scss";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
+import ImageLightbox from "@/components/ImageLightbox";
 
 export default function ProductGallery({
   images,
@@ -12,6 +13,7 @@ export default function ProductGallery({
   name: string;
 }) {
   const [mainImg, setMainImg] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const [imageErrors, setImageErrors] = useState<{
     [key: number]: boolean;
   }>({});
@@ -42,6 +44,14 @@ export default function ProductGallery({
   const prevImg = () => setMainImg((idx) => Math.max(idx - 1, 0));
   const nextImg = () =>
     setMainImg((idx) => Math.min(idx + 1, images.length - 1));
+
+  const handleLightboxPrev = () => {
+    setMainImg((idx) => (idx > 0 ? idx - 1 : idx));
+  };
+
+  const handleLightboxNext = () => {
+    setMainImg((idx) => (idx < images.length - 1 ? idx + 1 : idx));
+  };
 
   return (
     <div className={styles.galleryWrapper}>
@@ -97,7 +107,13 @@ export default function ProductGallery({
           <FaChevronDown />
         </button>
       </div>
-      <div className={styles.mainImg}>
+      <div
+        className={styles.mainImg}
+        onClick={() => !imageErrors[mainImg] && setLightboxOpen(true)}
+        style={{
+          cursor: imageErrors[mainImg] ? "default" : "pointer",
+        }}
+      >
         {imageErrors[mainImg] ? (
           <div
             style={{
@@ -123,6 +139,17 @@ export default function ProductGallery({
           />
         )}
       </div>
+
+      {lightboxOpen && !imageErrors[mainImg] && (
+        <ImageLightbox
+          images={images.filter((_, i) => !imageErrors[i])}
+          currentIndex={mainImg}
+          onClose={() => setLightboxOpen(false)}
+          onPrev={handleLightboxPrev}
+          onNext={handleLightboxNext}
+          productName={name}
+        />
+      )}
     </div>
   );
 }

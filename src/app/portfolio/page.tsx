@@ -116,7 +116,6 @@ export default function PortfolioPage() {
   );
 
   const handleImageLoad = (id: string) => {
-    // Minimálny delay pre shimmer efekt (aj keď sa obrázok načíta rýchlo)
     setTimeout(() => {
       setLoadedImages((prev) => new Set(prev).add(id));
     }, 700);

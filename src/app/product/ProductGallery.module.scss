@@ -37,6 +37,11 @@
 
   .mainImg {
     flex: 1;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
 
     img {
       width: 100%;
@@ -44,6 +49,11 @@
       object-fit: contain;
       border-radius: $radius-xs;
       display: block;
+      transition: box-shadow 0.2s ease;
+    }
+
+    &:hover img {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
   }
 }
