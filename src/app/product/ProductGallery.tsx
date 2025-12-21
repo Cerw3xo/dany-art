@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import styles from "./ProductGallery.module.scss";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
-import ImageLightbox from "@/components/ImageLightbox";
 
 export default function ProductGallery({
   images,
@@ -17,9 +18,18 @@ export default function ProductGallery({
   const [imageErrors, setImageErrors] = useState<{
     [key: number]: boolean;
   }>({});
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(
+    new Set()
+  );
 
   const handleImageError = (index: number) => {
     setImageErrors((prev) => ({ ...prev, [index]: true }));
+  };
+
+  const handleImageLoad = (index: number) => {
+    setTimeout(() => {
+      setLoadedImages((prev) => new Set(prev).add(index));
+    }, 300);
   };
 
   if (!images || images.length === 0) {
@@ -44,14 +54,6 @@ export default function ProductGallery({
   const nextImg = () =>
     setMainImg((idx) => Math.min(idx + 1, images.length - 1));
 
-  const handleLightboxPrev = () => {
-    setMainImg((idx) => (idx > 0 ? idx - 1 : idx));
-  };
-
-  const handleLightboxNext = () => {
-    setMainImg((idx) => (idx < images.length - 1 ? idx + 1 : idx));
-  };
-
   return (
     <div className={styles.galleryWrapper}>
       <div className={styles.thumbs}>
@@ -66,36 +68,36 @@ export default function ProductGallery({
           imageErrors[i] ? (
             <div
               key={i}
-              className={`${styles.thumb} ${
+              className={`${styles.thumb} ${styles.error} ${
                 mainImg === i ? styles.active : ""
               }`}
-              style={{
-                width: "80px",
-                height: "70px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#f0f0f0",
-                fontSize: "10px",
-                color: "#999",
-              }}
             >
               ❌
             </div>
           ) : (
-            <Image
+            <div
               key={i}
-              src={src}
-              alt={name}
-              width={80}
-              height={70}
-              className={`${styles.thumb} ${
-                mainImg === i ? styles.active : ""
+              className={`${styles.thumbWrapper} ${
+                loadedImages.has(i) ? styles.loaded : styles.loading
               }`}
-              onClick={() => setMainImg(i)}
-              style={{ objectFit: "cover" }}
-              onError={() => handleImageError(i)}
-            />
+              style={{
+                animationDelay: `${i * 0.05}s`,
+              }}
+            >
+              <Image
+                src={src}
+                alt={name}
+                width={80}
+                height={70}
+                className={`${styles.thumb} ${
+                  mainImg === i ? styles.active : ""
+                }`}
+                onClick={() => setMainImg(i)}
+                style={{ objectFit: "cover" }}
+                onError={() => handleImageError(i)}
+                onLoad={() => handleImageLoad(i)}
+              />
+            </div>
           )
         )}
         <button
@@ -107,24 +109,16 @@ export default function ProductGallery({
         </button>
       </div>
       <div
-        className={styles.mainImg}
+        className={`${styles.mainImg} ${
+          loadedImages.has(mainImg) ? styles.loaded : styles.loading
+        }`}
         onClick={() => !imageErrors[mainImg] && setLightboxOpen(true)}
         style={{
           cursor: imageErrors[mainImg] ? "default" : "pointer",
         }}
       >
         {imageErrors[mainImg] ? (
-          <div
-            style={{
-              width: "800px",
-              height: "600px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#f0f0f0",
-              color: "#999",
-            }}
-          >
+          <div className={styles.errorPlaceholder}>
             Obrázek se nepodařilo načíst
           </div>
         ) : (
@@ -133,23 +127,26 @@ export default function ProductGallery({
             alt={name}
             width={800}
             height={600}
-            sizes="(max:width: 768px) 90 vw, 600px"
+            sizes="(max-width: 768px) 90vw, 600px"
             style={{ objectFit: "contain" }}
             onError={() => handleImageError(mainImg)}
+            onLoad={() => handleImageLoad(mainImg)}
           />
         )}
       </div>
 
-      {lightboxOpen && !imageErrors[mainImg] && (
-        <ImageLightbox
-          images={images.filter((_, i) => !imageErrors[i])}
-          currentIndex={mainImg}
-          onClose={() => setLightboxOpen(false)}
-          onPrev={handleLightboxPrev}
-          onNext={handleLightboxNext}
-          productName={name}
-        />
-      )}
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        slides={images
+          .filter((_, i) => !imageErrors[i])
+          .map((src) => ({
+            src,
+            alt: name,
+          }))}
+        index={mainImg}
+        on={{ view: ({ index }) => setMainImg(index) }}
+      />
     </div>
   );
 }

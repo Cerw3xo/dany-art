@@ -17,30 +17,144 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      background: transparent;
+      color: $color-accent;
+      padding: 0.5rem;
+      border-radius: $radius-xs;
+      transition: all 0.2s ease;
+
+      &:hover:not(:disabled) {
+        background: rgba($color-accent, 0.1);
+        transform: scale(1.1);
+      }
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+    }
+
+    .thumbWrapper {
+      position: relative;
+      width: 8rem;
+      height: 7rem;
+      border-radius: $radius-xs;
+      overflow: hidden;
+
+      &.loading {
+        opacity: 0;
+        animation: fadeInUp 0.4s ease-out forwards;
+        will-change: opacity, transform;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(
+            90deg,
+            rgba(255, 215, 215, 0.3) 25%,
+            rgba(255, 215, 215, 0.6) 50%,
+            rgba(255, 215, 215, 0.3) 75%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 1.5s infinite;
+          z-index: 1;
+          pointer-events: none;
+        }
+      }
+
+      &.loaded {
+        opacity: 1;
+        animation: fadeInUp 0.4s ease-out forwards;
+
+        &::before {
+          display: none;
+        }
+      }
     }
 
     .thumb {
-      width: 8rem;
-      height: 7rem;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       border-radius: $radius-xs;
       opacity: 0.7;
       cursor: pointer;
+      transition: all 0.3s ease;
 
-      &:hover,
+      &:hover {
+        opacity: 1;
+        transform: translateY(-0.15rem);
+      }
+
       &.active {
         opacity: 1;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 8px rgba($color-accent, 0.3);
+        border: 2px solid $color-accent;
       }
+    }
+
+    .error {
+      width: 8rem;
+      height: 7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+      font-size: 1rem;
+      color: #999;
+      border-radius: $radius-xs;
     }
   }
 
   .mainImg {
     flex: 1;
-    transition: transform 0.2s ease;
+    position: relative;
+    transition: transform 0.3s ease;
+
+    &.loading {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 215, 215, 0.3) 25%,
+          rgba(255, 215, 215, 0.6) 50%,
+          rgba(255, 215, 215, 0.3) 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+        border-radius: $radius-xs;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      img {
+        opacity: 0;
+        transition: opacity 0.7s ease-in-out;
+      }
+    }
+
+    &.loaded {
+      img {
+        opacity: 1;
+        transition: opacity 0.7s ease-in-out;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
 
     &:hover {
-      transform: scale(1.02);
+      transform: translateY(-0.25rem);
     }
 
     img {
@@ -49,11 +163,23 @@
       object-fit: contain;
       border-radius: $radius-xs;
       display: block;
-      transition: box-shadow 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     &:hover img {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .errorPlaceholder {
+      width: 100%;
+      min-height: 40rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+      color: #999;
+      border-radius: $radius-xs;
+      font-size: 1.2rem;
     }
   }
 }
@@ -65,14 +191,19 @@
     .thumbs {
       gap: 0.2rem;
 
-      .thumb {
+      .thumbWrapper,
+      .thumb,
+      .error {
         width: 6.5rem;
         height: 6rem;
       }
     }
 
-    .mainImg img {
-      max-height: 35rem;
+    .mainImg {
+      img,
+      .errorPlaceholder {
+        max-height: 35rem;
+      }
     }
   }
 }
@@ -106,7 +237,9 @@
         display: none;
       }
 
-      .thumb {
+      .thumbWrapper,
+      .thumb,
+      .error {
         flex-shrink: 0;
         width: 5rem;
         height: 4.5rem;
@@ -116,7 +249,8 @@
     .mainImg {
       width: 100%;
 
-      img {
+      img,
+      .errorPlaceholder {
         max-height: 28rem;
       }
     }
@@ -131,14 +265,40 @@
       gap: 0.4rem;
       padding-bottom: 0.4rem;
 
-      .thumb {
+      .thumbWrapper,
+      .thumb,
+      .error {
         width: 4rem;
         height: 3.5rem;
       }
     }
 
-    .mainImg img {
-      max-height: 22rem;
+    .mainImg {
+      img,
+      .errorPlaceholder {
+        max-height: 22rem;
+      }
     }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Shimmer efekt pre skeleton (rovnaký ako v Portfolio)
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }
