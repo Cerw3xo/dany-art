@@ -107,7 +107,22 @@ export default async function ProductPage({
         </div>
       </div>
 
-      <p className={styles.productInfo}>{product.summary}</p>
+      {product.description_blocks &&
+        product.description_blocks.length > 0 && (
+          <div className={styles.descriptionBlocks}>
+            {product.description_blocks.map((block) => (
+              <section key={block.id} className={styles.block}>
+                <h3>{block.title}</h3>
+                <div
+                  className={styles.blockContent}
+                  dangerouslySetInnerHTML={{
+                    __html: block.content,
+                  }}
+                />
+              </section>
+            ))}
+          </div>
+        )}
     </section>
   );
 }

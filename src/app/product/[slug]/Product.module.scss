@@ -115,6 +115,25 @@
               margin-bottom: 1rem;
               line-height: 1.6;
             }
+
+            ol {
+              margin-bottom: 1rem;
+              margin-left: 1.5rem;
+              line-height: 1.6;
+
+              li {
+                margin-bottom: 0.5rem;
+              }
+            }
+            ul {
+              margin-bottom: 1rem;
+              margin-left: 1.5rem;
+              line-height: 1.6;
+
+              li {
+                margin-bottom: 0.5rem;
+              }
+            }
           }
         }
       }

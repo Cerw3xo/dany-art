@@ -93,27 +93,8 @@ export default function ProductDetails({
           requiresSize={requiresSize}
           onSizeError={handleSizeError}
         />
-
-        {/* Description Blocks */}
-        {product.description_blocks &&
-          product.description_blocks.length > 0 && (
-            <div className={styles.descriptionBlocks}>
-              {product.description_blocks.map((block) => (
-                <section key={block.id} className={styles.block}>
-                  <h3>{block.title}</h3>
-                  <div
-                    className={styles.blockContent}
-                    dangerouslySetInnerHTML={{
-                      __html: block.content,
-                    }}
-                  />
-                </section>
-              ))}
-            </div>
-          )}
       </div>
 
-      {/* Size Chart Modal */}
       {showSizeChart && sizeChartPath && (
         <SizeChartModal
           imageUrl={sizeChartPath}

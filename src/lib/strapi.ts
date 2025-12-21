@@ -89,7 +89,6 @@ export async function fetchProducts(): Promise<StrapiProduct[]> {
 }
 
 
-// Mapa na front-end Product typ
 export function convertStrapiProduct(p: StrapiProduct) {
     if (!p || !p.slug) {
         return undefined;

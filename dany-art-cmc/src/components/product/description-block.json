@@ -11,7 +11,7 @@
       "required": true
     },
     "content": {
-      "type": "richtext",
+      "type": "block",
       "required": true
     }
   }
