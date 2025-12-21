@@ -8,8 +8,8 @@ export const dynamic = "force-dynamic";
 export async function POST(req: Request) {
     try {
         if (!process.env.RESEND_API_KEY) {
-            console.error("RESEND_API_KEY nie je nastavený");
-            return NextResponse.json({ error: "Email service nie je nakonfigurovaný" }, { status: 500 });
+            console.error("RESEND_API_KEY není nastavený");
+            return NextResponse.json({ error: "Email service není nakonfigurovaný" }, { status: 500 });
         }
 
         const resend = new Resend(process.env.RESEND_API_KEY);

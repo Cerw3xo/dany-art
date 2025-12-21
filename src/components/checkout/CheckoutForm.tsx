@@ -16,7 +16,12 @@ type CheckoutFormData = {
   country: string;
 };
 
-type OrderItem = { name: string; quantity: number; price: number };
+type OrderItem = {
+  name: string;
+  quantity: number;
+  price: number;
+  size?: string;
+};
 
 export default function CheckoutForm({
   onBack,
@@ -83,6 +88,7 @@ export default function CheckoutForm({
           name: i.name,
           quantity: i.quantity,
           price: i.price,
+          size: i.size,
         })
       ),
       delivery: {
@@ -110,9 +116,8 @@ export default function CheckoutForm({
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError("Chyba při odesílání objednávky: " + err.message);
-        console.error(err);
       } else {
-        setError("Chyba při odesílání objednávky (neznámy dôvod)");
+        setError("Chyba při odesílání objednávky (neznámý důvod)");
       }
     }
   };

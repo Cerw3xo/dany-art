@@ -46,6 +46,7 @@
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
+    text-align: center;
     padding: 0.6rem 1.7rem;
     border: 0.125rem solid $color-green-light;
     border-radius: $radius-xl;
@@ -357,6 +358,7 @@
     .chips {
       padding: 0.5rem;
       flex-direction: column;
+      display: none;
 
       button {
         font-size: 0.85rem;

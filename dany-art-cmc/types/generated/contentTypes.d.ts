@@ -447,6 +447,10 @@ export interface ApiProduktProdukt extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     currency: Schema.Attribute.String;
+    description_blocks: Schema.Attribute.Component<
+      'product.description-block',
+      true
+    >;
     featured: Schema.Attribute.Boolean;
     images: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -461,6 +465,7 @@ export interface ApiProduktProdukt extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
+    sizes: Schema.Attribute.JSON;
     slug: Schema.Attribute.UID<'name'>;
     subcategory: Schema.Attribute.String;
     summary: Schema.Attribute.Text;

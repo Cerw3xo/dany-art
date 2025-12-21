@@ -46,7 +46,6 @@ export default function CartDrawer({
                   (item.images && item.images[0]) ||
                   "placeholder.png";
 
-                // Jedinečný kľúč kombinuje id a veľkosť
                 const itemKey = item.size
                   ? `${item.id}-${item.size}`
                   : item.id;

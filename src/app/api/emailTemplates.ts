@@ -40,7 +40,7 @@ export function contactOwnerTemplate(data: {
 
                   <table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;margin:10px 0 14px 0;">
                     <tr>
-                      <td style="width:120px;color:${colorTextLight};padding:4px 0;">Meno:</td>
+                      <td style="width:120px;color:${colorTextLight};padding:4px 0;">Jméno:</td>
                       <td style="color:${colorText};font-weight:600;padding:4px 0;">${escapeHtml(name)}</td>
                     </tr>
                     <tr>
@@ -140,7 +140,7 @@ function escapeHtml(str: string) {
 export function orderOwnerTemplate(data: {
   orderNumber: string;
   customer: { name: string; email: string; phone?: string };
-  items: Array<{ name: string; quantity: number; price: number }>;
+  items: Array<{ name: string; quantity: number; price: number; size?: string }>;
   delivery: { method: string; address: string; city: string; zip: string; country: string };
   note?: string;
   total: number;
@@ -164,7 +164,7 @@ export function orderOwnerTemplate(data: {
             <tr><td style="padding:22px;color:${colorText};font-size:14px;line-height:1.6;">
               <div style="margin:0 0 12px 0;color:${colorTextLight};">Zákazník</div>
               <table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;margin:0 0 16px 0;">
-                <tr><td style="width:120px;color:${colorTextLight};padding:4px 0;">Meno:</td><td style="font-weight:600;padding:4px 0;">${escapeHtml(customer.name)}</td></tr>
+                <tr><td style="width:120px;color:${colorTextLight};padding:4px 0;">Jméno:</td><td style="font-weight:600;padding:4px 0;">${escapeHtml(customer.name)}</td></tr>
                 <tr><td style="width:120px;color:${colorTextLight};padding:4px 0;">E‑mail:</td><td style="font-weight:600;padding:4px 0;">${escapeHtml(customer.email)}</td></tr>
                 <tr><td style="width:120px;color:${colorTextLight};padding:4px 0;">Mobil:</td><td style="font-weight:600;padding:4px 0;">${escapeHtml(customer.phone || "-")}</td></tr>
               </table>
@@ -173,7 +173,7 @@ export function orderOwnerTemplate(data: {
               <table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;border:1px solid ${colorSecondaryLight};border-radius:6px;">
                 ${items.map(i => `
                   <tr>
-                    <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};">${escapeHtml(i.name)}</td>
+                    <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};">${escapeHtml(i.name)} ${i.size ? `(${escapeHtml(i.size)})` : ""}</td>
                     <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};text-align:center;">${i.quantity} ks</td>
                     <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};text-align:right;">${money(i.price * i.quantity)}</td>
                   </tr>
@@ -205,7 +205,7 @@ export function orderOwnerTemplate(data: {
 export function orderCustomerTemplate(data: {
   orderNumber: string;
   customer: { name: string };
-  items: Array<{ name: string; quantity: number; price: number }>;
+  items: Array<{ name: string; quantity: number; price: number; size?: string }>;
   total: number;
 }) {
   const { orderNumber, customer, items, total } = data;
@@ -225,11 +225,11 @@ export function orderCustomerTemplate(data: {
             </tr>
             <tr><td style="padding:22px;color:${colorText};font-size:14px;line-height:1.6;">
               <p style="margin:0 0 10px 0;">Ahoj ${escapeHtml(customer.name)}, děkujeme za objednávku!</p>
-              <div style="margin:10px 0 8px 0;color:${colorTextLight};">Rekapitulácia</div>
+              <div style="margin:10px 0 8px 0;color:${colorTextLight};">Rekapitulace</div>
               <table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;border:1px solid ${colorSecondaryLight};border-radius:6px;">
                 ${items.map(i => `
                   <tr>
-                    <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};">${escapeHtml(i.name)}</td>
+                    <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};">${escapeHtml(i.name)} ${i.size ? `(${escapeHtml(i.size)})` : ""}</td>
                     <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};text-align:center;">${i.quantity} ks</td>
                     <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};text-align:right;">${money(i.price * i.quantity)}</td>
                   </tr>

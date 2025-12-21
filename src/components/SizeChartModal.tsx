@@ -14,10 +14,8 @@ export default function SizeChartModal({
   onClose,
 }: SizeChartModalProps) {
   useEffect(() => {
-    // Zabráni scrollovaniu stránky keď je modal otvorený
     document.body.style.overflow = "hidden";
 
-    // Keyboard navigation - zavrieť na ESC
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();

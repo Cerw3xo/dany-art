@@ -97,6 +97,27 @@
           cursor: not-allowed;
         }
       }
+
+      .descriptionBlocks {
+        margin-top: 2rem;
+        display: grid;
+        gap: 2rem;
+
+        .block {
+          h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+          }
+
+          .blockContent {
+            p {
+              margin-bottom: 1rem;
+              line-height: 1.6;
+            }
+          }
+        }
+      }
     }
 
     .gallery {
@@ -177,6 +198,17 @@
           font-size: 1rem;
           margin-bottom: 1.5rem;
         }
+
+        .descriptionBlocks {
+          margin-top: 1.5rem;
+          gap: 1.5rem;
+
+          .block {
+            h3 {
+              font-size: 1.3rem;
+            }
+          }
+        }
       }
 
       .gallery {
@@ -227,6 +259,23 @@
         .addToCart {
           padding: 0.3rem 1.3rem;
           font-size: 0.95rem;
+        }
+
+        .descriptionBlocks {
+          margin-top: 1.2rem;
+          gap: 1.2rem;
+
+          .block {
+            h3 {
+              font-size: 1.2rem;
+            }
+
+            .blockContent {
+              p {
+                font-size: 0.9rem;
+              }
+            }
+          }
         }
       }
 
@@ -279,6 +328,25 @@
           padding: 0.3rem 1.2rem;
           font-size: 0.9rem;
           border-radius: $radius-lg;
+        }
+
+        .descriptionBlocks {
+          margin-top: 1rem;
+          gap: 1rem;
+
+          .block {
+            h3 {
+              font-size: 1.1rem;
+              margin-bottom: 0.4rem;
+            }
+
+            .blockContent {
+              p {
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+              }
+            }
+          }
         }
       }
     }

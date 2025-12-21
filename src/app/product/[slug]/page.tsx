@@ -2,10 +2,54 @@ import type { Product } from "@/data/products";
 import styles from "./Product.module.scss";
 import ProductGallery from "../ProductGallery";
 import ProductDetails from "./ProductDetails";
+import type { Metadata } from "next";
 import {
   fetchProductBySlug,
   convertStrapiProduct,
 } from "@/lib/strapi";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  try {
+    const strapiProduct = await fetchProductBySlug(slug);
+
+    if (!strapiProduct) {
+      return { title: "Produkt nenalezen | Dany Art" };
+    }
+
+    const product = convertStrapiProduct(strapiProduct) as Product;
+
+    return {
+      title: `${product.name} | Dany Art`,
+      description:
+        product.summary ||
+        `Kupte ${product.name} za ${product.price} ${product.currency}`,
+      openGraph: {
+        title: product.name,
+        description:
+          product.summary ||
+          `Originální umění za ${product.price} ${product.currency}`,
+        images: [
+          {
+            url: product.thumbnail,
+            alt: product.name,
+          },
+        ],
+        type: "website",
+      },
+    };
+  } catch (error) {
+    return {
+      title: "Chyba | Dany Art",
+      description: "Nepodařilo se načíst produkt",
+    };
+  }
+}
 
 export default async function ProductPage({
   params,

@@ -19,7 +19,6 @@ export default function ProductGallery({
   }>({});
 
   const handleImageError = (index: number) => {
-    console.error("Chyba při načítání obrázku:", images[index]);
     setImageErrors((prev) => ({ ...prev, [index]: true }));
   };
 
@@ -134,6 +133,7 @@ export default function ProductGallery({
             alt={name}
             width={800}
             height={600}
+            sizes="(max:width: 768px) 90 vw, 600px"
             style={{ objectFit: "contain" }}
             onError={() => handleImageError(mainImg)}
           />

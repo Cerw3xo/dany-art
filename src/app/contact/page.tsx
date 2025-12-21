@@ -35,7 +35,6 @@ export default function ContactPage() {
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError("Nepodařilo se odeslat formulář: " + err.message);
-        console.error(err);
       } else {
         setError(
           "Nepodařilo se odeslat formulář z neznámého důvodu."

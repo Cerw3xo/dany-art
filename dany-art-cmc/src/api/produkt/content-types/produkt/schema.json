@@ -51,6 +51,11 @@
     },
     "sizes": {
       "type": "json"
+    },
+    "description_blocks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.description-block"
     }
   }
 }

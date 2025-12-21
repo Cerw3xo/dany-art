@@ -33,7 +33,6 @@ export default function CartSummary({
         </thead>
         <tbody>
           {items.map((item) => {
-            // Jedinečný kľúč kombinuje id a veľkosť
             const itemKey = item.size
               ? `${item.id}-${item.size}`
               : item.id;

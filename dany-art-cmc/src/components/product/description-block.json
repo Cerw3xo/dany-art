@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_product_description_blocks",
+  "info": {
+    "displayName": "Description Block",
+    "description": "A structured description block with title and rich text content"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

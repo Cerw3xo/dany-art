@@ -1,3 +1,9 @@
+export type DescriptionBlock = {
+    id: number;
+    title: string;
+    content: string;
+};
+
 export type Product = {
     id: string;
     slug: string;
@@ -13,5 +19,6 @@ export type Product = {
     featured?: boolean;
     subcategory?: string;
     sizes?: string[];
+    description_blocks?: DescriptionBlock[];
 
 };

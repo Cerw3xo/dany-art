@@ -25,7 +25,6 @@ export const useCartStore = create<CartState>()(
          items: [],
          addItem: (item) =>
             set((state) => {
-               // Pre produkty s veľkosťou porovnávame aj veľkosť
                const existing = state.items.find((i) =>
                   i.id === item.id && i.size === item.size
                );

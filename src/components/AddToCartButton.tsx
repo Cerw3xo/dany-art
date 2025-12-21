@@ -29,7 +29,6 @@ export default function AddToCartButton({
   const router = useRouter();
 
   const handleClick = () => {
-    // Validácia veľkosti
     if (requiresSize && !selectedSize) {
       if (onSizeError) {
         onSizeError();
@@ -39,7 +38,6 @@ export default function AddToCartButton({
 
     setIsAdding(true);
 
-    // Pridať produkt s veľkosťou (ak je vybraná)
     const cartItem = {
       id: product.id,
       name: product.name,

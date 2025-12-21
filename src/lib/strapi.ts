@@ -2,6 +2,12 @@
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://dany-art-production.up.railway.app';
 
+export interface DescriptionBlock {
+    id: number;
+    title: string;
+    content: string;
+}
+
 export interface StrapiProduct {
     id: number;
     documentId: string;
@@ -25,6 +31,7 @@ export interface StrapiProduct {
         name?: string;
     };
     sizes?: string[];
+    description_blocks?: DescriptionBlock[];
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
@@ -38,7 +45,7 @@ export interface StrapiResponse<T> {
 
 export async function fetchProductBySlug(slug: string): Promise<StrapiProduct | null> {
     try {
-        const url = `${STRAPI_URL}/api/produkts?filters[slug][$eq]=${slug}&populate=*`;
+        const url = `${STRAPI_URL}/api/produkts?filters[slug][$eq]=${slug}&populate[0]=images&populate[1]=thumbnail&populate[2]=description_blocks`;
         const response = await fetch(url, {
             next: { revalidate: 60 },
         });
@@ -111,6 +118,7 @@ export function convertStrapiProduct(p: StrapiProduct) {
         available: p.available ?? true,
         featured: p.featured,
         sizes: p.sizes,
+        description_blocks: p.description_blocks || [],
 
     };
 }
