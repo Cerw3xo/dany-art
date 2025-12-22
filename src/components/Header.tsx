@@ -61,20 +61,6 @@ export default function Header() {
             <LuMenu />
           </button>
 
-          <div className={styles.center}>
-            <button
-              onClick={() => setIsCartOpen(true)}
-              className={styles.cartLink}
-              aria-label="Košík"
-            >
-              <div>
-                <LuShoppingCart className={styles.cartIcon} />
-                {items.length > 0 && (
-                  <span className={styles.badge}>{totalCount}</span>
-                )}
-              </div>
-            </button>
-          </div>
           <Link
             href="/"
             className={`${styles.navLink} ${
@@ -108,6 +94,21 @@ export default function Header() {
           >
             KONTAKT
           </Link>
+
+          <div className={styles.center}>
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className={styles.cartLink}
+              aria-label="Košík"
+            >
+              <div>
+                <LuShoppingCart className={styles.cartIcon} />
+                {items.length > 0 && (
+                  <span className={styles.badge}>{totalCount}</span>
+                )}
+              </div>
+            </button>
+          </div>
         </nav>
       </header>
 

@@ -7,6 +7,7 @@ import {
   fetchProductBySlug,
   convertStrapiProduct,
 } from "@/lib/strapi";
+import ReactMarkdown from "react-markdown";
 
 export async function generateMetadata({
   params,
@@ -113,12 +114,9 @@ export default async function ProductPage({
             {product.description_blocks.map((block) => (
               <section key={block.id} className={styles.block}>
                 <h3>{block.title}</h3>
-                <div
-                  className={styles.blockContent}
-                  dangerouslySetInnerHTML={{
-                    __html: block.content,
-                  }}
-                />
+                <div className={styles.blockContent}>
+                  <ReactMarkdown>{block.content}</ReactMarkdown>
+                </div>
               </section>
             ))}
           </div>
