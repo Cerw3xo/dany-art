@@ -97,50 +97,53 @@
           cursor: not-allowed;
         }
       }
-
-      .descriptionBlocks {
-        margin-top: 2rem;
-        display: grid;
-        gap: 2rem;
-
-        .block {
-          h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.4rem;
-            font-weight: 600;
-          }
-
-          .blockContent {
-            p {
-              margin-bottom: 1rem;
-              line-height: 1.6;
-            }
-
-            ol {
-              margin-bottom: 1rem;
-              margin-left: 1.5rem;
-              line-height: 1.6;
-
-              li {
-                margin-bottom: 0.5rem;
-              }
-            }
-            ul {
-              margin-bottom: 1rem;
-              margin-left: 1.5rem;
-              line-height: 1.6;
-
-              li {
-                margin-bottom: 0.5rem;
-              }
-            }
-          }
-        }
-      }
     }
 
     .gallery {
       flex: 1;
+    }
+  }
+
+  .descriptionBlocks {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .block {
+      width: calc(33.333% - 1.333rem);
+      gap: 2rem;
+      h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      .blockContent {
+        p {
+          margin-bottom: 1rem;
+          line-height: 1.6;
+        }
+
+        ol {
+          margin-bottom: 1rem;
+          margin-left: 1.5rem;
+          line-height: 1.6;
+
+          li {
+            margin-bottom: 0.5rem;
+          }
+        }
+        ul {
+          margin-bottom: 1rem;
+          margin-left: 1.5rem;
+          line-height: 1.6;
+
+          li {
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
     }
   }
 

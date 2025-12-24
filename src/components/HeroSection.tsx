@@ -11,16 +11,16 @@ export default function HeroSection() {
   const heroRef = useRef(null);
 
   const isInView = useInView(heroRef, {
-    once: false,
-    amount: 0.5,
+    once: true,
+    amount: 0.3,
   });
 
   const fadeUp = {
-    hidden: { opacity: 0, y: 40, filter: "blur(2px)" },
+    hidden: { opacity: 0, y: 40 },
     show: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
+
       transition: {
         duration: 2.3,
         ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
