@@ -43,8 +43,11 @@ export interface StrapiResponse<T> {
 }
 
 
+
 export async function fetchProductBySlug(slug: string): Promise<StrapiProduct | null> {
     try {
+
+
         const url = `${STRAPI_URL}/api/produkts?filters[slug][$eq]=${slug}&populate[0]=images&populate[1]=thumbnail&populate[2]=description_blocks`;
         const response = await fetch(url, {
             next: { revalidate: 60 },
@@ -70,6 +73,8 @@ export async function fetchProductBySlug(slug: string): Promise<StrapiProduct | 
 
 export async function fetchProducts(): Promise<StrapiProduct[]> {
     try {
+
+
         const url = `${STRAPI_URL}/api/produkts?populate=*`;
         const response = await fetch(url, {
             next: { revalidate: 60 },

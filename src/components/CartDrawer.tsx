@@ -44,7 +44,7 @@ export default function CartDrawer({
                 const imgSrc =
                   item.thumbnail ||
                   (item.images && item.images[0]) ||
-                  "placeholder.png";
+                  "/placeholder.png";
 
                 const itemKey = item.size
                   ? `${item.id}-${item.size}`

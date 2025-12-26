@@ -2,9 +2,25 @@
 @use "../../../styles/mixins" as m;
 
 .product {
+  position: relative;
   & {
     flex-direction: column;
     @include m.section();
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(30%, -70%) rotate(230deg);
+    width: 70%;
+    height: 70%;
+    background: url("/ui/pink_1.svg") no-repeat center;
+    background-size: contain;
+    opacity: 1;
+    z-index: 0;
+    pointer-events: none;
   }
 
   .info {
@@ -20,6 +36,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      z-index: 1;
 
       .heading {
         font-size: 2rem;
@@ -105,48 +122,109 @@
   }
 
   .descriptionBlocks {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
 
     .block {
-      width: calc(33.333% - 1.333rem);
-      gap: 2rem;
+      padding: 2.5rem 2rem;
+      // background: linear-gradient(
+      //   135deg,
+      //   rgba($color-accent, 0.15) 0%,
+      //   rgba($color-secondary-light, 0.1) 100%
+      // );
+      border-radius: $radius-lg;
+      border: 1px solid rgba($color-primary, 0.1);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          $color-primary 0%,
+          $color-primary-light 100%
+        );
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 24px rgba($color-primary, 0.15);
+
+        &::before {
+          transform: scaleX(1);
+        }
+      }
+
       h3 {
-        margin-bottom: 0.5rem;
-        font-size: 1.4rem;
-        font-weight: 600;
+        margin-bottom: 1.2rem;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: $color-primary;
       }
 
       .blockContent {
+        color: $color-text;
+        font-size: 0.95rem;
+        line-height: 1.8;
+
         p {
-          margin-bottom: 1rem;
-          line-height: 1.6;
+          margin-bottom: 0.9rem;
         }
 
-        ol {
-          margin-bottom: 1rem;
-          margin-left: 1.5rem;
-          line-height: 1.6;
-
-          li {
-            margin-bottom: 0.5rem;
-          }
-        }
+        ol,
         ul {
           margin-bottom: 1rem;
-          margin-left: 1.5rem;
-          line-height: 1.6;
+          margin-left: 1.2rem;
 
           li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
+
+            &::marker {
+              color: $color-primary;
+              font-weight: bold;
+            }
           }
+        }
+
+        strong {
+          color: $color-primary;
+          font-weight: 700;
         }
       }
     }
   }
 
+  // Responsive
+  @media (max-width: 1024px) {
+    .descriptionBlocks {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .descriptionBlocks {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+
+      .block {
+        padding: 1.5rem;
+      }
+    }
+  }
   .productInfo {
     width: 80%;
   }

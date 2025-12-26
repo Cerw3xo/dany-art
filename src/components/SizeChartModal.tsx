@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Spinner from "./Spinner";
 import styles from "./SizeChartModal.module.scss";
 
 interface SizeChartModalProps {
@@ -13,6 +14,9 @@ export default function SizeChartModal({
   imageUrl,
   onClose,
 }: SizeChartModalProps) {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -36,6 +40,16 @@ export default function SizeChartModal({
     if (e.target === e.currentTarget) {
       onClose();
     }
+  };
+
+  const handleLoad = () => {
+    setLoading(false);
+    setError(false);
+  };
+
+  const handleError = () => {
+    setLoading(false);
+    setError(true);
   };
 
   const isPdf = imageUrl.toLowerCase().endsWith(".pdf");
@@ -62,21 +76,41 @@ export default function SizeChartModal({
         </div>
 
         <div className={styles.modalBody}>
-          {isPdf ? (
-            <iframe
-              src={imageUrl}
-              className={styles.pdfViewer}
-              title="Tabulka velikostí"
-            />
+          {loading && !error && (
+            <div className={styles.loader}>
+              <Spinner size="lg" />
+            </div>
+          )}
+
+          {error ? (
+            <div className={styles.error}>
+              <div className={styles.errorIcon}>⚠️</div>
+              <h3>Nepodarilo sa načítať tabuľku</h3>
+              <p>Skúste obnoviť stránku.</p>
+            </div>
           ) : (
-            <Image
-              src={imageUrl}
-              alt="Tabulka velikostí"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "auto" }}
-              priority
-            />
+            <>
+              {isPdf ? (
+                <iframe
+                  src={imageUrl}
+                  className={styles.pdfViewer}
+                  title="Tabulka velikostí"
+                  onLoad={handleLoad}
+                  style={{ opacity: loading ? 0 : 1 }}
+                />
+              ) : (
+                <Image
+                  src={imageUrl}
+                  alt="Tabulka velikostí"
+                  width={800}
+                  height={600}
+                  style={{ width: "100%", height: "auto" }}
+                  priority
+                  onLoad={handleLoad}
+                  onError={handleError}
+                />
+              )}
+            </>
           )}
         </div>
       </div>

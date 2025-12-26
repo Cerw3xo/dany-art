@@ -113,11 +113,59 @@
           margin-bottom: 0.2rem;
           color: $color-text;
           font-weight: 600;
+          padding: 0.4rem 0.8rem;
+          border-radius: $radius-xs;
+          transition: all 0.25s ease;
+          position: relative;
+
+          &.active {
+            color: $color-primary;
+            background: rgba(
+              $color-accent,
+              0.35
+            ); // Jemný ružový podklad
+            font-weight: 700;
+            padding-left: 1.2rem; // Mierny posun doprava
+
+            &::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 0;
+              bottom: 0;
+              width: 3px;
+              background: $color-primary;
+              border-radius: 0 $radius-xs $radius-xs 0;
+            }
+          }
+
+          &:hover:not(.active) {
+            background: rgba($color-accent, 0.15);
+            padding-left: 1rem;
+          }
         }
+
         .sub {
           color: $color-text-light;
           margin-left: 3.7rem;
           margin-bottom: 0.2rem;
+          padding: 0.3rem 0.6rem;
+          border-radius: $radius-xs;
+          transition: all 0.25s ease;
+          font-size: 0.95em;
+
+          &.active {
+            color: $color-primary;
+            background: rgba($color-primary, 0.08);
+            font-weight: 600;
+            transform: translateX(4px); // Jemný posun
+          }
+
+          &:hover:not(.active) {
+            color: $color-primary;
+            background: rgba($color-primary, 0.04);
+            transform: translateX(2px);
+          }
         }
         li {
           color: $color-text-light;
@@ -142,8 +190,9 @@
         background: $color-bg;
         padding: 0.8rem;
         position: relative;
+        width: 100%;
+        height: 100%;
 
-        // Loading state - skeleton
         &.loading {
           opacity: 0;
           animation: fadeInUp 0.6s ease-out forwards;
@@ -175,7 +224,6 @@
           }
         }
 
-        // Loaded state - smooth fade in
         &.loaded {
           opacity: 1;
           animation: fadeInUp 0.4s ease-out forwards;
@@ -231,6 +279,7 @@
 @media (max-width: 1200px) {
   .shop {
     padding: 8rem 3% 2rem;
+
     .header {
       .title {
         font-size: 3.2rem;
@@ -247,9 +296,12 @@
         font-size: 1.5rem;
       }
       .categories {
-        .grid {
-          grid-template-columns: repeat(3, 1fr);
-          gap: 0.9rem;
+        .sidebar {
+          width: 25%;
+          .grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.3rem;
+          }
         }
       }
     }
@@ -289,6 +341,7 @@
         .sidebar {
           padding: 0.8rem;
           box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+          width: 50%;
         }
 
         .grid {

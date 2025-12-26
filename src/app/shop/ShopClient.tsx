@@ -99,7 +99,11 @@ export default function ShopClient({
               {categories.map((cat) => (
                 <li key={cat.slug}>
                   <div
-                    className={styles.cat}
+                    className={`${styles.cat} ${
+                      selectedCategory === cat.slug
+                        ? styles.active
+                        : ""
+                    }`}
                     onClick={() => {
                       toggleCategory(cat.slug);
                       setSelectedCategory(cat.slug);
@@ -113,7 +117,11 @@ export default function ShopClient({
                       <ul>
                         {cat.subcategories.map((sub) => (
                           <li
-                            className={styles.sub}
+                            className={`${styles.sub} ${
+                              selectedSubcategory === sub.slug
+                                ? styles.active
+                                : ""
+                            }`}
                             key={sub.slug}
                             onClick={() => {
                               setSelectedSubcategory(sub.slug);
