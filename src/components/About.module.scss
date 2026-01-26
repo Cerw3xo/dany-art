@@ -352,3 +352,18 @@
     }
   }
 }
+
+@media (min-width: 1920px) {
+  .about {
+    .left {
+      .imgContainer {
+        &::before {
+          width: 304%;
+          height: 304%;
+          transform: translate(-75%, -52%) rotate(10deg);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

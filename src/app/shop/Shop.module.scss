@@ -276,6 +276,86 @@
   }
 }
 
+@media (min-width: 1920px) {
+  .shop {
+    padding: 8rem 10% 2rem;
+  }
+
+  .header {
+    max-width: 80rem;
+
+    .title {
+      font-size: 4rem;
+    }
+    .subtitle {
+      font-size: 2.2rem;
+    }
+  }
+
+  .chips {
+    max-width: 80rem;
+    gap: 2.5rem;
+
+    button {
+      font-size: 1.1rem;
+      padding: 0.7rem 2rem;
+    }
+  }
+
+  .content {
+    max-width: 1800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .sectionTitle {
+      font-size: 1.9rem;
+      width: 40%;
+    }
+
+    .categories {
+      gap: 3rem;
+
+      .sidebar {
+        max-width: 22rem;
+
+        h3 {
+          font-size: 1.2rem;
+        }
+
+        ul {
+          .cat {
+            font-size: 1rem;
+          }
+          .sub {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+
+        .card {
+          padding: 1rem;
+
+          .thumb {
+            height: 19rem;
+          }
+
+          .name {
+            font-size: 1rem;
+          }
+
+          .price {
+            font-size: 0.95rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 1200px) {
   .shop {
     padding: 8rem 3% 2rem;

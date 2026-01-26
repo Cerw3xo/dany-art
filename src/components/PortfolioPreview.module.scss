@@ -163,6 +163,60 @@
   cursor: pointer;
 }
 
+@media (min-width: 1920px) {
+  .section {
+    .inner {
+      max-width: 1400px;
+
+      .title {
+        font-size: 2.8rem;
+      }
+
+      .wrapper {
+        :global(.swiper) {
+          :global(.swiper-slide) {
+            height: 38rem;
+
+            img {
+              height: 33rem;
+            }
+          }
+
+          :global(.swiper-slide-next) {
+            img {
+              border: 8px solid $color-primary;
+            }
+          }
+        }
+
+        .prev {
+          left: -3rem;
+          width: 2.5rem;
+          height: 2.5rem;
+
+          &::before {
+            border-top: 1.25rem solid transparent;
+            border-bottom: 1.25rem solid transparent;
+            border-right: 1.875rem solid $color-primary;
+          }
+        }
+
+        .next {
+          right: -3rem;
+          width: 2.5rem;
+          height: 2.5rem;
+
+          &::before {
+            border-top: 1.25rem solid transparent;
+            border-bottom: 1.25rem solid transparent;
+            border-left: 1.875rem solid $color-primary;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 1200px) {
   .section {
     padding: 2rem 1rem;
