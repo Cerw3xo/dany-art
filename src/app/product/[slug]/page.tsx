@@ -44,7 +44,7 @@ export async function generateMetadata({
         type: "website",
       },
     };
-  } catch (error) {
+  } catch {
     return {
       title: "Chyba | Dany Art",
       description: "Nepodařilo se načíst produkt",

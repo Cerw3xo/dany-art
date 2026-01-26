@@ -34,8 +34,8 @@ export default function TermsPage() {
             .
           </p>
           <p>
-            Pro zjednodušení jsou v textu používány pojmy „prodávající"
-            a „kupující". Tyto pojmy zahrnují všechny osoby bez ohledu
+            Pro zjednodušení jsou v textu používány pojmy &bdquo;prodávající&ldquo;
+            a &bdquo;kupující&ldquo;. Tyto pojmy zahrnují všechny osoby bez ohledu
             na pohlaví a používají se jednotně pro každého, kdo na webu
             nakupuje nebo jinak uzavírá smlouvu s prodávajícím.
           </p>
