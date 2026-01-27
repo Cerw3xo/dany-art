@@ -19,7 +19,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const totalCount = items.reduce(
     (sum, item) => sum + item.quantity,
-    0
+    0,
   );
 
   return (

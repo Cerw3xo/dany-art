@@ -16,7 +16,7 @@ export default function ProductDetails({
   product,
 }: ProductDetailsProps) {
   const [selectedSize, setSelectedSize] = useState<string | null>(
-    null
+    null,
   );
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [sizeError, setSizeError] = useState(false);
@@ -31,8 +31,8 @@ export default function ProductDetails({
     product.subcategory === "tricka"
       ? "/size-spec/rozmery produktu tricko.pdf"
       : product.subcategory === "mikiny"
-      ? "/size-spec/rozmery produktu mikina.pdf"
-      : null;
+        ? "/size-spec/rozmery produktu mikina.pdf"
+        : null;
 
   const handleSizeChange = (size: string) => {
     setSelectedSize(size);
@@ -41,16 +41,6 @@ export default function ProductDetails({
 
   const handleSizeError = () => {
     setSizeError(true);
-
-    const sizeSelector = document.querySelector(
-      `.${styles.sizeSection}`
-    );
-    if (sizeSelector) {
-      sizeSelector.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
   };
 
   return (

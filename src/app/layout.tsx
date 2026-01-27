@@ -4,6 +4,7 @@ import "yet-another-react-lightbox/styles.css";
 import "../styles/globals.scss";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
       className={`${raleway.variable} ${dancing.variable}`}
     >
       <body className="body">
+        <ScrollToTop />
         <Header />
         <main>{children}</main>
         <Footer />

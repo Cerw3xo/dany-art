@@ -22,7 +22,7 @@ export default function ShopClient({
     string[]
   >([]);
   const [loadedImages, setLoadedImages] = useState<Set<string>>(
-    new Set()
+    new Set(),
   );
 
   const handleImageLoad = (slug: string) => {
@@ -35,7 +35,7 @@ export default function ShopClient({
     setExpandedCategories((prev) =>
       prev.includes(slug)
         ? prev.filter((s) => s !== slug)
-        : [...prev, slug]
+        : [...prev, slug],
     );
   };
 
