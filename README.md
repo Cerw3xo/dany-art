@@ -1,12 +1,12 @@
 # Dany Art Store
 
-Modern e-commerce website built with Next.js for a streetwear brand.
+Modern e-commerce website built with Next.js.
 
 ## Tech Stack
 - Next.js
 - React
-- JavaScript
-- CSS
+- TypeScript
+- Scss
 - Headless CMS
 - Vercel deployment
 
@@ -21,7 +21,7 @@ Modern e-commerce website built with Next.js for a streetwear brand.
 https://dany-art.vercel.app/
 
 ## About Project
-This project was built as a real website for a clothing brand.
+This project was built as a real website for a art brand.
 Products and content can be managed through a CMS and the site is deployed on Vercel.
 
 ## Author
