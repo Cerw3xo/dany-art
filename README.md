@@ -1,3 +1,34 @@
+# Dany Art Store
+
+Modern e-commerce website built with Next.js for a streetwear brand.
+
+## Tech Stack
+- Next.js
+- React
+- JavaScript
+- CSS
+- Headless CMS
+- Vercel deployment
+
+## Features
+- product listing
+- dynamic product pages
+- CMS product management
+- responsive design
+- fast performance
+
+## Live Demo
+https://dany-art.vercel.app/
+
+## About Project
+This project was built as a real website for a clothing brand.
+Products and content can be managed through a CMS and the site is deployed on Vercel.
+
+## Author
+Matej Červenka  
+https://matejcervenka.cz
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
