@@ -130,11 +130,7 @@
 
     .block {
       padding: 2.5rem 2rem;
-      // background: linear-gradient(
-      //   135deg,
-      //   rgba($color-accent, 0.15) 0%,
-      //   rgba($color-secondary-light, 0.1) 100%
-      // );
+
       border-radius: $radius-lg;
       border: 1px solid rgba($color-primary, 0.1);
       position: relative;
@@ -171,7 +167,7 @@
         margin-bottom: 1.2rem;
         font-size: 1.6rem;
         font-weight: 700;
-        color: $color-primary;
+        color: $color-green-light;
       }
 
       .blockContent {
