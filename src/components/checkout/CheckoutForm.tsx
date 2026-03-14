@@ -50,7 +50,7 @@ export default function CheckoutForm({
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -89,7 +89,7 @@ export default function CheckoutForm({
           quantity: i.quantity,
           price: i.price,
           size: i.size,
-        })
+        }),
       ),
       delivery: {
         method: form.deliveryMethod,
@@ -178,9 +178,7 @@ export default function CheckoutForm({
               </div>
             </div>
 
-            <h2 className={styles.sectionTitle}>
-              Dodací a fakturační adresa
-            </h2>
+            <h2 className={styles.sectionTitle}>Dodací adresa</h2>
 
             <div className={styles.formFields}>
               <div className={styles.formGroup}>

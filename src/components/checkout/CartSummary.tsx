@@ -11,7 +11,7 @@ export default function CartSummary({
   const { items, removeItem } = useCartStore();
   const total = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0
+    0,
   );
 
   if (items.length === 0) {
@@ -77,6 +77,9 @@ export default function CartSummary({
         <span>Celková cena:</span>
         <strong> {formatPrice(total)}</strong>
       </div>
+      <button className={styles.onNext} onClick={onNext}>
+        Pokračovat v objednávce
+      </button>
 
       <div className={styles.info}>
         <h3>DŮLEŽITÉ INFORMACE</h3>
@@ -120,6 +123,7 @@ export default function CartSummary({
                 </span>{" "}
                 – vzhledem k individuální výrobě může doručení trvat
                 <span className={styles.highlighted}>
+                  {" "}
                   až 1 měsíc.
                 </span>
               </li>
@@ -146,9 +150,6 @@ export default function CartSummary({
           </li>
         </ol>
       </div>
-      <button className={styles.onNext} onClick={onNext}>
-        Pokračovat v objednávce
-      </button>
     </section>
   );
 }

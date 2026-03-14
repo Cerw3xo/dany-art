@@ -7,9 +7,14 @@
   flex-direction: column;
 
   .heading {
+    position: relative;
+    left: -15rem;
+    margin-right: auto;
     background-color: $color-green-light;
     color: white;
-    width: 30%;
+    width: 45%;
+    text-align: right;
+
     padding: 0.1rem 1.2rem;
     margin-bottom: 2rem;
     border-radius: $radius-xl;
@@ -132,6 +137,29 @@
     margin-bottom: 1rem;
   }
 
+  .onNext {
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 2rem;
+    @include m.cta-button();
+    color: white;
+    border: none;
+    font-weight: 700;
+    padding: 0.4rem 1.3rem;
+    transition:
+      outline-color 0.3s ease,
+      outline-offset 0.3s ease,
+      outline-width 0.3s ease;
+    background-color: $color-primary;
+
+    &:hover {
+      outline: none;
+      background-color: $color-primary;
+      outline: 2px solid $color-primary;
+      outline-offset: 0.1rem;
+    }
+  }
+
   .info {
     font-size: 0.9rem;
     margin-bottom: 3rem;
@@ -162,31 +190,11 @@
       }
     }
   }
-  .onNext {
-    margin-left: auto;
-    margin-right: 0;
-    @include m.cta-button();
-    color: white;
-    border: none;
-    font-weight: 700;
-    padding: 0.4rem 1.3rem;
-    transition: outline-color 0.3s ease, outline-offset 0.3s ease,
-      outline-width 0.3s ease;
-    background-color: $color-primary;
-
-    &:hover {
-      outline: none;
-      background-color: $color-primary;
-      outline: 2px solid $color-primary;
-      outline-offset: 0.1rem;
-    }
-  }
 }
 
 @media (max-width: 1200px) {
   .cartSummary {
     .heading {
-      width: 40%;
       font-size: 1.4rem;
       padding: 0.1rem 1rem;
     }
@@ -242,7 +250,7 @@
 @media (max-width: 1024px) {
   .cartSummary {
     .heading {
-      width: 50%;
+      left: -10rem;
       font-size: 1.3rem;
       padding: 0.1rem 0.9rem;
     }
@@ -318,7 +326,7 @@
     padding-top: 0.8rem;
 
     .heading {
-      width: 50%;
+      left: -5rem;
       font-size: 1.2rem;
       padding: 0.1rem 0.8rem;
       margin-bottom: 1.5rem;
@@ -407,7 +415,7 @@
     .onNext {
       font-size: 0.9rem;
       padding: 0.3rem 1rem;
-      width: 50%;
+      width: 40%;
 
       margin-right: 0;
     }
@@ -419,7 +427,8 @@
     padding-top: 0.1rem;
 
     .heading {
-      width: 65%;
+      left: -2rem;
+      width: 55%;
       font-size: 1.1rem;
       padding: 0.1rem 0.7rem;
       margin-bottom: 2.2rem;
@@ -546,6 +555,15 @@
       font-size: 0.85rem;
       padding: 0.4rem 0.9rem;
       width: 100%;
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .cartSummary {
+    .heading {
+      width: 70%;
+      left: -36rem;
     }
   }
 }

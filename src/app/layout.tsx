@@ -18,7 +18,7 @@ const dancing = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  title: "Dany Art",
+  title: "Danyss Art",
   description: "Minimalistický umělecký e-shop",
   icons: {
     icon: [

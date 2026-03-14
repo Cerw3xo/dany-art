@@ -365,5 +365,13 @@
         }
       }
     }
+    .right {
+      .heading {
+        width: clamp(2000px, 60vw, 3200px);
+        left: -2rem;
+        margin-left: 0;
+        padding: 0.4rem 2.2rem;
+      }
+    }
   }
 }
