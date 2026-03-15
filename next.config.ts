@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://dany-art-production.up.railway.app';
+const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://perfect-luck-production-d7e4.up.railway.app';
 
 
 
