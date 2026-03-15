@@ -1,5 +1,5 @@
 export default ({ env }) => {
-  const publicUrl = env('PUBLIC_URL', 'https://dany-art-production.up.railway.app');
+
 
   return {
     auth: {
@@ -12,7 +12,7 @@ export default ({ env }) => {
       nps: env.bool('FLAG_NPS', true),
       promoteEE: env.bool('FLAG_PROMOTE_EE', true)
     },
-    url: `${publicUrl}/admin`,
+    url: '/admin',
     serveAdminPanel: true,
     forgotPassword: {
       from: env('ADMIN_EMAIL', 'owner@dany-art.com'),
