@@ -324,6 +324,7 @@
   .product {
     .info {
       gap: 2rem;
+      flex-direction: column-reverse;
 
       .right {
         .heading {
