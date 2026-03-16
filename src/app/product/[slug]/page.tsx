@@ -20,13 +20,13 @@ export async function generateMetadata({
     const strapiProduct = await fetchProductBySlug(slug);
 
     if (!strapiProduct) {
-      return { title: "Produkt nenalezen | Dany Art" };
+      return { title: "Produkt nenalezen | Danyss Art" };
     }
 
     const product = convertStrapiProduct(strapiProduct) as Product;
 
     return {
-      title: `${product.name} | Dany Art`,
+      title: `${product.name} | Danyss Art`,
       description:
         product.summary ||
         `Kupte ${product.name} za ${product.price} ${product.currency}`,
@@ -46,7 +46,7 @@ export async function generateMetadata({
     };
   } catch {
     return {
-      title: "Chyba | Dany Art",
+      title: "Chyba | Danyss Art",
       description: "Nepodařilo se načíst produkt",
     };
   }
