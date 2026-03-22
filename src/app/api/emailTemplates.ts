@@ -211,6 +211,11 @@ export function orderCustomerTemplate(data: {
   const { orderNumber, customer, items, total } = data;
   const money = (n: number) =>
     new Intl.NumberFormat("cs-CZ", { style: "currency", currency: "CZK" }).format(n);
+  const itemsSubtotal = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+  const deliveryPrice = Math.max(total - itemsSubtotal, 0);
 
   return `
     <!doctype html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/></head>
@@ -224,28 +229,35 @@ export function orderCustomerTemplate(data: {
               </td>
             </tr>
             <tr><td style="padding:22px;color:${colorText};font-size:14px;line-height:1.6;">
-              <p style="margin:0 0 10px 0;">Ahoj ${escapeHtml(customer.name)}, děkujeme za objednávku!</p>
-              <div style="margin:10px 0 8px 0;color:${colorTextLight};">Rekapitulace</div>
-              <table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;border:1px solid ${colorSecondaryLight};border-radius:6px;">
+              <p style="margin:0 0 10px 0;font-size:16px;color:${colorText};">Ahoj ${escapeHtml(customer.name)}, děkujeme za objednávku!</p>
+              <div style="margin:10px 0 8px 0;color:${colorText};font-size:18px;font-weight:700;">Rekapitulace:</div>
+              <table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;border:1px solid ${colorSecondaryLight};border-radius:8px;overflow:hidden;">
                 ${items.map(i => `
                   <tr>
-                    <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};">${escapeHtml(i.name)} ${i.size ? `(${escapeHtml(i.size)})` : ""}</td>
-                    <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};text-align:center;">${i.quantity} ks</td>
-                    <td style="padding:10px 12px;border-bottom:1px solid ${colorSecondaryLight};text-align:right;">${money(i.price * i.quantity)}</td>
+                    <td style="padding:12px 16px;border-bottom:1px solid ${colorSecondaryLight};font-size:16px;color:${colorText};">${escapeHtml(i.name)} ${i.size ? `(${escapeHtml(i.size)})` : ""}</td>
+                    <td style="padding:12px 16px;border-bottom:1px solid ${colorSecondaryLight};text-align:center;font-size:16px;color:${colorText};white-space:nowrap;">${i.quantity} ks</td>
+                    <td style="padding:12px 16px;border-bottom:1px solid ${colorSecondaryLight};text-align:right;font-size:16px;color:${colorText};white-space:nowrap;">${money(i.price * i.quantity)}</td>
                   </tr>
                 `).join("")}
                 <tr>
-                  <td colspan="2" style="padding:12px 12px;text-align:right;font-weight:700;">Celkem</td>
-                  <td style="padding:12px 12px;text-align:right;font-weight:700;">${money(total)}</td>
+                  <td style="padding:12px 16px;border-bottom:1px solid ${colorSecondaryLight};font-size:16px;font-weight:700;color:${colorText};">Doprava</td>
+                  <td style="padding:12px 16px;border-bottom:1px solid ${colorSecondaryLight};"></td>
+                  <td style="padding:12px 16px;border-bottom:1px solid ${colorSecondaryLight};text-align:right;font-size:16px;font-weight:700;color:${colorText};white-space:nowrap;">${money(deliveryPrice)}</td>
+                </tr>
+                <tr>
+                  <td style="padding:14px 16px;"></td>
+                  <td style="padding:14px 16px;text-align:center;font-size:20px;font-weight:700;line-height:1.1;color:${colorText};white-space:nowrap;">Celkem</td>
+                  <td style="padding:14px 16px;text-align:right;font-size:20px;font-weight:700;line-height:1.1;color:${colorText};white-space:nowrap;">${money(total)}</td>
                 </tr>
               </table>
   
-              <div style="margin-top:16px;padding:12px;border:1px dashed ${colorSecondaryLight};border-radius:6px;color:${colorTextLight};background:${colorBg};">
-                Platba převodem: <strong>3018883028/3030</strong> (Air Bank)<br/>
-                Variabilní symbol: <strong>${orderNumber}</strong>
+              <div style="margin-top:12px;padding:18px 14px;border:1px dashed ${colorSecondaryLight};border-radius:8px;color:${colorText};background:#efece1;text-align:center;font-size:20px;font-weight:700;line-height:1.3;">
+                Vyčkejte na další e-mail s platebními údaji
               </div>
   
-              <p style="margin:16px 0 0 0;font-size:12px;color:${colorTextLight};">Automatický e‑mail.</p>
+              <p style="margin:12px 8px 0 8px;font-size:14px;color:${colorTextLight};">
+                Automaticky vygenerovaný e-mail. Prosím NEODPOVÍDEJTE na něj.
+              </p>
             </td></tr>
             <tr><td style="padding:12px 22px;background:${colorBg};color:${colorTextLight};font-size:12px;text-align:center;border-top:1px solid ${colorSecondaryLight};">
               © ${new Date().getFullYear()} DanyssArt
