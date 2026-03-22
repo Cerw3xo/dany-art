@@ -1,6 +1,6 @@
 export default ({ env }) => {
 
-  let publicUrl = env('PUBLIC_URL', 'https://perfect-luck-production-d7e4.up.railway.app');
+  let publicUrl = env('PUBLIC_URL');
   if (publicUrl && !publicUrl.startsWith('http://') && !publicUrl.startsWith('https://')) {
     publicUrl = `https://${publicUrl}`;
   }
