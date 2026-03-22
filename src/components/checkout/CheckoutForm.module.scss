@@ -89,6 +89,20 @@
               display: block;
             }
           }
+
+          .deliveryMethodGroup {
+            margin-bottom: 1.2rem;
+            align-items: flex-start;
+          }
+
+          .deliveryHint {
+            display: block;
+            margin-top: 0.35rem;
+            font-size: 0.7rem;
+            font-weight: 400;
+            line-height: 1;
+            color: $color-primary-light;
+          }
         }
       }
 

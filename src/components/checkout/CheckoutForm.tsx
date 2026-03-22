@@ -181,13 +181,19 @@ export default function CheckoutForm({
             <h2 className={styles.sectionTitle}>Dodací adresa</h2>
 
             <div className={styles.formFields}>
-              <div className={styles.formGroup}>
+              <div
+                className={`${styles.formGroup} ${styles.deliveryMethodGroup}`}
+              >
                 <label
                   className={styles.formLabel}
                   htmlFor="deliveryMethod"
                 >
-                  Možnost dopravy/osobního předání:
+                  Dopravce:
+                  <span className={styles.deliveryHint}>
+                    (Zadejte adresu Zásilkovny, Z-BOXu nebo Balíkovny)
+                  </span>
                 </label>
+
                 <select
                   id="deliveryMethod"
                   className={styles.formInput}
@@ -195,8 +201,12 @@ export default function CheckoutForm({
                   value={form.deliveryMethod || ""}
                   onChange={handleChange}
                 >
+                  <option value="Zásilka na adresu">
+                    Zásilka na adresu
+                  </option>
                   <option value="Zásilkovna">Zásilkovna</option>
                   <option value="Česká pošta">Balíkovna</option>
+                  <option value="Z-Box">Z-Box</option>
                 </select>
               </div>
 
