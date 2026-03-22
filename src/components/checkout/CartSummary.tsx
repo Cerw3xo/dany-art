@@ -8,7 +8,7 @@ export default function CartSummary({
 }: {
   onNext: () => void;
 }) {
-  const { items, removeItem } = useCartStore();
+  const { items, removeItem, changeQuantity } = useCartStore();
   const total = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
@@ -56,14 +56,45 @@ export default function CartSummary({
                     </span>
                   )}
                 </td>
-                <td>{item.quantity} ks</td>
+                <td>
+                  <div className={styles.quantityControl}>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        changeQuantity(
+                          item.id,
+                          Math.max(1, item.quantity - 1),
+                          item.size,
+                        )
+                      }
+                      disabled={item.quantity <= 1}
+                      aria-label={`Snížit počet ${item.name}`}
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity} ks</span>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        changeQuantity(
+                          item.id,
+                          item.quantity + 1,
+                          item.size,
+                        )
+                      }
+                      aria-label={`Zvýšit počet ${item.name}`}
+                    >
+                      +
+                    </button>
+                  </div>
+                </td>
                 <td>{formatPrice(item.price)}</td>
                 <td>{formatPrice(item.price * item.quantity)}</td>
                 <td>
                   <button
                     className={styles.removeBtn}
-                    onClick={() => removeItem(item.id)}
-                    aria-label="Odstranit polžku"
+                    onClick={() => removeItem(item.id, item.size)}
+                    aria-label="Odstranit položku"
                   >
                     x
                   </button>
