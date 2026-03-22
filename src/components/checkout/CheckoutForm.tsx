@@ -201,9 +201,6 @@ export default function CheckoutForm({
                   value={form.deliveryMethod || ""}
                   onChange={handleChange}
                 >
-                  <option value="Zásilka na adresu">
-                    Zásilka na adresu
-                  </option>
                   <option value="Zásilkovna">Zásilkovna</option>
                   <option value="Česká pošta">Balíkovna</option>
                   <option value="Z-Box">Z-Box</option>
