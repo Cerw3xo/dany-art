@@ -34,6 +34,10 @@ export default ({ env }) => {
       nps: env.bool('FLAG_NPS', true),
       promoteEE: env.bool('FLAG_PROMOTE_EE', true)
     },
+    preview: {
+      // Disable Content Manager preview endpoint unless explicit preview handler is configured.
+      enabled: false,
+    },
     url: '/admin',
     serveAdminPanel: true,
     forgotPassword: {
