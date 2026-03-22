@@ -212,11 +212,6 @@ export default function CheckoutForm({
                   onChange={handleChange}
                   required
                 />
-                {form.deliveryMethod === "Zásilkovna" && (
-                  <span className={styles.formHint}>
-                    ( po domluvě)
-                  </span>
-                )}
               </div>
 
               <div className={styles.formGroup}>
