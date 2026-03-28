@@ -45,3 +45,5 @@ next-env.d.ts
 
 src/app/dev/email-preview/customer/page.tsx
 src/app/dev/email-preview/page.tsx
+src/app/dev/email-preview/contact-customer/page.tsx
+src/app/dev/email-preview/contact-owner/page.tsx

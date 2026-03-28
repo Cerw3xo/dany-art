@@ -19,7 +19,7 @@ export function contactOwnerTemplate(data: {
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
-      <title>Nová správa</title>
+      <title>Nová zpráva</title>
     </head>
     <body style="margin:0;padding:0;background:${colorBg};-webkit-font-smoothing:antialiased;">
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:${colorBg};padding:24px 0;">
@@ -29,7 +29,7 @@ export function contactOwnerTemplate(data: {
               <tr>
                 <td style="padding:18px 22px;background:${colorAccent};border-bottom:1px solid ${colorSecondaryLight};">
                   <div style="color:${colorPrimary};font-size:18px;font-weight:700;letter-spacing:0.2px;">
-                    Nová správa z webu DanyssArt
+                    Nová zpráva z webu DanyssArt
                   </div>
                 </td>
               </tr>
@@ -49,7 +49,7 @@ export function contactOwnerTemplate(data: {
                     </tr>
                   </table>
 
-                  <div style="margin:10px 0 6px 0;color:${colorTextLight};">Správa:</div>
+                  <div style="margin:10px 0 6px 0;color:${colorTextLight};">Zpráva:</div>
                   <div style="padding:12px;border:1px solid ${colorSecondaryLight};border-radius:6px;background:${colorBg};white-space:pre-wrap;color:${colorText};">
                     ${escapeHtml(message)}
                   </div>
@@ -77,6 +77,8 @@ export function contactCustomerTemplate(data: {
   name: string;
 }) {
   const { name } = data;
+  const customerName = escapeHtml(name || "").trim();
+  const greeting = customerName ? `Dobrý den, ${customerName},` : "Dobrý den,";
 
   return `
   <!doctype html>
@@ -84,7 +86,7 @@ export function contactCustomerTemplate(data: {
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
-      <title>Správa prijatá</title>
+      <title>Děkuji za Vaši zprávu</title>
     </head>
     <body style="margin:0;padding:0;background:${colorBg};-webkit-font-smoothing:antialiased;">
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:${colorBg};padding:24px 0;">
@@ -94,31 +96,43 @@ export function contactCustomerTemplate(data: {
               <tr>
                 <td style="padding:18px 22px;background:${colorAccent};border-bottom:1px solid ${colorSecondaryLight};">
                   <div style="color:${colorPrimary};font-size:18px;font-weight:700;letter-spacing:0.2px;">
-                    Děkujeme za zprávu
+                    Děkuji za Vaši zprávu!
                   </div>
                 </td>
               </tr>
 
               <tr>
                 <td style="padding:22px;color:${colorText};font-size:14px;line-height:1.6;">
-                  <p style="margin:0 0 10px 0;">Ahoj ${escapeHtml(name)},</p>
-                  <p style="margin:0 0 10px 0;">
-                    děkuji za tvou zprávu – ozvu se co nejdříve. 
+                  <p style="margin:0 0 12px 0;font-size:16px;font-weight:700;color:${colorText};">
+                    ${greeting}
+                  </p>
+                  <p style="margin:0 0 12px 0;font-size:16px;font-weight:700;color:${colorText};">
+                    děkuji za Vaši zprávu, moc si toho vážím a ozvu se Vám co nejdříve.
                   </p>
 
-                  <div style="margin-top:14px;padding:12px;border:1px dashed ${colorSecondaryLight};border-radius:6px;color:${colorTextLight};background:${colorBg};">
-                    Mezitím můžeš podívat se na e‑shop nebo portfolio na webu.
+                  <div style="margin-top:16px;padding:12px;border:1px solid ${colorSecondaryLight};border-radius:10px;color:${colorText};background:${colorSecondaryLight};text-align:center;font-size:16px;font-weight:700;line-height:1.3;">
+                    Mezitím se můžete podívat na můj e-shop nebo portfolio na webu
+                    <br/>
+                    www.danyssart.cz
                   </div>
 
-                  <p style="margin:16px 0 0 0;font-size:12px;color:${colorTextLight};">
-                    Tento e‑mail byl vygenerován automaticky.
+                  <p style="margin:18px 0 0 0;font-size:14px;color:${colorTextLight};text-align:center;">
+                    Tento e-mail je generovaný automaticky, proto na něj prosím neodpovídejte.
+                  </p>
+
+                  <p style="margin:18px 0 0 0;font-size:16px;font-weight:700;color:${colorText};">
+                    Přeji Vám krásný den,
+                    <br/>
+                    Daniela Konečná – DanyssArt
                   </p>
                 </td>
               </tr>
 
               <tr>
-                <td style="padding:12px 22px;background:${colorBg};color:${colorTextLight};font-size:12px;text-align:center;border-top:1px solid ${colorSecondaryLight};">
-                  © ${new Date().getFullYear()} DanyssArt
+                <td style="padding:12px 22px;background:${colorBg};color:${colorTextLight};font-size:12px;text-align:center;border-top:1px solid ${colorSecondaryLight};line-height:1.4;">
+                  © ${new Date().getFullYear()} Daniela Konečná – danyss_art – grafický design a ruční tvorba
+                  <br/>
+                  www.danyssart.cz
                 </td>
               </tr>
             </table>
@@ -225,12 +239,14 @@ export function orderCustomerTemplate(data: {
           <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;background:#fff;border:1px solid ${colorSecondaryLight};border-radius:8px;overflow:hidden;">
             <tr>
               <td style="padding:18px 22px;background:${colorAccent};border-bottom:1px solid ${colorSecondaryLight};">
-                <div style="color:${colorPrimary};font-size:18px;font-weight:700;">Potvrdenie objednávky #${orderNumber}</div>
+                <div style="color:${colorPrimary};font-size:18px;font-weight:700;">Potvrzení objednávky #${orderNumber}</div>
               </td>
             </tr>
             <tr><td style="padding:22px;color:${colorText};font-size:14px;line-height:1.6;">
-              <p style="margin:0 0 10px 0;font-size:16px;color:${colorText};">Ahoj ${escapeHtml(customer.name)}, děkujeme za objednávku!</p>
-              <div style="margin:10px 0 8px 0;color:${colorText};font-size:18px;font-weight:700;">Rekapitulace:</div>
+              <p style="margin:0 0 10px 0;font-size:15px;color:${colorText};font-weight:600;">
+                Ahoj ${escapeHtml(customer.name)}, moc děkuji za tvou objednávku a podporu mé tvorby! ♥
+              </p>
+              <div style="margin:10px 0 8px 0;color:${colorText};font-size:16px;font-weight:700;">Níže najdeš její shrnutí:</div>
               <table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;border:1px solid ${colorSecondaryLight};border-radius:8px;overflow:hidden;">
                 ${items.map(i => `
                   <tr>
@@ -251,16 +267,20 @@ export function orderCustomerTemplate(data: {
                 </tr>
               </table>
   
-              <div style="margin-top:12px;padding:18px 14px;border:1px dashed ${colorSecondaryLight};border-radius:8px;color:${colorText};background:#efece1;text-align:center;font-size:20px;font-weight:700;line-height:1.3;">
-                Vyčkejte na další e-mail s platebními údaji
+              <div style="margin-top:12px;padding:12px 14px;border:1px dashed ${colorSecondaryLight};border-radius:8px;color:${colorText};background:${colorSecondaryLight};text-align:center;font-size:20px;font-weight:700;line-height:1.3;">
+                Další e-mail s platebními údaji ti dorazí během chvilky.
               </div>
   
-              <p style="margin:12px 8px 0 8px;font-size:14px;color:${colorTextLight};">
-                Automaticky vygenerovaný e-mail. Prosím NEODPOVÍDEJTE na něj.
+              <p style="margin:14px 8px 0 8px;font-size:14px;color:${colorTextLight};text-align:center;">
+                Tento e-mail je generovaný automaticky, proto na něj prosím neodpovídej.
+                <br/>
+                V případě dotazů mi napiš na: <strong>danyss.art@email.cz</strong>
               </p>
             </td></tr>
-            <tr><td style="padding:12px 22px;background:${colorBg};color:${colorTextLight};font-size:12px;text-align:center;border-top:1px solid ${colorSecondaryLight};">
-              © ${new Date().getFullYear()} DanyssArt
+            <tr><td style="padding:12px 22px;background:${colorBg};color:${colorTextLight};font-size:13px;text-align:center;border-top:1px solid ${colorSecondaryLight};line-height:1.4;">
+              © ${new Date().getFullYear()} Daniela Konečná - danyss_art - grafický design a ruční tvorba
+              <br/>
+              www.danyssart.cz
             </td></tr>
           </table>
         </td></tr>
