@@ -23,14 +23,14 @@ export async function POST(res: Request) {
         await resend.emails.send({
             from: process.env.RESEND_FROM!,
             to: process.env.OWNER_EMAIL!,
-            subject: `Nová správa ${name}`,
+            subject: `Nová zpráva ${name}`,
             html: contactOwnerTemplate({ name, email, message })
         })
 
         await resend.emails.send({
             from: process.env.RESEND_FROM!,
             to: email,
-            subject: "✅ Správa prijatá",
+            subject: "✅ Zpráva přijata",
             html: contactCustomerTemplate({ name }),
         });
 

@@ -31,7 +31,7 @@ export async function POST(req: Request) {
         await resend.emails.send({
             from: process.env.RESEND_FROM!,
             to: body.customer.email,
-            subject: `Potvrdenie objednávky #${body.orderNumber}`,
+            subject: `Potvrzení objednávky #${body.orderNumber}`,
             html: orderCustomerTemplate({
                 orderNumber: body.orderNumber,
                 customer: { name: body.customer.name },
@@ -45,5 +45,4 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "Server error" }, { status: 500 });
     }
 }
-
 
