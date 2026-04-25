@@ -15,7 +15,7 @@ export default function ContactPage() {
   const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -37,7 +37,7 @@ export default function ContactPage() {
         setError("Nepodařilo se odeslat formulář: " + err.message);
       } else {
         setError(
-          "Nepodařilo se odeslat formulář z neznámého důvodu."
+          "Nepodařilo se odeslat formulář z neznámého důvodu.",
         );
       }
     } finally {
@@ -83,8 +83,10 @@ export default function ContactPage() {
             Děkuji, že máš zájem o spolupráci!
           </h1>
           <p className={styles.subtitle}>
-            Napiš mi, s čím ti mohu pomoci – ozvu se co nejdříve a
-            společně vytvoříme něco jedinečného.
+            <strong>Ráda s tebou vytvořím něco jedinečného.</strong>
+          </p>
+          <p className={styles.subtitle}>
+            Napiš mi a ráda s tebou vytvořím něco jedinečného.
           </p>
         </header>
 

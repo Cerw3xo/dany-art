@@ -112,7 +112,7 @@ export default function HeroSection() {
 
           <motion.div variants={fadeUp}>
             <Link href="/contact" className={styles.cta}>
-              CHCI SPOLUPRACOVAT
+              CHCEŠ ORIGINÁLNÍ VIZUÁL? KLIKNI SEM
             </Link>
           </motion.div>
         </motion.div>

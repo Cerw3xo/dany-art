@@ -190,7 +190,7 @@ export default function CheckoutForm({
                 >
                   Dopravce:
                   <span className={styles.deliveryHint}>
-                    (Zadejte adresu Zásilkovny, Z-BOXu nebo Balíkovny)
+                    Prosím, RUČNĚ vypiš adresu dopravce
                   </span>
                 </label>
 
@@ -201,9 +201,9 @@ export default function CheckoutForm({
                   value={form.deliveryMethod || ""}
                   onChange={handleChange}
                 >
-                  <option value="Zásilkovna">Zásilkovna</option>
-                  <option value="Česká pošta">Balíkovna</option>
-                  <option value="Z-Box">Z-Box</option>
+                  <option value="Zásilkovna">Zásilkovna 89Kč</option>
+                  <option value="Česká pošta">Balíkovna 79Kč</option>
+                  <option value="Z-Box">Z-Box 89Kč</option>
                 </select>
               </div>
 
