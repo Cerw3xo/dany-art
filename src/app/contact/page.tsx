@@ -83,7 +83,9 @@ export default function ContactPage() {
             Děkuji, že máš zájem o spolupráci!
           </h1>
           <p className={styles.subtitle}>
-            <strong>Ráda s tebou vytvořím něco jedinečného.</strong>
+            <strong>
+              Chceš svůj nápad proměnit v originální vizuál?
+            </strong>
           </p>
           <p className={styles.subtitle}>
             Napiš mi a ráda s tebou vytvořím něco jedinečného.

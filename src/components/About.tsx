@@ -160,7 +160,7 @@ export default function About() {
               Chceš svůj nápad proměnit v originální vizuál?
             </span>
             <span className={styles.ctaText}>
-              👉 KLIKNI SEM a ráda s tebou vytvořím.
+              👉 KLIKNI SEM a ráda s tebou vytvořím něco jedinečného.
             </span>
           </Link>
         </motion.div>
