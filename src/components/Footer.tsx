@@ -19,7 +19,7 @@ export default function Footer() {
         <div className={styles.col}>
           <h4>INFORMACE</h4>
           <ul>
-            <li>Bc.Daniela Konečná</li>
+            <li>Bc. Daniela Konečná</li>
             <li>Tvořihráz, Jihomoravský kraj</li>
             <li>Česká republika</li>
             <li>IČO: 21306958</li>
